@@ -1,0 +1,87 @@
+@import "assets/_colors.scss";
+
+// Filter menu
+
+.filter-menu {
+	display: flex;
+	a:hover, a:active {
+		background-color: $echogrey;
+		color: $echodarkblue;
+	}
+}
+
+// Main
+main {
+	margin: 120px 40px 80px 40px;
+}
+
+// Blog posts
+// .post-landscape {
+//   padding: 40px;
+// 	margin-bottom: 80px;
+//   .post-img {
+// 		width: 100%;
+// 		text-align: center;
+// 		margin-bottom: 40px;
+//     img {
+// 			width: 65%;
+// 		}
+//   }
+// }
+
+.post {
+	flex-direction: row;
+  background-color: #fff;
+  margin-bottom: 80px;
+  .post-img {
+		flex: 1.5;
+    img {
+      width: 100%;
+    }
+  }
+	.post-text {
+		flex: 1;
+		padding: 40px;
+	}
+}
+
+//Footer
+footer {
+	justify-content: space-between;
+	flex-direction: row;
+	.hide {
+	display: initial;
+	}
+	div {
+		flex: 1;
+		height: 50px;
+		display: flex;
+		align-items: flex-end;
+		margin: 0;
+
+		&:nth-child(2) {
+			justify-content: center;
+		}
+		&:last-child {
+			justify-content: flex-end;
+			font-size: 1em;
+		}
+		.fa {
+			font-size: 3em;
+			padding: 0 15px;
+		}
+	}
+	ul {
+		padding: 0;
+		list-style: disc inside none;
+		li {
+			display: list-item;
+			&:first-child {
+			    padding-bottom: 10px;
+			}
+		}
+		a {
+			padding: 0;
+		}
+	}
+}
