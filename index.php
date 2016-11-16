@@ -37,10 +37,17 @@
           <div class="post-img">
             <img src="<?php echo $post['image']; ?>" alt="">
           </div>
-          <h1><?php echo $post["title"]; ?></h1>
-          <div class="blog-content"><?php echo $post["content"]; ?></div>
-          <p class="author"><?php echo $post["fname"] . " " . $post["lname"]; ?></p>
-          <p class="pub-date">Published: <?php echo $post["createDate"]; ?></p>
+          <div class="post-text">
+            <div>
+            <p class="tags">Ilustration</p>
+            <h1><?php echo $post["title"]; ?></h1>
+            <div class="blog-content"><?php echo $post["content"]; ?></div>
+          </div>
+          <div>
+            <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p>
+            <p class="comments">Comments (2)</p>
+          </div>
+        </div> <!-- //post-text -->
         </article>
       </div> <?php
     } elseif (!isset($_GET["month"])) { ?>
@@ -49,10 +56,17 @@
           <div class="post-img">
             <img src="<?php echo $post['image']; ?>" alt="">
           </div>
-          <h1><?php echo $post["title"]; ?></h1>
-          <div class="blog-content"><?php echo $post["content"]; ?></div>
-          <p class="author"><?php echo $post["fname"] . " " . $post["lname"]; ?></p>
-          <p class="pub-date">Published: <?php echo $post["createDate"]; ?></p>
+          <div class="post-text">
+            <div>
+            <p class="tags">Ilustration</p>
+            <h1><?php echo $post["title"]; ?></h1>
+            <div class="blog-content"><?php echo $post["content"]; ?></div>
+          </div>
+          <div>
+            <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p>
+            <p class="comments">Comments (2)</p>
+          </div>
+        </div> <!-- //post-text -->
         </article>
       </div> <?php
     }

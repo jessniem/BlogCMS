@@ -7,7 +7,8 @@ $(function () {
   $(".load-post").slice(0, 4).show();
   $("#loadMore").on('click', function (e) {
       e.preventDefault();
-      $(".load-post:hidden").slice(0, 4).slideDown();
+console.log($(".load-post:hidden").slice(0, 4));
+      $(".load-post:hidden").slice(0, 2).slideDown();
       if ($(".load-post:hidden").length == 0) {
           $("#load").fadeOut('slow');
       }
@@ -16,7 +17,7 @@ $(function () {
       }, 1000);
   });
 });
-
+/*
 $('a[href=#top]').click(function () {
   $('body,html').animate({
       scrollTop: 0
@@ -31,3 +32,4 @@ $(window).scroll(function () {
       $('.totop a').fadeOut();
   }
 });
+*/
