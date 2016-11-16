@@ -19,52 +19,44 @@
       $stmt->bind_result($id, $title, $categoryid, $userid, $content, $image, $createDate, $isPub, $fname, $lname);
   }
 
-  // $query2 = "SELECT category FROM categories WHERE id = $categoryid";
-  //
-  // if ($stmt->prepare($query2)) {
-  //     $stmt->execute();
-  //
-  //     $stmt->bind_result($categoryname);
-  // }
-
-  // $catid = "";
-  // if ($categoryid == 6) {
-  //   $catid = "art";
-  // }
-
-
-  // present the posts from db
-  $count = 0;
-  $older = 5;
+  //save blog posts in blogPosts array
   while (mysqli_stmt_fetch($stmt)) {
-    // visa bara de fem senaste inläggen
+  $blogPosts[] = array ("id" => $id, "title" => $title, "categoryid" => $categoryid, "userid" => $userid, "content" => $content, "image" => $image, "createDate" => $createDate, "isPub" => $isPub, "fname" => $fname, "lname" => $lname);
+  }
 
-      //$blogPosts[] = array ("id" => $id, "title" => $title, "categoryid" => $categoryid, "userid" => $userid, "content" => $content, "image" => $image, "createDate" => $createDate, "isPub" => $isPub, "fname" => $fname, "lname" => $lname);
 
-     ?>
-        <div class="load-post">
-          <article class="post">
-            <div class="post-img">
-              <img src="<?php echo $image; ?>" alt="">
-            </div> <!-- .post-img -->
-            <div class="post-text">
-              <!-- Top content -->
-              <div>
-                <p class="tags">Illustration</p>
-                <h1><?php echo "$title"; ?></h1>
-                <div class="blog-content"><?php echo "$content"; ?></div>
-              </div>
-              <!-- Bottom content -->
-              <div>
-                <p class="post-info"><?php echo "$fname $lname"; echo ", "; echo "$createDate"; ?></p>
-                <p class="comments">Comments (2)</p>
-              </div>
-            </div> <!-- .post-text -->
-          </article> <!-- .post -->
-        </div> <!-- .load-post --> <?php
-      $count++;
+  // TODO: Fixa sorteringen så att den inte försvinner när klickar på något
+  // TODO: Skapa funktion istället för kodupprepning
 
-  } ?>
+  // echo out the blogPosts array
+  foreach ($blogPosts as $post) {
+    $pubmonth = substr($post["createDate"], -4, 2);
+    if (!empty($_GET["month"]) && ($pubmonth == $_GET["month"])) { ?>
+      <div class="load-post">
+        <article class="post">
+          <div class="post-img">
+            <img src="<?php echo $post['image']; ?>" alt="">
+          </div>
+          <h1><?php echo $post["title"]; ?></h1>
+          <div class="blog-content"><?php echo $post["content"]; ?></div>
+          <p class="author"><?php echo $post["fname"] . " " . $post["lname"]; ?></p>
+          <p class="pub-date">Published: <?php echo $post["createDate"]; ?></p>
+        </article>
+      </div> <?php
+    } elseif (!isset($_GET["month"])) { ?>
+      <div class="load-post">
+        <article class="post">
+          <div class="post-img">
+            <img src="<?php echo $post['image']; ?>" alt="">
+          </div>
+          <h1><?php echo $post["title"]; ?></h1>
+          <div class="blog-content"><?php echo $post["content"]; ?></div>
+          <p class="author"><?php echo $post["fname"] . " " . $post["lname"]; ?></p>
+          <p class="pub-date">Published: <?php echo $post["createDate"]; ?></p>
+        </article>
+      </div> <?php
+    }
+  }  ?>
 
   <div class="load">
     <a href="#" id="loadMore"><i class="fa fa-angle-double-down" aria-hidden="true"></i></i></a>
