@@ -4,11 +4,11 @@ Load more content with jQuery - May 21, 2013
 */
 
 $(function () {
-  $(".load-post").slice(0, 4).show();
+  $(".load-post").slice(0, 5).show();
   $("#loadMore").on('click', function (e) {
       e.preventDefault();
-console.log($(".load-post:hidden").slice(0, 4));
-      $(".load-post:hidden").slice(0, 2).slideDown();
+      // console.log($(".load-post:hidden").slice(0, 5));
+      $(".load-post:hidden").slice(0, 5).slideDown();
       if ($(".load-post:hidden").length == 0) {
           $("#load").fadeOut('slow');
       }
