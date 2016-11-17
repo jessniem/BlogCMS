@@ -34,21 +34,6 @@ p {
   margin: 0;
 }
 
-// Banner
-.banner {
-  height: 400px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-	.mobile-logo {
-    width: 70%;
-  }
-  .desktop-logo {
-    display: none;
-  }
-}
-
 //Menus
 .menu {
   height: 60px;
@@ -67,6 +52,13 @@ p {
   a:hover {
     text-decoration: underline;
   }
+}
+
+// Banner
+
+.banner {
+  height: 400px;
+  background-color: white;
 }
 
 // Filter menu
