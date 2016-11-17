@@ -35,12 +35,19 @@ p {
 }
 
 
-
 // Banner
-
 .banner {
   height: 400px;
   background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	.mobile-logo {
+    width: 70%;
+  }
+  .desktop-logo {
+    display: none;
+  }
 }
 
 // Filter menu

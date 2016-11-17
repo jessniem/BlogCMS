@@ -1,6 +1,17 @@
 @import "assets/_colors.scss";
 
 
+// Banner
+.banner {
+	.mobile-logo {
+		display: none;
+  }
+  .desktop-logo {
+    display: block;
+		width: 70%;
+  }
+}
+
 //Menus
 .menu {
   height: 60px;
