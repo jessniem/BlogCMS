@@ -33,3 +33,23 @@ $(window).scroll(function () {
   }
 });
 */
+
+
+
+
+/* HAMBURGER */
+$( ".cross" ).hide();
+$( ".basemenu" ).hide();
+$( ".hamburger" ).click(function() {
+$( ".basemenu" ).slideToggle( "slow", function() {
+$( ".hamburger" ).hide();
+$( ".cross" ).show();
+});
+});
+
+$( ".cross" ).click(function() {
+$( ".basemenu" ).slideToggle( "slow", function() {
+$( ".cross" ).hide();
+$( ".hamburger" ).show();
+});
+});

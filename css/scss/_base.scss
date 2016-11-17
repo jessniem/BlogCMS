@@ -34,25 +34,7 @@ p {
   margin: 0;
 }
 
-//Menus
-.menu {
-  height: 60px;
-  width: 100%;
-  background-color: $echoturq;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  a {
-    padding: 14px 15px 22px 15px;
-  }
-}
-// Top menu
-.top-menu {
-  justify-content: flex-end;
-  a:hover {
-    text-decoration: underline;
-  }
-}
+
 
 // Banner
 
@@ -181,4 +163,102 @@ footer {
     font-size: 3.8em;
     padding: 0 10px;
   }
+}
+
+
+
+
+
+
+/* HAMBURGER */
+.hamburgerheader{
+	width:100%;
+	background:$echoturq;
+	height:60px;
+	line-height:60px;
+}
+.hamburger{
+  background:none;
+  position:absolute;
+  top:0;
+  right:0;
+  line-height:45px;
+  padding:5px 15px 0px 15px;
+  color:#fff;
+  border:0;
+  font-size:1.4em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000000;
+}
+.cross{
+  background:none;
+  position:absolute;
+  top:0px;
+  right:0;
+  padding:13px 15px 0px 15px;
+  color:#fff;
+  border:0;
+  font-size:3em;
+  line-height:65px;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000000;
+}
+.basemenu {
+  z-index:1000000;
+  font-weight:bold;
+  font-size:0.8em;
+  width:100%;
+  background:$echoturq;
+  position:absolute;
+  text-align:center;
+}
+.basemenu ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  list-style-image: none;
+}
+.basemenu li {
+  display: block;
+  padding:15px 0 15px 0;
+  border-bottom:$echogrey 1px solid;
+}
+.basemenu li:hover {
+  display: block;
+  background:$echodarkblue;
+  padding:15px 0 15px 0;
+  border-bottom:#1d1f20 1px solid;
+}
+.basemenu ul:hover {
+  display:block;
+}
+
+.basemenu ul li a {
+  text-decoration:none;
+  margin: 0px;
+  color:#fff;
+}
+.basemenu a {
+  text-decoration:none;
+  color:white;
+}
+.basemenu a:hover {
+  text-decoration:none;
+  color:white;
+}
+
+.glyphicon-home{
+  color:white;
+  font-size:1.5em;
+  margin-top:5px;
+  margin:0 auto;
+}
+
+
+/* css för SELECT som ligger i hamburgermenyn */
+select {
 }
