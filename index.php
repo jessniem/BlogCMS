@@ -6,9 +6,8 @@
 
   <?php
 
-  require_once "functions.php";
+  require_once "db_connection.php";
 
-  connectDB();
   $stmt = $conn->stmt_init();
 
   $query = "SELECT posts.*, users.firstName, users.lastName FROM posts LEFT JOIN users ON posts.userid = users.id ORDER BY posts.id DESC";
@@ -50,7 +49,7 @@
         </div> <!-- post-text -->
         </article>
       </div> <!-- load-post --> <?php
-      // TODO: Skapa funktion istället för kodupprepning, div load-post är samma här ovanför som nedanför
+      // TODO: Skapa funktion istället för kodupprepning, div load-post är samma här ovan och nedanför
     } elseif (!isset($_GET["month"])) { ?>
       <div class="load-post">
         <article class="post">
@@ -79,9 +78,9 @@
     <a href="#" id="loadMore"><i class="fa fa-angle-double-down" aria-hidden="true"></i></i></a>
   </div> <!-- .load-btn -->
 
-<!-- <p class="totop">
-    <a href="#top">Back to top</a>
-</p> -->
+  <!-- <p class="totop">
+      <a href="#top">Back to top</a>
+  </p> -->
   <?php
 
   // close db connection
