@@ -38,6 +38,12 @@
 
 .filter-menu {
 	display: flex;
+	a {
+	  transition: all 200ms ease-in-out;
+      -webkit-transition: all 200ms ease-in-out;
+      -moz-transition: all 200ms ease-in-out;
+      -o-transition: all 200ms ease-in-out;
+	}
 	a:hover, a:active {
 		background-color: $echogrey;
 		color: $echodarkblue;
