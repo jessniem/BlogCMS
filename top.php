@@ -1,3 +1,45 @@
+<!--- hamburger menu ---->
+<div class="menu2">
+	<header class="hamburgerheader">
+	  <button class="hamburger">&#9776;</button>
+	  <button class="cross">&#735;</button>
+	</header>
+	<div class="basemenu">
+		<ul>
+			<li>
+				<select>
+					<option value="kategorier" disabled selected>Kategorier</option>
+					<option><li><a href="index.php"> Most recent</a></li></option>
+					<option><li><a href="#"> Abstract</a></li></option>
+					<option><li><a href="#"> Art</a></li></option>
+					<option><li><a href="#"> Black and white</a></li></option>
+					<option><li><a href="#"> Color</a></li></option>
+					<option><li><a href="#"> Illustration</a></li></option>
+					<option><li><a href="#"> Portrait</a></li></option>
+				</select>
+			</li>
+			<li>
+				<select>
+					<option value="months" disabled selected>Months</option>
+					<option><a class="month" href="index.php?month=01">January</a></option>
+					<option><a class="month" href="index.php?month=02">February</a></option>
+					<option><a class="month" href="index.php?month=03">March</a></option>
+					<option><a class="month" href="index.php?month=04">April</a></option>
+					<option><a class="month" href="index.php?month=05">May</a></option>
+					<option><a class="month" href="index.php?month=06">June</a></option>
+					<option><a class="month" href="index.php?month=07">July</a></option>
+					<option><a class="month" href="index.php?month=08">August</a></option>
+					<option><a class="month" href="index.php?month=09">September</a></option>
+					<option><a class="month" href="index.php?month=10">October</a></option>
+					<option><a class="month" href="index.php?month=11">November</a></option>
+					<option><a class="month" href="index.php?month=12">December</a></option>
+				</select>
+			</li>
+			</div>
+		</ul>
+</div>
+</div>
+
 <!-- Topmenu -->
 <div class="menu top-menu">
 	<ul>

@@ -1,5 +1,28 @@
 @import "assets/_colors.scss";
 
+
+//Menus
+.menu {
+  height: 60px;
+  width: 100%;
+  background-color: $echoturq;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  a {
+    padding: 14px 15px 22px 15px;
+  }
+}
+
+//Top menu
+.top-menu {
+  justify-content: flex-end;
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+
 // Filter menu
 
 .filter-menu {
@@ -7,6 +30,45 @@
 	a:hover, a:active {
 		background-color: $echogrey;
 		color: $echodarkblue;
+	}
+}
+
+
+
+
+
+// Main
+main {
+	margin: 120px 40px 80px 40px;
+}
+
+// Blog posts
+// .post-landscape {
+//   padding: 40px;
+// 	margin-bottom: 80px;
+//   .post-img {
+// 		width: 100%;
+// 		text-align: center;
+// 		margin-bottom: 40px;
+//     img {
+// 			width: 65%;
+// 		}
+//   }
+// }
+
+.post {
+	flex-direction: row;
+  background-color: #fff;
+  margin-bottom: 80px;
+  .post-img {
+		flex: 1.5;
+    img {
+      width: 100%;
+    }
+  }
+	.post-text {
+		flex: 1;
+		padding: 40px;
 	}
 }
 
@@ -51,40 +113,6 @@
 	text-decoration: none;
 }
 
-// Main
-main {
-	margin: 120px 40px 80px 40px;
-}
-
-// Blog posts
-// .post-landscape {
-//   padding: 40px;
-// 	margin-bottom: 80px;
-//   .post-img {
-// 		width: 100%;
-// 		text-align: center;
-// 		margin-bottom: 40px;
-//     img {
-// 			width: 65%;
-// 		}
-//   }
-// }
-
-.post {
-	flex-direction: row;
-  background-color: #fff;
-  margin-bottom: 80px;
-  .post-img {
-		flex: 1.5;
-    img {
-      width: 100%;
-    }
-  }
-	.post-text {
-		flex: 1;
-		padding: 40px;
-	}
-}
 
 //Footer
 footer {
@@ -125,4 +153,8 @@ footer {
 			padding: 0;
 		}
 	}
+}
+
+.menu2 {
+	display:none;
 }
