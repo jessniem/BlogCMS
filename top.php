@@ -7,7 +7,8 @@
 </div>
 <!-- Banner -->
 <div class="banner">
-	<!-- Banner-image + logo -->
+		<img class="mobile-logo" src="./img/logo_mobile.jpg" alt="logo">
+		<img class="desktop-logo" src="./img/logo_desktop.jpg" alt="logo">
 </div>
 <div class="menu filter-menu">
 	<ul>
