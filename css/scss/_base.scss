@@ -152,8 +152,13 @@ footer {
   display: flex;
   .hide {
     display: none;
+    ul li a {
+      &:hover {
+        color: $echoturq;
+      }
+    }
   }
-  div {
+  .social {
     margin: 10px;
     a {
       transition: all 200ms ease-in-out;

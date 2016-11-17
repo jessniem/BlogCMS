@@ -1,6 +1,6 @@
 <?php
-    include "head.php";
-    include "top.php";
+    include "./includes/head.php";
+    include "./includes/top.php";
 ?>
 <main>
 
@@ -93,5 +93,5 @@
 
 
 <?php
-    include "footer.php";
+    include "./includes/footer.php";
 ?>

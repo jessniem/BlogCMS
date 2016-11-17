@@ -5,7 +5,7 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </div>
-    <div>
+    <div class="social">
         <a href="#"><i class="fa fa-facebook-official"></i></a>
         <a href="#"><i class="fa fa-instagram"></i></a>
         <a href="#"><i class="fa fa-tumblr-square"></i></a>
