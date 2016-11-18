@@ -250,13 +250,12 @@ footer {
 .basemenu li {
   display: block;
   padding:15px 0 15px 0;
-  border-bottom:$echogrey 1px solid;
+  font-size:1.4em;
+  //border: 1px solid white;
 }
 .basemenu li:hover {
   display: block;
-  background:$echodarkblue;
   padding:15px 0 15px 0;
-  border-bottom:#1d1f20 1px solid;
 }
 .basemenu ul:hover {
   display:block;
@@ -286,4 +285,9 @@ footer {
 
 /* css för SELECT som ligger i hamburgermenyn */
 select {
+  background-color:$echoturq;
+  border: 0px solid;
+  color:white;
+  background:none;
+  
 }

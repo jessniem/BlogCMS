@@ -8,7 +8,7 @@
 		<ul>
 			<li>
 				<select>
-					<option value="kategorier" disabled selected>Kategorier</option>
+					<option value="kategorier" disabled selected>Categories</option>
 					<option><li><a href="#"> Most recent</a></li></option>
 					<option><li><a href="?tag=abstract"> Abstract</a></li></option>
 					<option><li><a href="?tag=art"> Art</a></li></option>
@@ -35,7 +35,11 @@
 					<option><a class="month" href="?month=12">December</a></option>
 				</select>
 			</li>
-			</div>
+			<li><hr/></li>
+			<li><a href="home.php">Home</a></li>
+			<li><a href="about.php">About</a></li>
+			<li><a href="contact.php">Contact</a></li>
+		</div>
 		</ul>
 </div>
 </div>
@@ -63,7 +67,7 @@
 		<li><a href="#"> Portrait</a></li>
 		<div class="dropdown">
 			<li>
-				<button class="dropdown-btn">Months <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+				<button class="dropdown-btn">Months <i class="fa fa-caret-down" aria-hidden="true"></i></button>
 			</li>
 			<div class="dropdown-content">
 				<a class="month" href="index.php?month=01">January</a>
