@@ -59,7 +59,7 @@ p {
 //Main
 
 main {
-  margin: 120px 0px 40px 0px;
+  margin: 0px 0px 0px 0px;
   min-height: 500px;
 }
 
@@ -191,7 +191,10 @@ footer {
 // RANDOM COLOR IN FOOTER
 
 
-
+//Tar bort desktop menu
+ .top-menu{
+  display:none;
+}
 
 
 
@@ -289,5 +292,14 @@ select {
   border: 0px solid;
   color:white;
   background:none;
-  
+
+}
+
+
+//utfyllnad
+.bluefiller {
+  width:100%;
+  height: 60px;
+  background-color: $echoturq;
+  display:inline-block; 
 }

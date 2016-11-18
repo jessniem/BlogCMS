@@ -56,6 +56,8 @@
 	<img class="mobile-logo" src="./img/logo_mobile.jpg" alt="logo">
 	<img class="desktop-logo" src="./img/logo_desktop.jpg" alt="logo">
 </div>
+<div class="bluefiller">
+</div>
 <div class="menu filter-menu">
 	<ul>
 		<li><a href="index.php"> Most recent</a></li>
