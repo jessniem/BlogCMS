@@ -61,12 +61,12 @@
 <div class="menu filter-menu">
 	<ul>
 		<li><a href="index.php"> Most recent</a></li>
-		<li><a href="#"> Abstract</a></li>
-		<li><a href="#"> Art</a></li>
-		<li><a href="#"> Black and white</a></li>
-		<li><a href="#"> Color</a></li>
-		<li><a href="#"> Illustration</a></li>
-		<li><a href="#"> Portrait</a></li>
+		<li><a href=href="?tag=abstract"> Abstract</a></li>
+		<li><a href="?tag=art"> Art</a></li>
+		<li><a href="?tag=blackandwhite"> Black and white</a></li>
+		<li><a href="?tag=color"> Color</a></li>
+		<li><a href="?tag=illustratin"> Illustration</a></li>
+		<li><a href="?tag=portrait"> Portrait</a></li>
 		<div class="dropdown">
 			<li>
 				<button class="dropdown-btn">Months <i class="fa fa-caret-down" aria-hidden="true"></i></button>
