@@ -1,6 +1,15 @@
 <?php
 include "./includes/head.php";
 include "db_connection.php";
+	
+//If email or password is empty
+if(isset($_GET['login_fail'])) {
+		echo "<p class='fail'>You must fill in an email address and password</p>";
+	}
+//If email or password doesn't match db
+if(isset($_GET['pass_fail'])) {
+		echo "<p class='fail'>Wrong username or password</p>";
+	}
 ?>
   <main>
     <section class="login">
