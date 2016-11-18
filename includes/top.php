@@ -63,7 +63,7 @@
 		<li><a href="#"> Portrait</a></li>
 		<div class="dropdown">
 			<li>
-				<button class="dropdown-btn">Months <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+				<button class="dropdown-btn">Months <i class="fa fa-angle-down" aria-hidden="true"></i></button>
 			</li>
 			<div class="dropdown-content">
 				<a class="month" href="index.php?month=01">January</a>
