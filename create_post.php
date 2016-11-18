@@ -1,7 +1,7 @@
 
 <?php
- include "/includes/head.php";
- include "/includes/top_admin.php";
+ include "./includes/head.php";
+ include "./includes/top_admin.php";
 ?>
 
 hej du är inloggad
