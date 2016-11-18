@@ -65,7 +65,7 @@
 		<li><a href="?tag=art"> Art</a></li>
 		<li><a href="?tag=blackandwhite"> Black and white</a></li>
 		<li><a href="?tag=color"> Color</a></li>
-		<li><a href="?tag=illustratin"> Illustration</a></li>
+		<li><a href="?tag=illustration"> Illustration</a></li>
 		<li><a href="?tag=portrait"> Portrait</a></li>
 		<div class="dropdown">
 			<li>
