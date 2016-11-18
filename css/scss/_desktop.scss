@@ -50,28 +50,36 @@
 	}
 }
 
-
-
-
-
 // Main
 main {
 	margin: 120px 40px 80px 40px;
 }
 
-// Blog posts
-// .post-landscape {
-//   padding: 40px;
-// 	margin-bottom: 80px;
-//   .post-img {
-// 		width: 100%;
-// 		text-align: center;
-// 		margin-bottom: 40px;
-//     img {
-// 			width: 65%;
-// 		}
-//   }
-// }
+.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $echoturq;
+	padding: 40px;
+	input {
+		display: block;
+		box-sizing: border-box;
+	}
+	input, button {
+		background-color: #fff;
+		border: 0;
+		width: 400px;
+		height: 40px;
+		padding: 10px;
+		margin: 10px 0;
+	}
+	button:hover {
+		background-color: $echogrey;
+	}
+	label {
+		color: #fff;
+	}
+}
 
 .post {
 	flex-direction: row;
