@@ -6,7 +6,7 @@ include "db_connection.php";
 if( isset($_POST["send"]) ) {
 	if( !empty($_POST["email"]) && !empty($_POST["password"]) ) {
 
-		$email = mysqli_real_escape_string($conn, $_POST["email"]); 
+		$email = mysqli_real_escape_string($conn, $_POST["email"]);
 		$pass = mysqli_real_escape_string($conn, $_POST["password"]);
 
 		$stmt = $conn->stmt_init();
@@ -20,6 +20,13 @@ if( isset($_POST["send"]) ) {
 			$stmt->fetch();
 
 			if ($id != 0 && $pass == $password) {
+
+				$_SESSION["logged_in"] = true;
+				$_SESSION["username"] = $firstname;
+				$_SESSION["userId"] = $id; 
+
+
+
 
 			header("Location: create_post.php");
 
