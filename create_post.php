@@ -17,7 +17,8 @@ hej du är inloggad
 
       <h1>Create new post</h1>
       <h3>Upload Image</h3>
-      <input type="file" name="postImage">
+      <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)"><br>
+      <img src="#" style="width:300px; height:auto;" id="output"/>
       <br>
 
       <input type="text" name="title" placeholder="title"> <br>
@@ -25,10 +26,10 @@ hej du är inloggad
 
 
       <h3>Tags</h3>
-        <input type="radio" name="tag" value="blackandwhite"> Blackandwhite
-        <input type="radio" name="tag" value="color"> Color
-        <input type="radio" name="tag" value="illustration"> Illustration
-        <input type="radio" name="tag" value="portrait"> Portrait
+        <input type="radio" name="tag" value="3"> Blackandwhite
+        <input type="radio" name="tag" value="5"> Color
+        <input type="radio" name="tag" value="1"> Illustration
+        <input type="radio" name="tag" value="2"> Portrait
         <br>
       <button type="submit" name="saveDraft">Save Draft</button>
       <button type="submit" name="publish">Publish</button>
@@ -42,6 +43,7 @@ if (isset ($_POST["publish"])) {
 
   $targetfolder = "./illustrations/";
   $date = date('c');
+  $published = date('Y d m'); //TODO: detta funkar inte!
   $targetname = $targetfolder . basename ($date.".jpg");
 
   $title = $_POST["title"];
@@ -56,7 +58,7 @@ if (isset ($_POST["publish"])) {
 
 					$conn = new mysqli ("localhost","root","root","echo");
 					$query = "INSERT INTO posts VALUES
-          (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', '$date', '1')";
+          (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', '$published', '1')";
 
 					$stmt = $conn->stmt_init();
 
