@@ -9,9 +9,7 @@
 			<li>
 				<select>
 					<option value="kategorier" disabled selected>Categories</option>
-					<option><li><a href="#"> Most recent</a></li></option>
-					<option><li><a href="?tag=abstract"> Abstract</a></li></option>
-					<option><li><a href="?tag=art"> Art</a></li></option>
+					<option><li><a href="?tag=all"> Most recent</a></li></option>
 					<option><li><a href="?tag=blackandwhite"> Black and white</a></li></option>
 					<option><li><a href="?tag=color"> Color</a></li></option>
 					<option><li><a href="?tag=illustration"> Illustration</a></li></option>
@@ -60,9 +58,7 @@
 </div>
 <div class="menu filter-menu">
 	<ul>
-		<li><a href="index.php"> Most recent</a></li>
-		<li><a href=href="?tag=abstract"> Abstract</a></li>
-		<li><a href="?tag=art"> Art</a></li>
+		<li><a href="tag=all"> Most recent</a></li>
 		<li><a href="?tag=blackandwhite"> Black and white</a></li>
 		<li><a href="?tag=color"> Color</a></li>
 		<li><a href="?tag=illustration"> Illustration</a></li>
