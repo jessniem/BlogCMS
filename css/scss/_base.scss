@@ -53,8 +53,24 @@ p {
 // Filter menu
 
 .filter-menu {
-  display: none;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+
+  .first {
+    display: flex;
+    flex: 2;
+  }
+  .logout {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    //align-self: flex-end;
+    align-items: center;
+  }
 }
+
 
 //Main
 
@@ -301,5 +317,5 @@ select {
   width:100%;
   height: 60px;
   background-color: $echoturq;
-  display:inline-block; 
+  display:inline-block;
 }
