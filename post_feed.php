@@ -148,7 +148,7 @@ foreach ($blogPosts as $post) {
      // get next page
      $nextPage = $currPage + 1;
       // link to next page
-     echo " <a href='{$_SERVER['PHP_SELF']}?page=$nextPage'></a> ";
+     echo " <a href='{$_SERVER['PHP_SELF']}?page=$nextPage'>></a> ";
      // link to the last page
      echo " <a href='{$_SERVER['PHP_SELF']}?page=$totPages'>>></a> ";
   } // END OF PAGINATION LINKS ?>
