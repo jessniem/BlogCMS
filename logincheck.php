@@ -23,19 +23,16 @@ if( isset($_POST["send"]) ) {
 
 				$_SESSION["logged_in"] = true;
 				$_SESSION["username"] = $firstname;
-				$_SESSION["userId"] = $id; 
-
-
-
+				$_SESSION["userId"] = $id;
 
 			header("Location: create_post.php");
 
 			} else {
-				header('Location: login.php?pass_fail');
+				header('Location: login.php?login=fail');
 			}
 		}
 	} else {
-		header('location: login.php?login_fail');
+		header('location: login.php?login=empty');
 	}
 }
 
