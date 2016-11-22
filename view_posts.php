@@ -8,11 +8,12 @@ include "./includes/top_admin.php";
 	<div class="edit-posts">
 		<h1>Edit posts</h1>
 		<h2>Drafts</h2>
-		<?php 
+		<?php
+		$userId = $_SESSION["userId"];
 		$stmt = $conn->stmt_init();
-		$query = "SELECT title, createDate FROM posts WHERE isPub = 0";
-		// TODO: Visar en mindre draft än vad som finns i DB (den senast tillagda draften visas inte)
-		// TODO: Lägg till filtrering på användar-id (ska bara visa den inloggade användarens inlägg)
+		$query = "SELECT title, createDate FROM posts WHERE isPub = 0 AND userid = '{$userId}'";
+		// TODO: Bugg - Visar en mindre än vad som finns i db (både drafts och published)
+		// TODO: Kodupprepning - skapa funktion
 
 		if ($stmt->prepare($query)) {
 			$stmt->execute();
@@ -37,7 +38,7 @@ include "./includes/top_admin.php";
 		<h2>Published posts</h2>
 		<?php 
 		$stmt = $conn->stmt_init();
-		$query = "SELECT title, createDate FROM posts WHERE isPub = 1";
+		$query = "SELECT title, createDate FROM posts WHERE isPub = 1 AND userid = '{$userId}'";
 
 		if ($stmt->prepare($query)) {
 			$stmt->execute();
