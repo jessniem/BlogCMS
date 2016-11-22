@@ -120,11 +120,11 @@ foreach ($blogPosts as $post) {
   // if not on page 1, don't show back links
   if ($currPage > 1) {
      // show << link to go back to page 1
-     echo " <a href='{$_SERVER['PHP_SELF']}?page=1'><<</a> ";
+     echo " <a href='{$_SERVER['PHP_SELF']}?page=1'><i class='fa fa-caret-left' aria-hidden='true'></i><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
      // get previous page num
      $prevPage = $currPage - 1;
      // show < link to go back to 1 page
-     echo " <a href='{$_SERVER['PHP_SELF']}?page=$prevPage'><</a> ";
+     echo " <a href='{$_SERVER['PHP_SELF']}?page=$prevPage'><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
   }
 
   // loop to show links to range of pages around current page
@@ -148,9 +148,9 @@ foreach ($blogPosts as $post) {
      // get next page
      $nextPage = $currPage + 1;
       // link to next page
-     echo " <a href='{$_SERVER['PHP_SELF']}?page=$nextPage'></a> ";
+     echo " <a href='{$_SERVER['PHP_SELF']}?page=$nextPage'<i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
      // link to the last page
-     echo " <a href='{$_SERVER['PHP_SELF']}?page=$totPages'>>></a> ";
+     echo " <a href='{$_SERVER['PHP_SELF']}?page=$totPages'<i class='fa fa-caret-right' aria-hidden='true'></i><i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
   } // END OF PAGINATION LINKS ?>
 
 </div> <!-- pagination -->

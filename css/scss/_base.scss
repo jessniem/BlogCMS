@@ -158,8 +158,12 @@ main {
 // pagination
 .pagination {
   text-align: center;
+  color: $echodarkturq;
   a {
     color: $echoturq;
+    &:hover {
+      color: $echodarkblue;
+    }
   }
 }
 
