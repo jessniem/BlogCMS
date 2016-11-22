@@ -12,6 +12,7 @@ include "./includes/top_admin.php";
 		$stmt = $conn->stmt_init();
 		$query = "SELECT title, createDate FROM posts WHERE isPub = 0";
 		// TODO: Visar en mindre draft än vad som finns i DB (den senast tillagda draften visas inte)
+		// TODO: Lägg till filtrering på användar-id (ska bara visa den inloggade användarens inlägg)
 
 		if ($stmt->prepare($query)) {
 			$stmt->execute();
