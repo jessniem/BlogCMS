@@ -1,8 +1,12 @@
 <?php
 
+/**
+* The function print out the blog posts
+*
+**/
 function printPost() {
   global $conn;
-  global $post;?>
+  global $post; ?>
   <div class="load-post">
     <article class="post">
       <div class="post-img">
@@ -26,7 +30,11 @@ function printPost() {
 }
 
 
-
+/**
+* The function prevent escape characters to be injected in the strings presented to MySQL.
+*
+* @param int $isPub Send in 0 to print out unpublished, 1 for published posts
+**/
 function listPostAdmin($isPub) {
     global $conn;
     $userId = $_SESSION["userId"];
@@ -39,17 +47,17 @@ function listPostAdmin($isPub) {
       $stmt->bind_result($title, $createDate);
       $stmt->fetch();
 
-      while (mysqli_stmt_fetch($stmt)) { 
+      while (mysqli_stmt_fetch($stmt)) {
 
         $date = substr($createDate, 0, -9); ?>
-        
+
         <div class="row" style="display:flex; flex-direction: row; width:600px;">
           <div class="title" style="flex: 1.5;"><?php echo $title; ?></div>
           <div class="createDate" style="flex: 1;"><?php echo $date; ?></div>
         </div>
-      
+
       <?php }
-    } 
+    }
   }
 
 
