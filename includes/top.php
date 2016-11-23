@@ -9,25 +9,25 @@
 			<li>
 				<select>
 					<option value="kategorier" disabled selected>Categories</option>
-					<option><li><a href="?tag=all"> Most recent</a></li></option>
-					<option><li><a href="?tag=blackandwhite"> Black and white</a></li></option>
-					<option><li><a href="?tag=color"> Color</a></li></option>
-					<option><li><a href="?tag=illustration"> Illustration</a></li></option>
-					<option><li><a href="?tag=portrait"> Portrait</a></li></option>
+					<option><li><a href="index.php"> Most recent</a></li></option>
+					<option><li><a href="?tag=3"> Black and white</a></li></option>
+					<option><li><a href="?tag=5"> Color</a></li></option>
+					<option><li><a href="?tag=1"> Illustration</a></li></option>
+					<option><li><a href="?tag=2"> Portrait</a></li></option>
 				</select>
 			</li>
 			<li>
 				<select>
 					<option value="months" disabled selected>Months</option>
-					<option><a class="month" href="?month=01">January</a></option>
-					<option><a class="month" href="?month=02">February</a></option>
-					<option><a class="month" href="?month=03">March</a></option>
-					<option><a class="month" href="?month=04">April</a></option>
-					<option><a class="month" href="?month=05">May</a></option>
-					<option><a class="month" href="?month=06">June</a></option>
-					<option><a class="month" href="?month=07">July</a></option>
-					<option><a class="month" href="?month=08">August</a></option>
-					<option><a class="month" href="?month=09">September</a></option>
+					<option><a class="month" href="?month=1">January</a></option>
+					<option><a class="month" href="?month=2">February</a></option>
+					<option><a class="month" href="?month=3">March</a></option>
+					<option><a class="month" href="?month=4">April</a></option>
+					<option><a class="month" href="?month=5">May</a></option
+					<option><a class="month" href="?month=6">June</a></option>
+					<option><a class="month" href="?month=7">July</a></option>
+					<option><a class="month" href="?month=8">August</a></option>
+					<option><a class="month" href="?month=9">September</a></option>
 					<option><a class="month" href="?month=10">October</a></option>
 					<option><a class="month" href="?month=11">November</a></option>
 					<option><a class="month" href="?month=12">December</a></option>
@@ -58,25 +58,25 @@
 </div>
 <div class="menu filter-menu">
 	<ul>
-		<li><a href="?tag=all"> Most recent</a></li>
-		<li><a href="?tag=blackandwhite"> Black and white</a></li>
-		<li><a href="?tag=color"> Color</a></li>
-		<li><a href="?tag=illustration"> Illustration</a></li>
-		<li><a href="?tag=portrait"> Portrait</a></li>
+		<li><a href="index.php"> Most recent</a></li>
+		<li><a href="?tag=3"> Black and white</a></li>
+		<li><a href="?tag=5"> Color</a></li>
+		<li><a href="?tag=1"> Illustration</a></li>
+		<li><a href="?tag=2"> Portrait</a></li>
 		<div class="dropdown">
 			<li>
 				<button class="dropdown-btn">Months <i class="fa fa-caret-down" aria-hidden="true"></i></button>
 			</li>
 			<div class="dropdown-content">
-				<a class="month" href="index.php?month=01">January</a>
-				<a class="month" href="index.php?month=02">February</a>
-				<a class="month" href="index.php?month=03">March</a>
-				<a class="month" href="index.php?month=04">April</a>
-				<a class="month" href="index.php?month=05">May</a>
-				<a class="month" href="index.php?month=06">June</a>
-				<a class="month" href="index.php?month=07">July</a>
-				<a class="month" href="index.php?month=08">August</a>
-				<a class="month" href="index.php?month=09">September</a>
+				<a class="month" href="index.php?month=1">January</a>
+				<a class="month" href="index.php?month=2">February</a>
+				<a class="month" href="index.php?month=3">March</a>
+				<a class="month" href="index.php?month=4">April</a>
+				<a class="month" href="index.php?month=5">May</a>
+				<a class="month" href="index.php?month=6">June</a>
+				<a class="month" href="index.php?month=7">July</a>
+				<a class="month" href="index.php?month=8">August</a>
+				<a class="month" href="index.php?month=9">September</a>
 				<a class="month" href="index.php?month=10">October</a>
 				<a class="month" href="index.php?month=11">November</a>
 				<a class="month" href="index.php?month=12">December</a>
