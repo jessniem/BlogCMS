@@ -27,5 +27,30 @@ function printPost() {
 
 
 
+function listPostAdmin($isPub) {
+    global $conn;
+    $userId = $_SESSION["userId"];
+    $stmt = $conn->stmt_init();
+    $query = "SELECT title, createDate FROM posts WHERE isPub = '{$isPub}' AND userid = '{$userId}'";
+
+    if ($stmt->prepare($query)) {
+      $stmt->execute();
+
+      $stmt->bind_result($title, $createDate);
+      $stmt->fetch();
+
+      while (mysqli_stmt_fetch($stmt)) { 
+
+        $date = substr($createDate, 0, -9); ?>
+        
+        <div class="row" style="display:flex; flex-direction: row; width:600px;">
+          <div class="title" style="flex: 1.5;"><?php echo $title; ?></div>
+          <div class="createDate" style="flex: 1;"><?php echo $date; ?></div>
+        </div>
+      
+      <?php }
+    } 
+  }
+
 
  ?>
