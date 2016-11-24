@@ -9,7 +9,6 @@ if (isset($_GET["month"]) || isset($_GET["tag"])) {
       $get = "tag=".$_GET["tag"];
     }
 }
-echo $get;
 
 require_once "db_connection.php";
 require_once "functions.php";
@@ -67,21 +66,21 @@ $offset = ($currPage - 1) * $perPage;
 
 // get posts from db
 if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
-    $query = "SELECT posts.*, users.firstName, users.lastName, categories.category FROM posts
+    $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
    JOIN users ON (users.id = posts.userid)
    JOIN categories ON (categories.id = posts.categoryid)
    ORDER BY createDate DESC LIMIT $offset, $perPage";
 
 } elseif (isset($_GET["month"]) ) {
   $month = $_GET["month"];
-  $query = "SELECT posts.*, users.firstName, users.lastName, categories.category FROM posts
+  $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
    JOIN users ON (users.id = posts.userid)
    JOIN categories ON (categories.id = posts.categoryid) WHERE MONTH(createDate) = $month
    ORDER BY createDate DESC";
 
 } elseif (isset($_GET["tag"])) {
   $tagid = $_GET["tag"];
-  $query = "SELECT posts.*, users.firstName, users.lastName, categories.category FROM posts
+  $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
    JOIN users ON (users.id = posts.userid)
    JOIN categories ON (categories.id = posts.categoryid) WHERE categoryid = $tagid
    ORDER BY createDate DESC";
