@@ -126,6 +126,17 @@ main {
     }
   }
 }
+.sortby {
+   padding-bottom: 30px;
+   text-align: right;
+   a {
+    margin: 10px;
+    color: $echodarkturq;
+   }
+   .fa {
+    margin-left: 7px;
+   }
+}
 
 // Show more posts
 .load {
