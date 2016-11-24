@@ -10,7 +10,7 @@
 			<li>
 				<select>
 					<option disabled selected>Edit posts</option>
-					<option><li><a href="?view=all">View all posts</a></li></option>
+					<option><li><a href="view_posts.php">View all posts</a></li></option>
 					<option><li><a href="?view=drafts">View drafts</a></li></option>
 					<option><li><a href="?view=published">View published posts</a></li></option>
 				</select>
@@ -37,7 +37,7 @@
 						<button class="dropdown-btn">Edit posts <i class="fa fa-caret-down" aria-hidden="true"></i></button>
 					</li>
 					<div class="dropdown-content">
-						<a class="admin" href="index.php?view=all">View all posts</a>
+						<a class="admin" href="view_posts.php">View all posts</a>
 						<a class="admin" href="index.php?view=drafts">View drafts</a>
 						<a class="admin" href="index.php?view=published">View published posts</a>
 					</div>
