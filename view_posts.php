@@ -17,4 +17,7 @@ require_once "functions.php";
 		listPostAdmin(1);
 		?>
 	</div>
+	<?php 
+	editPost();
+	?>	
 </main>
