@@ -23,7 +23,7 @@
 					<option><a class="month" href="?month=2">February</a></option>
 					<option><a class="month" href="?month=3">March</a></option>
 					<option><a class="month" href="?month=4">April</a></option>
-					<option><a class="month" href="?month=5">May</a></option
+					<option><a class="month" href="?month=5">May</a></option>
 					<option><a class="month" href="?month=6">June</a></option>
 					<option><a class="month" href="?month=7">July</a></option>
 					<option><a class="month" href="?month=8">August</a></option>

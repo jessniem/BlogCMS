@@ -23,10 +23,11 @@ $perPage = 5;
 // set $result to the number of posts
 if (isset($_GET["month"]) ) {
   $month = $_GET["month"];
-  $result = mysqli_query($conn, "SELECT count(*) as total from posts WHERE MONTH(createDate) = $month");
+    $result = mysqli_query($conn, "SELECT count(*) as total from posts WHERE MONTH(createDate) = $month");
 } elseif (isset($_GET["tag"])) {
   $tagid = $_GET["tag"];
-  $result = mysqli_query($conn, "SELECT count(*) as total from posts WHERE categoryid = $tagid");
+  $result = mysqli_query($conn, "SELECT count(*) as total from posts
+        WHERE categoryid = $tagid");
 } else {
   $result = mysqli_query($conn, "SELECT count(*) as total from posts");
 }
@@ -67,23 +68,23 @@ $offset = ($currPage - 1) * $perPage;
 // get posts from db
 if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
     $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
-   JOIN users ON (users.id = posts.userid)
-   JOIN categories ON (categories.id = posts.categoryid)
-   ORDER BY createDate DESC LIMIT $offset, $perPage";
+    JOIN users ON (users.id = posts.userid)
+    JOIN categories ON (categories.id = posts.categoryid)
+    ORDER BY createDate DESC LIMIT $offset, $perPage";
 
 } elseif (isset($_GET["month"]) ) {
   $month = $_GET["month"];
   $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
-   JOIN users ON (users.id = posts.userid)
-   JOIN categories ON (categories.id = posts.categoryid) WHERE MONTH(createDate) = $month
-   ORDER BY createDate DESC";
+    JOIN users ON (users.id = posts.userid)
+    JOIN categories ON (categories.id = posts.categoryid) WHERE MONTH(createDate) = $month
+    ORDER BY createDate DESC";
 
 } elseif (isset($_GET["tag"])) {
   $tagid = $_GET["tag"];
   $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
-   JOIN users ON (users.id = posts.userid)
-   JOIN categories ON (categories.id = posts.categoryid) WHERE categoryid = $tagid
-   ORDER BY createDate DESC";
+    JOIN users ON (users.id = posts.userid)
+    JOIN categories ON (categories.id = posts.categoryid) WHERE categoryid = $tagid
+    ORDER BY createDate DESC";
 }
 
 //var_dump($stmt->prepare($query));
@@ -116,7 +117,7 @@ if ($stmt->prepare($query)) {
 
   // if not on page 1, don't show back links
   if ($currPage > 1) {
-     // show << link to go back to page 1
+     // show << link to go back to page 1      TODO Hur kan man ta bort & och sätta det i $get istället? nu hamnar det framför page om $get är tom
      echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=1'><i class='fa fa-caret-left' aria-hidden='true'></i><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
      // get previous page num
      $prevPage = $currPage - 1;
