@@ -31,7 +31,7 @@
 <div class="menu filter-menu">
 		<div class="first">
 			<ul>
-				<li><a href="index.php">Create post</a></li>
+				<li><a href="create_post.php">Create post</a></li>
 				<div class="dropdown">
 					<li>
 						<button class="dropdown-btn">Edit posts <i class="fa fa-caret-down" aria-hidden="true"></i></button>
