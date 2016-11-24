@@ -71,83 +71,106 @@ function listPostAdmin($isPub) {
 *
 **/
 function editPost() {
-if (isset ($_GET["edit"])) {
-        global $conn;
-        $id = $_GET["edit"];
-        $stmt = $conn->stmt_init();
-          $query = "SELECT title, categoryid, content, image FROM posts WHERE id = '{$id}'";
+  if (isset ($_GET["edit"])) {
+          global $conn;
+          $id = $_GET["edit"];
+          $stmt = $conn->stmt_init();
+            $query = "SELECT title, categoryid, content, image FROM posts WHERE id = '{$id}'";
 
-          if ($stmt->prepare($query)) {
-            $stmt->execute();
+            if ($stmt->prepare($query)) {
+              $stmt->execute();
 
-            $stmt->bind_result($title, $categoryid, $content, $image);
-            $stmt->fetch();
-                    ?>
-          <!-- UPDATE BLOG POST -->
-            <form method="post" enctype="multipart/form-data">
-              <h1>Update post</h1>
-              <h3>Upload Image</h3>
-              <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)"><br>
-              <img src="<?php echo $image ?>" style="width:300px; height:auto;" id="output"/>
-              <br>
-              <input value="<?php echo $title;?>" type="text" name="title" placeholder="title"> <br>
-              <textarea name="content" style="width:500px; height:300px;"><?php echo $content;?></textarea> <br>
-              <h3>Tags</h3>
-                <input type="radio" name="tag" value="3" <?php echo ($categoryid == 3)? 'checked':''?>> Blackandwhite
-                <input type="radio" name="tag" value="5"<?php echo ($categoryid == 5)? 'checked':''?>> Color
-                <input type="radio" name="tag" value="1"<?php echo ($categoryid == 1)? 'checked':''?>> Illustration
-                <input type="radio" name="tag" value="2"<?php echo ($categoryid == 2)? 'checked':''?>> Portrait
+              $stmt->bind_result($title, $categoryid, $content, $image);
+              $stmt->fetch();
+                      ?>
+            <!-- UPDATE BLOG POST -->
+              <form method="post" enctype="multipart/form-data">
+                <h1>Update post</h1>
+                <h3>Upload Image</h3>
+                <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)"><br>
+                <img src="<?php echo $image ?>" style="width:300px; height:auto;" id="output"/>
                 <br>
-              <button type="submit" name="saveDraft">Save Draft</button>
-              <button type="submit" name="publish">Publish</button>
-            </form>
+                <input value="<?php echo $title;?>" type="text" name="title" placeholder="title"> <br>
+                <textarea name="content" style="width:500px; height:300px;"><?php echo $content;?></textarea> <br>
+                <h3>Tags</h3>
+                  <input type="radio" name="tag" value="3" <?php echo ($categoryid == 3)? 'checked':''?>> Blackandwhite
+                  <input type="radio" name="tag" value="5"<?php echo ($categoryid == 5)? 'checked':''?>> Color
+                  <input type="radio" name="tag" value="1"<?php echo ($categoryid == 1)? 'checked':''?>> Illustration
+                  <input type="radio" name="tag" value="2"<?php echo ($categoryid == 2)? 'checked':''?>> Portrait
+                  <br>
+                <button type="submit" name="saveDraft">Save Draft</button>
+                <button type="submit" name="publish">Publish</button>
+              </form>
 
-            <?php
-            if (isset ($_POST["publish"])) {
+              <?php
+              if (isset ($_POST["publish"])) {
 
-              $targetfolder = "./illustrations/";
-              $date = date('c');
-              $targetname = $targetfolder . basename ($date.".jpg");
+                $targetfolder = "./illustrations/";
+                $date = date('c');
+                $targetname = $targetfolder . basename ($date.".jpg");
 
-              $title = $_POST["title"];
-              $categoryId = $_POST["tag"];
-              $userId = $_SESSION["userId"];
-              $content = $_POST["content"];
+                $title = $_POST["title"];
+                $categoryId = $_POST["tag"];
+                $userId = $_SESSION["userId"];
+                $content = $_POST["content"];
 
-              if ($image != $targetname) {
+                if ($image != $targetname) {
 
-                if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
-                  //filluppladdningen har gått bra!
-                  echo "Filuppladdningen gick bra!";
+                  if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
+                    //filluppladdningen har gått bra!
+                    echo "Filuppladdningen gick bra!";
 
-                  $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '1'  WHERE id = '{$id}'";
+                    $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '1'  WHERE id = '{$id}'";
+
+                    $stmt = $conn->stmt_init();
+
+                    if ($stmt->prepare($query)) {
+
+                     $stmt->execute();
+
+                    } else {
+
+                     echo mysqli_error();
+
+                    }
+                  }
+                } else {
+                  $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', createDate = '{$date}', isPub = '1'  WHERE id = '{$id}'";
 
                   $stmt = $conn->stmt_init();
 
                   if ($stmt->prepare($query)) {
-
-                   $stmt->execute();
-
+                    $stmt->execute();
                   } else {
-
-                   echo mysqli_error();
-
+                    echo mysqli_error();
                   }
-                }
-              } else {
-                $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', createDate = '{$date}', isPub = '1'  WHERE id = '{$id}'";
-
-                $stmt = $conn->stmt_init();
-
-                if ($stmt->prepare($query)) {
-                  $stmt->execute();
-                } else {
-                  echo mysqli_error();
                 }
               }
             }
-          }
-        }
-      }
+  }
+}
+
+
+function timeAgo ($time) {
+
+    $time = time() - $time; // to get the time since that moment
+    $time = ($time<1)? 1 : $time;
+    $tokens = array (
+        31536000 => 'year',
+        2592000 => 'month',
+        604800 => 'week',
+        86400 => 'day',
+        3600 => 'hour',
+        60 => 'minute',
+        1 => 'second'
+    );
+
+    foreach ($tokens as $unit => $text) {
+        if ($time < $unit) continue;
+        $numberOfUnits = floor($time / $unit);
+        return $numberOfUnits.' '.$text.(($numberOfUnits>1)?'s':'');
+    }
+
+}
 
 ?>
