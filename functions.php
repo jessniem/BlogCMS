@@ -22,7 +22,7 @@ function printPost() {
             </div>
           <div>
             <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p>
-            <p class="comments">Comments (2)</p>
+            <a href="comments.php?post=<?php echo $post['id'] ?>"><p class="comments">Comments (2)</p></a>
           </div>
         </div> <!-- post-text -->
         </article>
@@ -50,7 +50,7 @@ function listPostAdmin($isPub) {
 
       while (mysqli_stmt_fetch($stmt)) {
 
-        $date = substr($createDate, 0, -9);  
+        $date = substr($createDate, 0, -9);
         ?>
         <div class="row" style="display:flex; flex-direction: row; width:600px;">
           <div class="title" style="flex: 1.5;">
@@ -66,14 +66,14 @@ function listPostAdmin($isPub) {
   }
 
 /**
-* The function is used to update posts with get. //TODO: SKRIV BÄTTRE FUNKTIONSKOMMENTAR! 
+* The function is used to update posts with get. //TODO: SKRIV BÄTTRE FUNKTIONSKOMMENTAR!
 *
-* 
+*
 **/
 function editPost() {
-if (isset ($_GET["edit"])) { 
+if (isset ($_GET["edit"])) {
         global $conn;
-        $id = $_GET["edit"];  
+        $id = $_GET["edit"];
         $stmt = $conn->stmt_init();
           $query = "SELECT title, categoryid, content, image FROM posts WHERE id = '{$id}'";
 
@@ -81,7 +81,7 @@ if (isset ($_GET["edit"])) {
             $stmt->execute();
 
             $stmt->bind_result($title, $categoryid, $content, $image);
-            $stmt->fetch(); 
+            $stmt->fetch();
                     ?>
           <!-- UPDATE BLOG POST -->
             <form method="post" enctype="multipart/form-data">
@@ -112,7 +112,7 @@ if (isset ($_GET["edit"])) {
               $title = $_POST["title"];
               $categoryId = $_POST["tag"];
               $userId = $_SESSION["userId"];
-              $content = $_POST["content"];              
+              $content = $_POST["content"];
 
               if ($image != $targetname) {
 
@@ -138,7 +138,7 @@ if (isset ($_GET["edit"])) {
                 $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', createDate = '{$date}', isPub = '1'  WHERE id = '{$id}'";
 
                 $stmt = $conn->stmt_init();
-                
+
                 if ($stmt->prepare($query)) {
                   $stmt->execute();
                 } else {
@@ -149,6 +149,5 @@ if (isset ($_GET["edit"])) {
           }
         }
       }
-    
-?>
 
+?>
