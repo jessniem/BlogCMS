@@ -27,7 +27,7 @@ if ($stmt->prepare($query)) {
 
     // echo out the blogPosts array
     foreach ($blogPosts as $post) {
-        printPost();
+        printPost($index);
     }
 }
 

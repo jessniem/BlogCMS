@@ -4,7 +4,7 @@
 * The function print out the blog posts
 *
 **/
-function printPost() {
+function printPost($index) {
   //global $conn;
   global $tag;
   global $post;
@@ -21,8 +21,10 @@ function printPost() {
               <div class="blog-content"><?php echo $post["content"]; ?></div>
             </div>
           <div>
-            <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p>
-            <a href="comments.php?post=<?php echo $post['id'] ?>"><p class="comments">Comments (2)</p></a>
+            <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p> <?php
+            if ($index) { ?>
+                <a href="comments.php?post=<?php echo $post['id'] ?>"><p class="comments">Comments (2)</p></a><?php
+            } ?>
           </div>
         </div> <!-- post-text -->
         </article>
@@ -150,7 +152,11 @@ function editPost() {
   }
 }
 
-
+/**
+* The function transforms the date to how long ago the
+*
+* @param int $isPub Send in 0 to print out unpublished, 1 for published posts
+**/
 function timeAgo ($time) {
 
     $time = time() - $time; // to get the time since that moment

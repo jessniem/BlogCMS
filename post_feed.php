@@ -84,22 +84,22 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
     $and = "&";
     $sortBy = "DESC";
       ?>
-    <div class="sortby">   
-        <a href="index.php<?php echo $get2; ?>">Descending<i class="fa fa-sort-desc" aria-hidden="true"></i></a> 
+    <div class="sortby">
+        <a href="index.php<?php echo $get2; ?>">Descending<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
         <a href="<?php echo $get2 . $and; ?>asc=true">Ascending<i class="fa fa-sort-asc" aria-hidden="true"></i></a>
     </div>
     <?php
     if(isset($_GET["asc"]) && $_GET["asc"]==true) {
     $sortBy = "ASC";
     }
-  
+
   $tagid = $_GET["tag"];
   $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
     JOIN users ON (users.id = posts.userid)
     JOIN categories ON (categories.id = posts.categoryid) WHERE categoryid = $tagid
     ORDER BY createDate $sortBy";
 
-    
+
 }
 
 //var_dump($stmt->prepare($query));
@@ -118,7 +118,8 @@ if ($stmt->prepare($query)) {
 
       // echo out the blogPosts array
       foreach ($blogPosts as $post) {
-          printPost();
+          $index = true;
+          printPost($index);
       }
 }
 
