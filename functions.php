@@ -4,7 +4,7 @@
 * The function print out the blog posts
 *
 **/
-function printPost($index) {
+function printPost($index, $num) { // TODO: sätt $num så den är optional
   //global $conn;
   global $tag;
   global $post;
@@ -23,7 +23,7 @@ function printPost($index) {
           <div>
             <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p> <?php
             if ($index) { ?>
-                <a href="comments.php?post=<?php echo $post['id'] ?>"><p class="comments">Comments (2)</p></a><?php
+                <a href="comments.php?post=<?php echo $post['id'] ?>"><p class="comments">Comments (<?php echo $num; ?>)</p></a><?php
             } ?>
           </div>
         </div> <!-- post-text -->

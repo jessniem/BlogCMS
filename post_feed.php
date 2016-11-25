@@ -32,6 +32,8 @@ if (isset($_GET["month"]) ) {
   $result = mysqli_query($conn, "SELECT count(*) as total from posts");
 }
 
+
+
 // check number of posts in db
 
 $data = mysqli_fetch_assoc($result);
@@ -118,8 +120,16 @@ if ($stmt->prepare($query)) {
 
       // echo out the blogPosts array
       foreach ($blogPosts as $post) {
+        $thisPost = $post["id"];
+        // count the comments
+        $countComments = "SELECT postid FROM comments WHERE postid = $thisPost";
+        if ($result = mysqli_query($conn, $countComments)) {
+          $num = mysqli_num_rows($result);
+        }
+
+          // when $index is true the link for comments is printed in the post
           $index = true;
-          printPost($index);
+          printPost($index, $num);
       }
 }
 
