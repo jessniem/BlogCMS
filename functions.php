@@ -20,12 +20,12 @@ function printPost($index, $num) { // TODO: sätt $num så den är optional
               <h1><?php echo $post["title"]; ?></h1>
               <div class="blog-content"><?php echo $post["content"]; ?></div>
             </div>
-          <div>
-            <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p> <?php
-            if ($index) { ?>
-                <a href="comments.php?post=<?php echo $post['id'] ?>"><p class="comments">Comments (<?php echo $num; ?>)</p></a><?php
-            } ?>
-          </div>
+            <div>
+              <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p> <?php
+              if ($index) { ?>
+                  <a href="comments.php?post=<?php echo $post['id'] ?>"><p class="comments">Comments (<?php echo $num; ?>)</p></a><?php
+              } ?>
+            </div>
         </div> <!-- post-text -->
         </article>
       </div> <!-- load-post --> <?php
@@ -131,13 +131,13 @@ function editPost() {
           if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
 
             echo "Filuppladdningen gick bra!";
-            
+
             $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
-            
+
           }
-        
+
         } elseif($image == $targetname) { //TODO: Fungerar ej
-          
+
           $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
 
         }
@@ -159,9 +159,12 @@ function editPost() {
 }
 
 /**
-* The function transforms the date to how long ago the
+* The function takes the date sent in and returns how long ago that was in units of: years, months, weeks, days, hours, minutes or seconds.
 *
-* @param int $isPub Send in 0 to print out unpublished, 1 for published posts
+* @param int $time Takes the date for the calculation
+*
+* @return int $numberOfUnits Return the time
+* @return string $text Return the unit of the time (year, month, day...)
 **/
 function timeAgo ($time) {
 
