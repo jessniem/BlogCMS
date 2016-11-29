@@ -27,39 +27,9 @@ include "./includes/top_admin.php";
   </div>
 </div>
 <?php
-if (isset ($_POST["publish"])) {
 
-  $targetfolder = "./illustrations/";
-  $date = date('c');
-  $targetname = $targetfolder . basename ($date.".jpg");
-
-  $title = $_POST["title"];
-  $categoryId = $_POST["tag"];
-  $userId = $_SESSION["userId"];
-  $content = $_POST["content"];
-
-  if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
-					//filluppladdningen har gått bra!
-					echo "Filuppladdningen gick bra!";
-
-					$query = "INSERT INTO posts VALUES
-          (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', NULL, '1')";
-
-					$stmt = $conn->stmt_init();
-
-          if ($stmt->prepare($query)) {
-
-           $stmt->execute();
-
-          } else {
-
-           echo mysqli_error();
-
-          }
-
-    } else {
-
-      echo "Ett fel har uppstått";
-
-    }
-}
+if (isset($_POST["publish"])) {
+    saveOrPub(1);
+  } elseif (isset($_POST["saveDraft"])) {
+    saveOrPub(0);
+  }

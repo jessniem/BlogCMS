@@ -88,9 +88,6 @@ function listPostAdmin($isPub) {
           </div>
           <div class="createDate" style="flex: 1;"><?php echo $date; ?></div>
         </div>
-
-
-
       <?php }
     }
   }
@@ -135,55 +132,40 @@ function editPost() {
       <?php
       if(isset ($_POST["publish"]) || isset($_POST["saveDraft"])) {
 
-        if(isset($_POST["publish"])) {
-
-          $isPub = 1;
-
-        } else {
-
-          $isPub = 0;
-
-        }
-
-        $targetfolder = "./illustrations/";
-        $date = date('c');
-        $targetname = $targetfolder . basename ($date.".jpg");
-
-        $title = sanitizeMySql($conn, $_POST["title"]);
-        $categoryId = sanitizeMySql($conn, $_POST["tag"]);
-        $userId = sanitizeMySql($conn, $_SESSION["userId"]);
-        $content = sanitizeMySql($conn, $_POST["content"]);
-
-        echo $image;
-
-        if($image != $targetname) {
-
-          if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
-
-            echo "Filuppladdningen gick bra!";
-
-          }
-            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
-
-
-        } else { 
-
-          $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
-        }
-
-        }
-
-        $stmt = $conn->stmt_init();
-
-          if ($stmt->prepare($query)) {
-
-           $stmt->execute();
-
+          if(isset($_POST["publish"])) {
+            $isPub = 1;
           } else {
-
-           echo mysqli_error();
-
+            $isPub = 0;
           }
+
+          $targetfolder = "./illustrations/";
+          $date = date('c');
+          $targetname = $targetfolder . basename ($date.".jpg");
+
+          $title = sanitizeMySql($conn, $_POST["title"]);
+          $categoryId = sanitizeMySql($conn, $_POST["tag"]);
+          $userId = sanitizeMySql($conn, $_SESSION["userId"]);
+          $content = sanitizeMySql($conn, $_POST["content"]);
+
+          echo $image;
+
+          if($image != $targetname) {
+
+            if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
+                echo "Filuppladdningen gick bra!";
+            }
+            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
+          } else {
+            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
+          }
+      }
+      $stmt = $conn->stmt_init();
+
+      if ($stmt->prepare($query)) {
+       $stmt->execute();
+      } else {
+       echo mysqli_error();
+      }
       }
     }
   }
@@ -216,6 +198,44 @@ function timeAgo ($time) {
         return $numberOfUnits.' '.$text.(($numberOfUnits>1)?'s':'');
     }
 
+}
+
+
+/**
+* The function is used to publish or save a draft
+*
+* @param bool $isPub - 1 for publish, 0 for save
+**/
+function saveOrPub($isPub){
+  global $conn;
+  $stmt = $conn->stmt_init();
+
+  $targetfolder = "./illustrations/";
+  $date = date('c');
+  $targetname = $targetfolder . basename ($date.".jpg");
+
+  $title = sanitizeMySql($conn, $_POST["title"]);
+  $categoryId = sanitizeMySql($conn, $_POST["tag"]);
+  $userId = $_SESSION["userId"];
+  $content = sanitizeMySql($conn, $_POST["content"]);
+
+  if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
+			//filluppladdningen har gått bra!
+			echo "Filuppladdningen gick bra!";
+
+			$query = "INSERT INTO posts VALUES
+      (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', NULL, '{$isPub}')";
+
+			//$stmt = $conn->stmt_init();
+
+      if ($stmt->prepare($query)) {
+       $stmt->execute();
+      } else {
+        echo mysqli_error();
+      }
+    } else {
+      echo "Ett fel har uppstått";
+    }
 }
 
 ?>
