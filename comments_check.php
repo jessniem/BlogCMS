@@ -1,5 +1,6 @@
 <?php
 require_once "db_connection.php";
+require_once "functions.php";
 
 //$postid = "";
 if (isset($_GET["postId"])) {
