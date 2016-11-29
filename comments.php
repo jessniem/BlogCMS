@@ -60,10 +60,10 @@ while (mysqli_stmt_fetch($stmt)) {
 
 //print out the comments
 foreach ($comments as $var) {
-  $time = strtotime($var["date"]); ?>
+  $time = strtotime($var["date"]);?>
   <div class="comment">
     <p><?php echo $var["commentText"]; ?></p>
-    <span>By: <?php echo $var["name"] . " - " . $var["email"] . " | " . timeAgo($time) . " ago"; ?></span>
+    <span>By: <?php echo $var["name"] . " - " . $var["email"] . " | " . timeElapsedString($time); ?></span>
   </div> <?php
 }
 

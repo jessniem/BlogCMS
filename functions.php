@@ -170,34 +170,46 @@ function editPost() {
     }
   }
 
+
+
 /**
 * The function takes the date sent in and returns how long ago that was in units of: years, months, weeks, days, hours, minutes or seconds.
 *
-* @param int $time Takes the date for the calculation
+* @param string $time - Takes the date for the calculation
 *
-* @return int $numberOfUnits Return the time
-* @return string $text Return the unit of the time (year, month, day...)
+* @return int $numberOfUnits - calculated time
+* @return string $text - Return the unit
 **/
-function timeAgo ($time) {
+function timeElapsedString($commentTime) {
+  $today = strtotime('today');
+  $yesterday = strtotime('yesterday');
+  $todaysHours = strtotime('now') - strtotime('today');
+  $tokens = array(
+      31536000 => 'year',
+      2592000 => 'month',
+      604800 => 'week',
+      86400 => 'day',
+      3600 => 'hour',
+      60 => 'minute',
+      1 => 'second');
 
-    $time = time() - $time; // to get the time since that moment
-    $time = ($time<1)? 1 : $time;
-    $tokens = array (
-        31536000 => 'year',
-        2592000 => 'month',
-        604800 => 'week',
-        86400 => 'day',
-        3600 => 'hour',
-        60 => 'minute',
-        1 => 'second'
-    );
-
-    foreach ($tokens as $unit => $text) {
-        if ($time < $unit) continue;
-        $numberOfUnits = floor($time / $unit);
-        return $numberOfUnits.' '.$text.(($numberOfUnits>1)?'s':'');
-    }
-
+  $time = time() - $commentTime;
+  $time = ($time < 1) ? 1 : $time;
+  if ($commentTime >= $today || $commentTime < $yesterday) {
+      foreach ($tokens as $unit => $text) {
+          if ($time < $unit) {
+              continue;
+          }
+          if ($text == 'day') {
+              $numberOfUnits = floor(($time - $todaysHours) / $unit) + 1;
+          } else {
+              $numberOfUnits = floor(($time)/ $unit);
+          }
+          return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '') . ' ago';
+      }
+  } else {
+      return 'Yesterday';
+  }
 }
 
 
