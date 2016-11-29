@@ -1,11 +1,38 @@
 <?php
 
 /**
+* The function prevent escape characters to be injected in the strings presented to MySQL.
+*
+* @param string $var The string from the user input.
+* @param string $conn DB connection
+* @return string $var Return a safe sanitized string.
+**/
+function sanitizeMySql($conn, $var) {
+  $var = $conn->real_escape_string($var);
+  $var = sanitizeString($var);
+  return $var;
+}
+
+/**
+* The function removes unwanted slashes and HTML from user input.
+*
+* @param string $var The string from the user input.
+* @return string $var Return a safe sanitized string.
+**/
+function sanitizeString($var) {
+  $var = stripslashes($var);
+  $var = strip_tags($var);
+  $var = htmlentities($var);
+  return $var;
+}
+
+
+
+/**
 * The function print out the blog posts
 *
 **/
-function printPost($index, $num) { // TODO: sätt $num så den är optional
-  //global $conn;
+function printPost($index, $num) {
   global $tag;
   global $post;
   global $categoryid; ?>
