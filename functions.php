@@ -8,7 +8,7 @@
 * @return string $var Return a safe sanitized string.
 **/
 function sanitizeMySql($conn, $var) {
-  $var = $conn->real_escape_string($var);
+  $var = $conn->mysqli_real_escape_string($var);
   $var = sanitizeString($var);
   return $var;
 }

@@ -8,9 +8,9 @@ if (isset($_GET["postId"])) {
 
 $stmt = $conn->stmt_init();
 
-$comment = mysqli_real_escape_string($conn, $_POST["comment"]);
-$email = mysqli_real_escape_string($conn, $_POST["email"]);
-$name = mysqli_real_escape_string($conn, $_POST["name"]);
+$comment = sanitizeMySql($conn, $_POST["comment"]);
+$email = sanitizeMySql($conn, $_POST["email"]);
+$name = sanitizeMySql($conn, $_POST["name"]);
 
 $query = "INSERT INTO comments VALUES (NULL, '$email', NULL, '$name', '$postid', '$comment')";
 if ($stmt->prepare($query)) {

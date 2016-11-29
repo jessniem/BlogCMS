@@ -6,8 +6,8 @@ include "db_connection.php";
 if( isset($_POST["send"]) ) {
 	if( !empty($_POST["email"]) && !empty($_POST["password"]) ) {
 
-		$email = mysqli_real_escape_string($conn, $_POST["email"]);
-		$pass = mysqli_real_escape_string($conn, $_POST["password"]);
+		$email = sanitizeMySql($conn, $_POST["email"]);
+		$pass = sanitizeMySql($conn, $_POST["password"]);
 
 		$stmt = $conn->stmt_init();
 		$query = "SELECT * FROM users WHERE email = '{$email}'";
