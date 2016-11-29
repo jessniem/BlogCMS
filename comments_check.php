@@ -4,7 +4,7 @@ require_once "functions.php";
 
 //$postid = "";
 if (isset($_GET["postId"])) {
-  $postid = $_GET["postId"];
+  $postid = sanitizeMySql($conn, $_GET["postId"]);
 }
 
 $stmt = $conn->stmt_init();

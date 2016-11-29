@@ -8,7 +8,7 @@ $stmt = $conn->stmt_init();
 
 if (isset($_GET["post"]) ) {
     // the id of the selected post:
-    $thisPostId = $_GET["post"];
+    $thisPostId = sanitizeMySql($conn, $_GET["post"]);
     //echo "$thisPostId";
 
     // fetch the selected post from db
