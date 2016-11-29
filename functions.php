@@ -113,7 +113,7 @@ function editPost() {
       $stmt->bind_result($title, $categoryid, $content, $image);
       $stmt->fetch();
       ?>
-      <!-- UPDATE BLOG POST -->
+      <!-- ECHO OUT BLOG POST -->
       <form method="post" enctype="multipart/form-data">
         <h1>Update post</h1>
         <h3>Upload Image</h3>
@@ -149,10 +149,12 @@ function editPost() {
         $date = date('c');
         $targetname = $targetfolder . basename ($date.".jpg");
 
-        $title = $_POST["title"];
-        $categoryId = $_POST["tag"];
-        $userId = $_SESSION["userId"];
-        $content = $_POST["content"];
+        $title = sanitizeMySql($conn, $_POST["title"]);
+        $categoryId = sanitizeMySql($conn, $_POST["tag"]);
+        $userId = sanitizeMySql($conn, $_SESSION["userId"]);
+        $content = sanitizeMySql($conn, $_POST["content"]);
+
+        echo $image;
 
         if($image != $targetname) {
 
@@ -160,13 +162,14 @@ function editPost() {
 
             echo "Filuppladdningen gick bra!";
 
+          }
             $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
 
-          }
 
-        } elseif($image == $targetname) { //TODO: Fungerar ej
+        } else { 
 
-          $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
+          $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
+        }
 
         }
 
@@ -184,7 +187,6 @@ function editPost() {
       }
     }
   }
-}
 
 /**
 * The function takes the date sent in and returns how long ago that was in units of: years, months, weeks, days, hours, minutes or seconds.
