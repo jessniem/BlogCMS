@@ -53,6 +53,7 @@ if ($stmt->prepare($query)) {
     $stmt->bind_result($id, $email, $date, $name, $postid, $commentText);
   }
 
+$comments = [];
 while (mysqli_stmt_fetch($stmt)) {
   $comments[] = array ("id" => $id, "email" => $email, "date" => $date, "name" => $name, "postid" => $postid, "commentText" => $commentText);
 }
