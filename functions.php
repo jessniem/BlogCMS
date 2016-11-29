@@ -40,7 +40,7 @@ function printPost($index, $num) {
       <div class="load-post">
         <article class="post">
           <div class="post-img">
-            <img src="<?php echo $post['image']; ?>" alt="">
+            <img src="<?php echo $post['image']; ?>" alt="<?php echo $post['alt']; ?>">
           </div>
           <div class="post-text">
             <div>
@@ -102,12 +102,12 @@ function editPost() {
     global $conn;
     $id = $_GET["edit"];
     $stmt = $conn->stmt_init();
-    $query = "SELECT title, categoryid, content, image FROM posts WHERE id = '{$id}'";
+    $query = "SELECT title, categoryid, content, image, alt FROM posts WHERE id = '{$id}'";
 
     if ($stmt->prepare($query)) {
       $stmt->execute();
 
-      $stmt->bind_result($title, $categoryid, $content, $image);
+      $stmt->bind_result($title, $categoryid, $content, $image, $alt);
       $stmt->fetch();
       ?>
       <!-- ECHO OUT BLOG POST -->
@@ -116,6 +116,7 @@ function editPost() {
         <h3>Upload Image</h3>
         <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)"><br>
         <img src="<?php echo $image ?>" style="width:300px; height:auto;" id="output"/>
+        <input type="text" name="alt" value="<?php echo $alt; ?>">
         <br>
         <input value="<?php echo $title;?>" type="text" name="title" placeholder="title"> <br>
         <textarea name="content" style="width:500px; height:300px;"><?php echo $content;?></textarea> <br>
@@ -154,9 +155,9 @@ function editPost() {
             if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
                 echo "Filuppladdningen gick bra!";
             }
-            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
+            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
           } else {
-            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
+            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
           }
       }
       $stmt = $conn->stmt_init();
@@ -226,6 +227,7 @@ function saveOrPub($isPub){
   $date = date('c');
   $targetname = $targetfolder . basename ($date.".jpg");
 
+  $alt = sanitizeMySql($conn, $_POST["alt"]);
   $title = sanitizeMySql($conn, $_POST["title"]);
   $categoryId = sanitizeMySql($conn, $_POST["tag"]);
   $userId = $_SESSION["userId"];
@@ -236,7 +238,7 @@ function saveOrPub($isPub){
 			echo "Filuppladdningen gick bra!";
 
 			$query = "INSERT INTO posts VALUES
-      (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', NULL, '{$isPub}')";
+      (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', '$alt', NULL, '{$isPub}')";
 
 			//$stmt = $conn->stmt_init();
 

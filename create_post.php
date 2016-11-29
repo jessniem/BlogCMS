@@ -14,6 +14,8 @@ require_once "functions.php";
       <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)" required="required"><br>
       <img src="#" style="width:300px; height:auto;" id="output"/>
       <br>
+      <input type="text" name="alt" value="" placeholder="Image description (alt)">
+      <br>
       <input type="text" name="title" placeholder="title" required="required"> <br>
       <textarea name="content" style="width:500px; height:300px;"> </textarea> <br>
       <h3>Tags</h3>

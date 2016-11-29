@@ -69,14 +69,14 @@ $offset = ($currPage - 1) * $perPage;
 
 // get posts from db
 if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
-    $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
+    $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
     JOIN users ON (users.id = posts.userid)
     JOIN categories ON (categories.id = posts.categoryid)
     ORDER BY createDate DESC LIMIT $offset, $perPage";
 
 } elseif (isset($_GET["month"]) ) {
   $month = $_GET["month"];
-  $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
+  $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
     JOIN users ON (users.id = posts.userid)
     JOIN categories ON (categories.id = posts.categoryid) WHERE MONTH(createDate) = $month
     ORDER BY createDate DESC";
@@ -96,7 +96,7 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
     }
 
   $tagid = $_GET["tag"];
-  $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
+  $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
     JOIN users ON (users.id = posts.userid)
     JOIN categories ON (categories.id = posts.categoryid) WHERE categoryid = $tagid
     ORDER BY createDate $sortBy";
@@ -110,11 +110,11 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
 if ($stmt->prepare($query)) {
     $stmt->execute();
 
-    $stmt->bind_result($id, $title, $categoryid, $userid, $content, $image, $createDate, $isPub, $fname, $lname, $tag);
+    $stmt->bind_result($id, $title, $categoryid, $userid, $content, $image, $alt, $createDate, $isPub, $fname, $lname, $tag);
 
     //save blog posts in blogPosts array
     while (mysqli_stmt_fetch($stmt)) {
-      $blogPosts[] = array ("id" => $id, "title" => $title, "categoryid" => $categoryid, "userid" => $userid, "content" => $content, "image" => $image, "createDate" => $createDate, "isPub" => $isPub, "fname" => $fname, "lname" => $lname, "tag" => $tag);
+      $blogPosts[] = array ("id" => $id, "title" => $title, "categoryid" => $categoryid, "userid" => $userid, "content" => $content, "image" => $image, "alt" => $alt, "createDate" => $createDate, "isPub" => $isPub, "fname" => $fname, "lname" => $lname, "tag" => $tag);
     }
       // TODO: Fixa sorteringen så att den inte försvinner när klickar på något
 
