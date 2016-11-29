@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "db_connection.php";
+require_once "functions.php";
 
 //Check if email and password match db
 if( isset($_POST["send"]) ) {
