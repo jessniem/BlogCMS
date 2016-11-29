@@ -224,14 +224,21 @@ function saveOrPub($isPub){
   $stmt = $conn->stmt_init();
 
   $targetfolder = "./illustrations/";
+  $filetype = ".".substr($_FILES["postImage"]["type"], 6);
   $date = date('c');
-  $targetname = $targetfolder . basename ($date.".jpg");
+  $targetname = $targetfolder . basename ($date . $filetype); // TODO: kanske måste byta date, postid, har vi inte här, kan man lösa det?
 
   $alt = sanitizeMySql($conn, $_POST["alt"]);
   $title = sanitizeMySql($conn, $_POST["title"]);
   $categoryId = sanitizeMySql($conn, $_POST["tag"]);
   $userId = $_SESSION["userId"];
   $content = sanitizeMySql($conn, $_POST["content"]);
+
+  // check the file extension
+  $type = pathinfo($targetname, PATHINFO_EXTENSION);
+  if ($type != "jpeg" && $type != "jpg" && $type != "png") { ?>
+      <p class="error">Endast JPG, JPEG och PNG-filer är tillåtna.</p> <?php
+  }
 
   if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
 			//filluppladdningen har gått bra!
