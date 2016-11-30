@@ -1,8 +1,7 @@
 <?php
 require_once "db_connection.php";
 require_once "functions.php";
-//include_once "./includes/head.php";
-//include_once "./js/main.js";
+include_once "./includes/head.php";
 
 $stmt = $conn->stmt_init();
 

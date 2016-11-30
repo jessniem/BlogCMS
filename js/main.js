@@ -2,7 +2,7 @@
 Load more content with jQuery - May 21, 2013
 (c) 2013 @ElmahdiMahmoud
 */
-
+/*
 $(function () {
   $(".load-post").slice(0, 5).show();
   $("#loadMore").on('click', function (e) {
@@ -16,7 +16,7 @@ $(function () {
           scrollTop: $(this).offset().top
       }, 1000);
   });
-});
+});*/
 /*
 $('a[href=#top]').click(function () {
   $('body,html').animate({
@@ -33,6 +33,26 @@ $(window).scroll(function () {
   }
 });
 */
+
+
+/**
+* The function sets random color.
+**/
+function ran_col() {
+  var colors = ['f7bc66','e27362','F39EC5', '60939f', '256B7c'];
+
+  for (var i = 0; i < document.getElementsByClassName('comment').length; i++) {
+
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    while (color == last) {
+      color = colors[Math.floor(Math.random() * colors.length)];
+    };
+    document.getElementsByClassName('comment')[i].style.background = "#" + color;
+    var last = color;
+  };
+};
+
+
 
 
 

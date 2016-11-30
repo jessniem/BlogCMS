@@ -13,7 +13,8 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/style.css">
+        <script src="./js/main.js"></script>
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="js/preview.js"></script> 
+        <script src="js/preview.js"></script>
     </head>
-    <body>
+    <body onload="return ran_col()">
