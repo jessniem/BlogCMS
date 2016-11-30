@@ -149,7 +149,7 @@ main {
 form {
 	button {
 		display:inline-block;
-  		width: 49%; 
+  		width: 49%;
 	}
 }
 
@@ -170,8 +170,26 @@ create_post.php/view_posts.php
 }
 .select-tag {
 	label {
-		display:inline-block; 
+		display:inline-block;
 	}
+}
+
+/* ***************************
+           STATISTICS
+         statistics.php
+*************************** */
+
+.statistics {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  flex-direction: row;
+  div {
+    flex-direction: column;
+	}
+  .box {
+    margin: 30px;
+  }
 }
 
 /* ***************************

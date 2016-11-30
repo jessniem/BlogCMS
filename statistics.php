@@ -24,22 +24,25 @@ if ($stmt->prepare ($totalC)) {
 $totalS = $totalComments / $totalPosts;
 
 ?>
-<div class="statistics">
-	<div>
-		<div class="box"><?php echo $totalPosts;?></div>
-		<h3>Number of Posts</h3>
-	</div>
+<main class="admin-main">
+	<h1>Statistics</h1>
+	<div class="statistics">
+		<div>
+			<div class="box"><?php echo $totalPosts;?></div>
+			<h3>Number of Posts</h3>
+		</div>
 
-	<div>
-		<div class="box"><?php echo $totalComments;?></div>
-		<h3>Number of comments</h3>
-	</div>
+		<div>
+			<div class="box"><?php echo $totalComments;?></div>
+			<h3>Number of comments</h3>
+		</div>
 
-	<div>
-		<div class="box"><?php echo $totalS;?></div>
-		<h3>Average comment/post</h3>
-	</div>
-</div>
+		<div>
+			<div class="box"><?php echo $totalS;?></div>
+			<h3>Average comment/post</h3>
+		</div>
+	</div>	
+</main>
 <?php
 
 
