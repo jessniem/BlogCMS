@@ -148,7 +148,8 @@ main {
 
 form {
 	button {
-  		display: inline-block;
+		display:inline-block;
+  		width: 49%; 
 	}
 }
 
@@ -160,6 +161,13 @@ create_post.php/view_posts.php
 .content-container {
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+
+.tags {
+	label {
+		display:inline-block; 
+	}
 }
 
 /* ***************************

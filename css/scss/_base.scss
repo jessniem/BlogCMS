@@ -39,6 +39,7 @@ ul {
 }
 h1, h2, h3, h4 {
   margin: 0;
+  margin-bottom:10px;
 }
 p {
   color: $echodarkturq;
@@ -323,23 +324,40 @@ main {
 
 form {
   margin-top: 40px;
+
+  input[type="file"] {
+    border:none; 
+    padding:0; 
+    margin-top:20px; 
+  }
+
   input, button, textarea {
     border-radius: 5px;
-    box-sizing: border-box;
     display: block;
     margin: 10px 0;
+  }
+  input, textarea {
+    box-sizing: border-box;
     padding: 10px;
+    border:1px solid #ccc;
   }
   input, button {
-    background-color: $echogrey;
-    border: 0;
     height: 40px;
+ 
   }
-  textarea {
-    border: 1px solid #ccc;
+  button {
+    border:1px solid $echoturq; 
+    padding: 0 15px; 
+    width:100%; 
+    background-color:$echogrey; 
+
+
   }
+  
   button:hover {
-    background-color: $echogrey;
+    background-color: $echoturq;
+    color:#fff;
+
   }
 }
 
@@ -380,6 +398,7 @@ create_post.php/view_posts.php
 .img-preview {
   img {
     width: 100%;
+    margin-bottom: 20px; 
   }
 }
 .post-content {
@@ -390,11 +409,38 @@ create_post.php/view_posts.php
   textarea {
     height: 100px;
   }
-  .radio {
-    input {
-      display: inline-block;
-      width: auto;
+}
+
+.tags {
+  input[type="radio"] {
+    display: none;
+    
+    &:checked {
+      + label {
+        background: $echoturq;
+        border-color: $echoturq;
+        color: #fff;
+        transition: all 125ms ease-out;
+      }
     }
+  }
+
+  label {
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.2);
+    color: #444;
+    cursor: pointer;
+    display:block;  
+    font-size: 11px;
+    margin-bottom:10px; 
+    padding: 15px;
+    text-transform: uppercase;
+    transition: none;
+  }
+
+  fieldset {
+    border: 0;
+    padding: 0;
   }
 }
 

@@ -23,24 +23,24 @@ require_once "functions.php";
       <div class="post-content">
         <input type="text" name="title" placeholder="Title" required="required">
         <textarea name="content" placeholder="Content"></textarea>
-        <h2>Tags</h2>
-        <div class="radio">
-          <label class="radio-btn" for="blackandwhite">
-            <input id="blackandwhite" type="radio" name="tag" value="3" required="required">
-            Blackandwhite
-          </label>
-          <label class="radio-btn" for="color">     
-            <input id="color" type="radio" name="tag" value="5">
-            <span>Color</span>
-          </label>
-          <label class="radio-btn" for="illustration">
-            <input id="illustration" type="radio" name="tag" value="1">
-            <span>Illustration</span>
-          </label>
-          <label class="radio-btn" for="portrait">
-            <input id="portrait" type="radio" name="tag" value="2">
-            <span>Portrait</span>
-          </label>
+          <div class="tags">
+            <fieldset>
+              
+              <h3>Tags</h3>
+              <input type="radio" id="blackandwhite" name="tag" value="3">
+              <label for="blackandwhite">Blackandwhite</label>
+
+              <input type="radio" id="color" name="tag" value="5">
+              <label for="color">Color</label>
+
+              <input type="radio" id="illustration" name="tag" value="1">
+              <label for="illustration">Illustration</label>
+
+              <input type="radio" id="portrait" name="tag" value="2">
+              <label for="portrait">Portrait</label>
+
+
+            </fieldset>
         </div>
         <button type="submit" name="saveDraft">Save Draft</button>
         <button type="submit" name="publish">Publish</button>
