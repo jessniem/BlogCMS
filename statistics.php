@@ -41,11 +41,11 @@ $totalS = $totalComments / $totalPosts;
 			<div class="box"><?php echo $totalS;?></div>
 			<h3>Average comment/post</h3>
 		</div>
-	</div>	
+	</div>
 </main>
 <?php
 
-
+include_once "./includes/footer.php";
 
 
 ?>
