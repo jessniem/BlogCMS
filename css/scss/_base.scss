@@ -373,7 +373,7 @@ select {
 }
 
 // COMMENTS.PHP
-.comment {
+#comment {
   p {
     padding: 5px;
     color: $echogrey;
@@ -384,6 +384,7 @@ select {
   padding: 5px;
   margin: 10px 10px 0 10px;
   border-radius: 2px;
+  background-color: $echoyellow;
   color: $echogrey;
   font-size: 0.8em;
 }
