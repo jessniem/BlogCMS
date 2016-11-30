@@ -6,18 +6,23 @@ include_once "./includes/top_admin.php";
 require_once "functions.php";
 ?>
 <main class="admin-main">
-	<div class="edit-posts">
+	<section>
 		<h1>Edit posts</h1>
 		<h2>Drafts</h2>
+		<!-- LIST OF CREATED DRAFTS -->
 		<?php
 		listPostAdmin(0);
 		?>
 		<h2>Published posts</h2>
+		<!-- LIST OF PUBLISHED POSTS -->
 		<?php 
 		listPostAdmin(1);
 		?>
-	</div>
+	</section>
+	<section>
+	<!-- UPDATE POST -->
 	<?php 
 	editPost();
-	?>	
+	?>
+	</section>
 </main>

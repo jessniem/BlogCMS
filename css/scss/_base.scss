@@ -1,24 +1,34 @@
+/* ***************************
+           ASSETS
+*************************** */
+
 @import "assets/_colors.scss";
+
+/* ***************************
+           DEBUGGING
+*************************** */
+
 $debugging:false;
-
-
 div, article, aside, section {
   @if $debugging {
     outline: 1px solid black;
   }
 }
 
+/* ***************************
+            BASE    
+          all pages
+*************************** */
+
 body {
   background-color: $echogrey;
   font-family: 'Quicksand', sans-serif;
   font-size: 1em;
 }
-
 a {
   text-decoration: none;
   color: $echogrey;
 }
-
 ul {
   list-style: none;
   margin: 0;
@@ -27,15 +37,17 @@ ul {
     display: inline-block;
   }
 }
-
 p {
   color: $echodarkturq;
   font-weight: 400;
   margin: 0;
 }
 
+/* ***************************
+           BANNER
+    index.php/comments.php
+*************************** */
 
-// Banner
 .banner {
   height: 400px;
   background-color: white;
@@ -50,200 +62,16 @@ p {
   }
 }
 
-// Filter menu
+/* ***************************
+       HAMBURGER MENU
+    index.php/comments.php
+*************************** */
 
-.filter-menu {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: center;
-
-  .first {
-    display: flex;
-    flex: 2;
-  }
-  .logout {
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    //align-self: flex-end;
-    align-items: center;
-  }
-}
-
-
-//Main
-
-main {
-  margin: 0px 0px 0px 0px;
-  min-height: 500px;
-}
-
-// Blog posts
-.load-post {
-  display:none;
-}
-
-.post {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  margin-bottom: 40px;
-  .post-img {
-    flex: 1;
-    img {
-    width: 100%;
-    }
-  }
-  .post-text {
-    flex: 0;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .tags, .post-info, .comments {
-      color: $echoturq;
-      font-weight: 700;
-      font-size: 0.8em;
-    }
-    div:first-child, .tags {
-      margin-bottom: 25px;
-    }
-    .blog-content {
-      line-height: 1.5em;
-    }
-    h1 {
-      color: $echoturq;
-      font-size: 2.5em;
-      font-weight: 300;
-    }
-    div:last-child {
-      align-self: baseline;
-    }
-    .post-info {
-      margin-bottom: 6px;
-    }
-  }
-}
-.sortby {
-   padding-bottom: 30px;
-   text-align: right;
-   a {
-    margin: 10px;
-    color: $echodarkturq;
-   }
-   .fa {
-    margin-left: 7px;
-   }
-}
-
-// Show more posts
-.load {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  #loadMore {
-    color: $echodarkturq;
-    font-size: 2.5em;
-    transition: all 200ms ease-in-out;
-    -webkit-transition: all 200ms ease-in-out;
-    -moz-transition: all 200ms ease-in-out;
-    -o-transition: all 200ms ease-in-out;
-    &:hover {
-      color: $echoturq;
-    }
-  }
-}
-
-// .totop {
-//   position: fixed;
-//   bottom: 10px;
-//   right: 20px;
-//   a {
-//     display: none;
-//   }
-// }
-
-
-// pagination
-.pagination {
-  text-align: center;
-  color: $echodarkturq;
-  a {
-    color: $echoturq;
-    &:hover {
-      color: $echodarkblue;
-    }
-  }
-}
-
-
-
-// Footer
-footer {
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: $echogrey;
-  background-color: $echodarkturq;
-  height: 200px;
-  padding: 25px 40px;
-  display: flex;
-  .hide {
-    display: none;
-    ul li a {
-      &:hover {
-        color: $echoturq;
-      }
-    }
-  }
-  .social {
-    margin: 10px;
-    a {
-      transition: all 200ms ease-in-out;
-      -webkit-transition: all 200ms ease-in-out;
-      -moz-transition: all 200ms ease-in-out;
-      -o-transition: all 200ms ease-in-out;
-      &:hover {
-        &:nth-child(1){
-          color: $echored;
-        }
-        &:nth-child(2){
-          color: $echoyellow;
-        }
-        &:nth-child(3){
-          color: $echopink;
-        }
-      }
-
-    }
-  }
-  div:nth-child(3) {
-    font-size: 0.8em;
-  }
-  .fa {
-    font-size: 3.8em;
-    padding: 0 10px;
-  }
-}
-
-// RANDOM COLOR IN FOOTER
-
-
-//Tar bort desktop menu
- .top-menu, .filter-menu{
-  display:none;
-}
-
-
-
-/* HAMBURGER */
 .hamburgerheader{
-	width:100%;
-	background:$echoturq;
-	height:60px;
-	line-height:60px;
+  width:100%;
+  background:$echoturq;
+  height:60px;
+  line-height:60px;
 }
 .hamburger{
   background:none;
@@ -303,7 +131,6 @@ footer {
 .basemenu ul:hover {
   display:block;
 }
-
 .basemenu ul li a {
   text-decoration:none;
   margin: 0px;
@@ -317,16 +144,12 @@ footer {
   text-decoration:none;
   color:white;
 }
-
 .glyphicon-home{
   color:white;
   font-size:1.5em;
   margin-top:5px;
   margin:0 auto;
 }
-
-
-/* css för SELECT som ligger i hamburgermenyn */
 select {
   background-color:$echoturq;
   border: 0px solid;
@@ -335,8 +158,37 @@ select {
 
 }
 
+/* ***************************
+          TOP MENU
+         admin pages
+*************************** */
 
-//utfyllnad
+// OBS - Detta är egentligen "top-menyn" i amin-läget, eller? Egen klass?
+
+.filter-menu {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+
+  .first {
+    display: flex;
+    flex: 2;
+  }
+  .logout {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+//HIDES DESKTOP MENU
+ .top-menu, .filter-menu{
+  display:none;
+}
+
+//FILLER (INSTEAD OF DESKTOP MENU)
 .bluefiller {
   width:100%;
   height: 60px;
@@ -344,41 +196,100 @@ select {
   display:inline-block;
 }
 
+/* ***************************
+            MAIN
+          all pages
+*************************** */
 
-//LOGIN.PHP CSS
-.login {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: $echoturq;
-	padding: 40px;
-	input {
-		display: block;
-		box-sizing: border-box;
-	}
-	input, button {
-		background-color: #fff;
-		border: 0;
-		width: 390px;
-		height: 40px;
-		padding: 10px;
-		margin: 10px 0;
-	}
-	button:hover {
-		background-color: $echogrey;
-	}
-	label {
-		color: #fff;
-	}
+main {
+  margin: 0px 0px 0px 0px;
+  min-height: 500px;
 }
 
-// COMMENTS.PHP
-#comment {
-  p {
-    padding: 5px;
-    color: $echogrey;
-    font-size: 1.2em;
+/* ***************************
+         BLOG POSTS
+         index.php
+*************************** */
+
+.load-post {
+  display:none;
+}
+.post {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin-bottom: 40px;
+  .post-img {
+    flex: 1;
+    img {
+    width: 100%;
+    }
   }
+  .post-text {
+    flex: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .tags, .post-info, .comments {
+      color: $echoturq;
+      font-weight: 700;
+      font-size: 0.8em;
+    }
+    div:first-child, .tags {
+      margin-bottom: 25px;
+    }
+    .blog-content {
+      line-height: 1.5em;
+    }
+    h1 {
+      color: $echoturq;
+      font-size: 2.5em;
+      font-weight: 300;
+    }
+    div:last-child {
+      align-self: baseline;
+    }
+    .post-info {
+      margin-bottom: 6px;
+    }
+  }
+}
+.sortby {
+   padding-bottom: 30px;
+   text-align: right;
+   a {
+    margin: 10px;
+    color: $echodarkturq;
+   }
+   .fa {
+    margin-left: 7px;
+   }
+}
+
+/* ***************************
+         PAGINATION
+          index.php
+*************************** */
+
+.pagination {
+  text-align: center;
+  color: $echodarkturq;
+  a {
+    color: $echoturq;
+    &:hover {
+      color: $echodarkblue;
+    }
+  }
+}
+
+/* ***************************
+          COMMENTS
+        comments.php
+*************************** */
+
+#comment {
   border: 1px solid $echogrey;
   box-sizing: border-box;
   padding: 5px;
@@ -387,4 +298,118 @@ select {
   background-color: $echoyellow;
   color: $echogrey;
   font-size: 0.8em;
+  p {
+    padding: 5px;
+    color: $echogrey;
+    font-size: 1.2em;
+  }
+}
+
+/* ***************************
+           FORMS
+    all pages with forms
+*************************** */
+
+form {
+  input, button {
+    background-color: $echogrey;
+    border: 0;
+    box-sizing: border-box;
+    display: block;
+    height: 40px;
+    margin: 10px 0;
+    padding: 10px;
+    width: 390px;
+  }
+  button:hover {
+    background-color: $echogrey;
+  }
+  label {
+    color: #fff;
+  }
+}
+
+/* ***************************
+         LOGIN PAGE
+         login.php
+*************************** */
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $echoturq;
+  padding: 40px;
+  input, button {
+      background-color: #fff;
+  }
+}
+
+/* ***************************
+        CREATE POST
+      create_post.php
+*************************** */
+
+.upload-image {
+  float: left;
+  
+}
+.img-preview {
+  float: left;
+}
+.insert-content {
+  clear: both;
+}
+
+
+/* ***************************
+           FOOTER
+    index.php/comments.php
+*************************** */
+
+footer {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: $echogrey;
+  background-color: $echodarkturq;
+  height: 200px;
+  padding: 25px 40px;
+  display: flex;
+  .hide {
+    display: none;
+    ul li a {
+      &:hover {
+        color: $echoturq;
+      }
+    }
+  }
+  .social {
+    margin: 10px;
+    a {
+      transition: all 200ms ease-in-out;
+      -webkit-transition: all 200ms ease-in-out;
+      -moz-transition: all 200ms ease-in-out;
+      -o-transition: all 200ms ease-in-out;
+      &:hover {
+        &:nth-child(1){
+          color: $echored;
+        }
+        &:nth-child(2){
+          color: $echoyellow;
+        }
+        &:nth-child(3){
+          color: $echopink;
+        }
+      }
+
+    }
+  }
+  div:nth-child(3) {
+    font-size: 0.8em;
+  }
+  .fa {
+    font-size: 3.8em;
+    padding: 0 10px;
+  }
 }
