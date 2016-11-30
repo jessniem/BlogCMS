@@ -29,7 +29,7 @@ require_once "functions.php";
         <!-- SELECT TAGS -->
         <div class="select-tag">
           <fieldset>
-            <h3>Select tags</h3>
+            <h3>Select tag</h3>
             <input type="radio" id="blackandwhite" name="tag" value="3">
             <label for="blackandwhite">Blackandwhite</label>
             <input type="radio" id="color" name="tag" value="5">
