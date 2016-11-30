@@ -42,8 +42,8 @@
 						<a class="admin" href="index.php?view=published">View published posts</a>
 					</div>
 				</div> <!-- //dropdown -->
-				<li><a href="#"> Statistics</a></li>
-				<li><a href="#"> Profile</a></li>
+				<li><a href="statistics.php"> Statistics</a></li>
+				<li><a href="profile.php"> Profile</a></li>
 			</ul>
 		</div>
 		<div class="logout">
