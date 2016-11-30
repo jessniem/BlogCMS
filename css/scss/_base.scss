@@ -37,6 +37,9 @@ ul {
     display: inline-block;
   }
 }
+h1, h2, h3, h4 {
+  margin: 0;
+}
 p {
   color: $echodarkturq;
   font-weight: 400;
@@ -205,6 +208,14 @@ main {
   margin: 0px 0px 0px 0px;
   min-height: 500px;
 }
+.admin-main {
+  // margin-top: 0;
+  section {
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 40px 20px;
+  }
+}
 
 /* ***************************
          BLOG POSTS
@@ -311,21 +322,24 @@ main {
 *************************** */
 
 form {
+  margin-top: 40px;
+  input, button, textarea {
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+  }
   input, button {
     background-color: $echogrey;
     border: 0;
-    box-sizing: border-box;
-    display: block;
     height: 40px;
-    margin: 10px 0;
-    padding: 10px;
-    width: 390px;
+  }
+  textarea {
+    border: 1px solid #ccc;
   }
   button:hover {
     background-color: $echogrey;
-  }
-  label {
-    color: #fff;
   }
 }
 
@@ -343,24 +357,46 @@ form {
   input, button {
       background-color: #fff;
   }
+  label {
+    color: #fff;
+  }
 }
 
 /* ***************************
-        CREATE POST
-      create_post.php
+         POST FORM
+create_post.php/view_posts.php
 *************************** */
 
-.upload-image {
-  float: left;
-  
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+.upload-image, .img-preview {
+  flex: 1;
 }
 .img-preview {
-  float: left;
+  img {
+    width: 100%;
+  }
 }
-.insert-content {
-  clear: both;
+.post-content {
+  width: 100%;
+  input, textarea {
+    width: 100%;
+  }
+  textarea {
+    height: 100px;
+  }
+  .radio {
+    input {
+      display: inline-block;
+      width: auto;
+    }
+  }
 }
-
 
 /* ***************************
            FOOTER

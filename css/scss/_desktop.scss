@@ -116,7 +116,6 @@ main {
 .admin-main {
 	margin-top: 100px;
 	section {
-		background-color: #fff;
 		padding: 40px;
 	}
 }
@@ -149,8 +148,18 @@ main {
 
 form {
 	button {
-  display: inline-block;
+  		display: inline-block;
 	}
+}
+
+/* ***************************
+         POST FORM
+create_post.php/view_posts.php
+*************************** */
+
+.content-container {
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* ***************************

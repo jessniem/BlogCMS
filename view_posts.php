@@ -6,7 +6,7 @@ include_once "./includes/top_admin.php";
 require_once "functions.php";
 ?>
 <main class="admin-main">
-	<section>
+	<section class="admin-form">
 		<h1>Edit posts</h1>
 		<h2>Drafts</h2>
 		<!-- LIST OF CREATED DRAFTS -->
@@ -26,3 +26,6 @@ require_once "functions.php";
 	?>
 	</section>
 </main>
+<?php
+include "./includes/footer.php";
+?>
