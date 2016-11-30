@@ -23,13 +23,12 @@ $perPage = 5;
 // set $result to the number of posts
 if (isset($_GET["month"]) ) {
   $month = $_GET["month"];
-    $result = mysqli_query($conn, "SELECT count(*) as total from posts WHERE MONTH(createDate) = $month");
+    $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTH(createDate) = $month");
 } elseif (isset($_GET["tag"])) {
   $tagid = $_GET["tag"];
-  $result = mysqli_query($conn, "SELECT count(*) as total from posts
-        WHERE categoryid = $tagid");
+  $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND categoryid = $tagid");
 } else {
-  $result = mysqli_query($conn, "SELECT count(*) as total from posts");
+  $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1");
 }
 
 
@@ -72,13 +71,15 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
     $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
     JOIN users ON (users.id = posts.userid)
     JOIN categories ON (categories.id = posts.categoryid)
+    WHERE  isPub = 1
     ORDER BY createDate DESC LIMIT $offset, $perPage";
 
 } elseif (isset($_GET["month"]) ) {
   $month = $_GET["month"];
   $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
     JOIN users ON (users.id = posts.userid)
-    JOIN categories ON (categories.id = posts.categoryid) WHERE MONTH(createDate) = $month
+    JOIN categories ON (categories.id = posts.categoryid)
+    WHERE isPub = 1 AND MONTH(createDate) = $month
     ORDER BY createDate DESC";
 
 } elseif (isset($_GET["tag"])) {
@@ -98,7 +99,8 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
   $tagid = $_GET["tag"];
   $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
     JOIN users ON (users.id = posts.userid)
-    JOIN categories ON (categories.id = posts.categoryid) WHERE categoryid = $tagid
+    JOIN categories ON (categories.id = posts.categoryid)
+    WHERE isPub = 1 AND categoryid = $tagid
     ORDER BY createDate $sortBy";
 
 
@@ -106,7 +108,7 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
 
 //var_dump($stmt->prepare($query));
 //var_dump($stmt->error_list);
-
+$blogPosts = [];
 if ($stmt->prepare($query)) {
     $stmt->execute();
 
