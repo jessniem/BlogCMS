@@ -16,7 +16,7 @@ div, article, aside, section {
 }
 
 /* ***************************
-            BASE    
+            BASE
           all pages
 *************************** */
 
@@ -325,9 +325,9 @@ main {
 form {
   margin-top: 40px;
   input[type="file"] {
-    border:none; 
-    padding:0; 
-    margin-top:20px; 
+    border:none;
+    padding:0;
+    margin-top:20px;
   }
   input, button, textarea {
     border-radius: 5px;
@@ -343,10 +343,10 @@ form {
     height: 40px;
   }
   button {
-    border:1px solid $echoturq; 
-    padding: 0 15px; 
-    width:100%; 
-    background-color:$echogrey; 
+    border:1px solid $echoturq;
+    padding: 0 15px;
+    width:100%;
+    background-color:$echogrey;
   }
   button:hover {
     background-color: $echoturq;
@@ -402,7 +402,7 @@ create_post.php/view_posts.php
 .img-preview {
   img {
     width: 100%;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 }
 .post-content {
@@ -432,9 +432,9 @@ create_post.php/view_posts.php
     border: 1px solid rgba(0,0,0,0.2);
     color: #444;
     cursor: pointer;
-    display: block;  
+    display: block;
     font-size: 11px;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
     padding: 15px;
     text-transform: uppercase;
     transition: none;
@@ -446,6 +446,43 @@ create_post.php/view_posts.php
   fieldset {
     border: 0;
     padding: 0;
+  }
+}
+
+/* ***************************
+           STATISTICS
+         statistics.php
+*************************** */
+
+.statistics {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  h3 {
+    font-size: 1em;
+    text-align: center;
+  }
+  .box {
+    font-family: Helvetica;
+    box-sizing: border-box;
+    height: 100px;
+    width: 160px;
+    background: #0b2024;
+    border-radius: 5px;
+    margin: 30px;
+    text-align: center;
+    /* font-weight: bold; */
+    font-size: 3em;
+    color: #f4f4f4;
+    align-items: center;
+    -webkit-box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
+    -moz-box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
+    box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
   }
 }
 
