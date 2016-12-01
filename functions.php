@@ -82,12 +82,12 @@ function listPostAdmin($isPub) {
 
         $date = substr($createDate, 0, -9);
         ?>
-        <div class="row" style="display:flex; flex-direction: row; width:600px;">
-          <div class="title" style="flex: 1.5;">
-            <a href="#"><i class="fa fa-trash-o" style="color:black; padding-right: 20px;" aria-hidden="true"></i></a>
-            <a style="color:black;" href="view_posts.php?edit=<?php echo $id; ?>"> <?php echo $title;?> </a>
+        <div class="flex-list row">
+          <div class="title">
+            <a href="#"><i class="fa fa-trash-o"></i></a>
+            <a href="view_posts.php?edit=<?php echo $id; ?>"> <?php echo $title;?> </a>
           </div>
-          <div class="createDate" style="flex: 1; ">
+          <div class="create-date">
             <?php echo $date; ?>
           </div>
         </div>
@@ -112,27 +112,46 @@ function editPost() {
 
       $stmt->bind_result($title, $categoryid, $content, $image, $alt);
       $stmt->fetch();
-      ?>
+?>
       <!-- ECHO OUT BLOG POST -->
-      <form method="post" enctype="multipart/form-data">
+      <section class="edit-form">
         <h1>Update post</h1>
-        <h3>Upload Image</h3>
-        <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)"><br>
-        <img src="<?php echo $image ?>" style="width:300px; height:auto;" id="output"/>
-        <input type="text" name="alt" value="<?php echo $alt; ?>">
-        <br>
-        <input value="<?php echo $title;?>" type="text" name="title" placeholder="title"> <br>
-        <textarea name="content" style="width:500px; height:300px;"><?php echo $content;?></textarea> <br>
-        <h3>Tags</h3>
-          <input type="radio" name="tag" value="3" <?php echo ($categoryid == 3)? 'checked':''?>> Blackandwhite
-          <input type="radio" name="tag" value="5"<?php echo ($categoryid == 5)? 'checked':''?>> Color
-          <input type="radio" name="tag" value="1"<?php echo ($categoryid == 1)? 'checked':''?>> Illustration
-          <input type="radio" name="tag" value="2"<?php echo ($categoryid == 2)? 'checked':''?>> Portrait
-          <br>
-        <button type="submit" name="saveDraft">Save Draft</button>
-        <button type="submit" name="publish">Publish</button>
-      </form>
-
+        <form method="post" enctype="multipart/form-data">
+          <div class="flex-container">
+            <!-- UPLOAD IMAGE -->
+            <div class="upload-image">
+              <h2>Upload image</h2>
+              <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)">
+              <input type="text" name="alt" value="<?php echo $alt; ?>">
+            </div> <!-- .upload-image -->
+            <!-- IMAGE PREVIEW -->
+            <div class="img-preview">
+              <img src="<?php echo $image ?>" id="output" alt="Preview of uploaded image"/>
+            </div> <!-- .img-preview -->
+          </div> <!-- .flex-container -->
+          <!-- POST CONTENT -->
+          <div class="post-content">
+            <input type="text" value="<?php echo $title;?>" name="title" placeholder="Title" required="required">
+            <textarea name="content" placeholder="Content"><?php echo $content;?></textarea>
+            <!-- SELECT TAGS -->
+            <div class="select-tag">
+              <fieldset>
+                <h3>Select tag</h3>
+                <input type="radio" id="blackandwhite" name="tag" value="3" <?php echo ($categoryid == 3)? 'checked':''?>>
+                <label for="blackandwhite">Blackandwhite</label>
+                <input type="radio" id="color" name="tag" value="5" <?php echo ($categoryid == 5)? 'checked':''?>>
+                <label for="color">Color</label>
+                <input type="radio" id="illustration" name="tag" value="1" <?php echo ($categoryid == 1)? 'checked':''?>>
+                <label for="illustration">Illustration</label>
+                <input type="radio" id="portrait" name="tag" value="2" <?php echo ($categoryid == 2)? 'checked':''?>>
+                <label for="portrait">Portrait</label>
+              </fieldset>
+            </div>
+            <button type="submit" name="saveDraft">Save Draft</button>
+            <button type="submit" name="publish">Publish</button>
+          </div>
+        </form>
+      </section>
       <?php
       if(isset ($_POST["publish"]) || isset($_POST["saveDraft"])) {
 

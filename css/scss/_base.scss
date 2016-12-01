@@ -27,7 +27,10 @@ body {
 }
 a {
   text-decoration: none;
-  color: $echogrey;
+  color: $echodarkturq;
+  &:hover {
+    color: $echoturq;
+  }
 }
 ul {
   list-style: none;
@@ -252,6 +255,12 @@ main {
       font-weight: 700;
       font-size: 0.8em;
     }
+    .comments {
+      text-decoration: underline;
+      &:hover {
+        color: $echodarkturq;
+      }
+    }
     div:first-child, .tags {
       margin-bottom: 25px;
     }
@@ -276,7 +285,6 @@ main {
    text-align: right;
    a {
     margin: 10px;
-    color: $echodarkturq;
    }
    .fa {
     margin-left: 7px;
@@ -501,6 +509,41 @@ create_post.php/view_posts.php
     padding: 0;
   }
 }
+/* ***************************
+         VIEW/EDIT POSTS
+        view_posts.php
+*************************** */
+.post-list {
+  .flex-list{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  }
+  .fa-trash-o {
+    margin-right: 20px;
+    font-size: 1.3em;
+  }
+  .title, .create-date {
+    height: 30px;
+    display: flex;
+    align-items: center;
+  }
+  .row {
+     &:nth-child(even) {
+      background-color: $echogrey;
+    }
+  }
+}
+
+.edit-form {
+  border-top: 2px dotted #ccc;
+}
+
+
 
 /* ***************************
            STATISTICS
@@ -555,6 +598,7 @@ footer {
   .hide {
     display: none;
     ul li a {
+      color: $echogrey;
       &:hover {
         color: $echoturq;
       }
@@ -563,6 +607,7 @@ footer {
   .social {
     margin: 10px;
     a {
+      color: $echogrey;
       transition: all 200ms ease-in-out;
       -webkit-transition: all 200ms ease-in-out;
       -moz-transition: all 200ms ease-in-out;

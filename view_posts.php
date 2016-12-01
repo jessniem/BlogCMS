@@ -6,7 +6,7 @@ include_once "./includes/top_admin.php";
 require_once "functions.php";
 ?>
 <main class="admin-main">
-	<section class="admin-form">
+	<section class="post-list">
 		<h1>Edit posts</h1>
 		<h2>Drafts</h2>
 		<!-- LIST OF CREATED DRAFTS -->
@@ -19,12 +19,11 @@ require_once "functions.php";
 		listPostAdmin(1);
 		?>
 	</section>
-	<section>
+	
 	<!-- UPDATE POST -->
 	<?php 
 	editPost();
 	?>
-	</section>
 </main>
 <?php
 include "./includes/footer.php";

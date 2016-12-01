@@ -33,6 +33,7 @@
   flex-direction: row;
   a {
     padding: 14px 15px 22px 15px;
+    color: $echogrey;
   }
 }
 
@@ -49,7 +50,10 @@
 .top-menu {
   justify-content: flex-end;
   a:hover {
-    text-decoration: underline;
+    color: $echodarkblue;
+  }
+  .fa-home {
+  	font-size: 1.4em;
   }
 }
 
@@ -176,6 +180,14 @@ create_post.php/view_posts.php
 		display:inline-block;
 	}
 }
+/* ***************************
+         VIEW/EDIT POSTS
+        view_posts.php
+*************************** */
+.post-list > .flex-list {
+  flex-direction: row;
+}
+
 
 /* ***************************
            STATISTICS
