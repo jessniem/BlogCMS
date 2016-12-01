@@ -154,6 +154,25 @@ form {
 }
 
 /* ***************************
+          COMMENTS
+        comments.php
+*************************** */
+
+.comment-form {
+	padding: 40px 40px 10px 40px;
+ }
+ .comment {
+  flex-direction: row;
+  padding: 40px;
+  .comment-fa { 
+  	margin: 0 40px 0 0;
+  }
+  .comment-content {
+  	 margin-right: 20%;
+  }
+ }
+
+/* ***************************
          POST FORM
 create_post.php/view_posts.php
 *************************** */
