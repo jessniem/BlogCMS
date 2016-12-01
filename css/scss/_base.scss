@@ -223,9 +223,12 @@ main {
          index.php
 *************************** */
 
-.load-post {
-  display:none;
-}
+// Gammal klass som användes för "load-more"
+
+// .load-post {
+//   display:none;
+// }
+
 .post {
   box-sizing: border-box;
   display: flex;
@@ -297,27 +300,6 @@ main {
 }
 
 /* ***************************
-          COMMENTS
-        comments.php
-*************************** */
-
-#comment {
-  border: 1px solid $echogrey;
-  box-sizing: border-box;
-  padding: 5px;
-  margin: 10px 10px 0 10px;
-  border-radius: 2px;
-  background-color: $echoyellow;
-  color: $echogrey;
-  font-size: 0.8em;
-  p {
-    padding: 5px;
-    color: $echogrey;
-    font-size: 1.2em;
-  }
-}
-
-/* ***************************
            FORMS
     all pages with forms
 *************************** */
@@ -351,9 +333,80 @@ form {
   button:hover {
     background-color: $echoturq;
     color:#fff;
-
   }
 }
+
+
+/* ***************************
+          COMMENTS
+        comments.php
+*************************** */
+
+#comment {
+  border: 1px solid $echogrey;
+  box-sizing: border-box;
+  padding: 5px;
+  margin: 10px 10px 0 10px;
+  border-radius: 2px;
+  background-color: $echoyellow;
+  color: $echogrey;
+  font-size: 0.8em;
+  p {
+    padding: 5px;
+    color: $echogrey;
+    font-size: 1.2em;
+  }
+}
+
+.post-container {
+  .post {
+    margin: 0;
+  }
+}
+
+.comment-form, .comment {
+  background-color: #fff;
+}
+.comment-form {
+  padding: 40px 20px 10px 20px;
+  form {
+    margin: 0 0 40px 0;
+    input, textarea, button {
+      margin: 0 0 20px 0;
+      width: 100%;
+    }
+    textarea {
+      height: 100px;
+    }
+  }
+}
+.comment {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px dotted #ccc;
+  padding: 40px 20px;
+  .comment-fa {
+    flex: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    i.fa-user-circle {
+      font-size: 2em;
+    }
+  }
+ 
+  .comment-content {
+    flex: 3;
+    p {
+      margin-bottom: 15px;
+      line-height: 1.5em;
+    }
+    span {
+      font-size: 0.8em;
+      font-style: italic;
+    }
+  }
+}
+
 
 /* ***************************
          LOGIN PAGE

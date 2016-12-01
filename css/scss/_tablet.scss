@@ -17,6 +17,39 @@ main {
 }
 
 //Blog posts
+// .post {
+//   margin-bottom: 60px;
+// }
+
+/* ***************************
+         BLOG POSTS
+         index.php
+*************************** */
+
 .post {
-  margin-bottom: 60px;
+	flex-direction: row;
+	background-color: #fff;
+	margin-bottom: 80px;
+	.post-img {
+		flex: 1.5;
+	img {
+	  width: 100%;
+	}
+	}
+	.post-text {
+		flex: 1;
+		padding: 40px;
+	}
+}
+
+
+/* ***************************
+          COMMENTS
+        comments.php
+*************************** */
+.comment {
+  padding: 40px 40px 40px 40px;
+  .comment-fa > i.fa-user-circle {
+    font-size: 2.8em;
+  }
 }
