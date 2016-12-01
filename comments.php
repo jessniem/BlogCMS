@@ -49,7 +49,7 @@ include_once "./includes/top.php";
       <h3>Who are you?</h3>
       <input type="input" name="name" value="" placeholder="Your name">
       <input type="email" name="email" value="" placeholder="Your email">
-      <button type="submit" name="submit">Send comment</button>
+      <button type="submit" name="submit">Post comment</button>
     </form>
     <h2>Comments:</h2>
   </section>

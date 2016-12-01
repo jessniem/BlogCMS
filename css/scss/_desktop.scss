@@ -51,6 +51,10 @@
   justify-content: flex-end;
   a:hover {
     color: $echodarkblue;
+		transition: all 200ms ease-in-out;
+		-webkit-transition: all 200ms ease-in-out;
+		-moz-transition: all 200ms ease-in-out;
+		-o-transition: all 200ms ease-in-out;
   }
   .fa-home {
   	font-size: 1.4em;
@@ -149,7 +153,7 @@ form {
  .comment {
   flex-direction: row;
   padding: 40px;
-  .comment-fa { 
+  .comment-fa {
   	margin: 0 40px 0 0;
   	i.fa-user-circle {
     	font-size: 3.5em;
@@ -273,7 +277,7 @@ footer {
         }
       }
 
-    
+
   }
   div:nth-child(3) {
     font-size: 0.8em;
