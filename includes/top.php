@@ -51,8 +51,8 @@
 </div>
 <!-- Banner -->
 <div class="banner">
-	<img class="mobile-logo" src="./img/logo_mobile.jpg" alt="logo">
-	<img class="desktop-logo" src="./img/logo_desktop.jpg" alt="logo">
+	<img class="mobile-logo" src="./img/logo_mobile.png" alt="logo">
+	<img class="desktop-logo" src="./img/logo_desktop.png" alt="logo">
 </div>
 <div class="bluefiller">
 </div>
