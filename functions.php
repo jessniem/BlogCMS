@@ -85,6 +85,7 @@ function listPostAdmin($isPub) {
         <div class="flex-list row">
           <div class="title">
             <a href="#"><i class="fa fa-trash-o"></i></a>
+            <a href="#"><i class="fa fa-pencil"></i></a>
             <a href="view_posts.php?edit=<?php echo $id; ?>"> <?php echo $title;?> </a>
           </div>
           <div class="create-date">
