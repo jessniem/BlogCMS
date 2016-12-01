@@ -171,7 +171,7 @@ function editPost() {
           $userId = sanitizeMySql($conn, $_SESSION["userId"]);
           $content = sanitizeMySql($conn, $_POST["content"]);
 
-          echo $image;
+          //echo $image;
 
           if($image != $targetname) {
 

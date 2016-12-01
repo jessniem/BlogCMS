@@ -27,7 +27,7 @@ $totalDrafts = $data['total'];
 				listPostAdmin(0);
 		 	}
 			if ($totalPub > 0) { ?>
-				<h2>Drafts (<?php echo $totalPub; ?>)</h2> <?php
+				<h2>Published posts (<?php echo $totalPub; ?>)</h2> <?php
 				// LIST OF CREATED DRAFTS
 				listPostAdmin(1);
 			} ?>
