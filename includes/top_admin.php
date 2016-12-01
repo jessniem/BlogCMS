@@ -49,6 +49,8 @@
 		<div class="logout">
 			<ul>
 				<li><a class="admin" href="logout.php">Logout</a></li>
+				<li><a class="admin" href="create_post.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+
 			</ul>
 		</div>
 </div>

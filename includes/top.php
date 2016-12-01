@@ -47,6 +47,7 @@
 	<ul>
 		<li><a href="#">About</a></li>
 		<li><a href="#">Contact</a></li>
+		<li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 	</ul>
 </div>
 <!-- Banner -->
