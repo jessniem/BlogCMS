@@ -120,26 +120,7 @@ main {
 	}
 }
 
-/* ***************************
-         BLOG POSTS
-         index.php
-*************************** */
 
-.post {
-	flex-direction: row;
-	background-color: #fff;
-	margin-bottom: 80px;
-	.post-img {
-		flex: 1.5;
-	img {
-	  width: 100%;
-	}
-	}
-	.post-text {
-		flex: 1;
-		padding: 40px;
-	}
-}
 
 /* ***************************
            FORMS
@@ -166,6 +147,9 @@ form {
   padding: 40px;
   .comment-fa { 
   	margin: 0 40px 0 0;
+  	i.fa-user-circle {
+    	font-size: 3.5em;
+  	}
   }
   .comment-content {
   	 margin-right: 20%;
