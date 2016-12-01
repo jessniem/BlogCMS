@@ -73,7 +73,7 @@ include_once "./includes/top.php";
     $time = strtotime($var["date"]);?>
     <div class="comment">
       <div class="comment-fa">
-        <i class="fa fa-user" aria-hidden="true"></i>
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
       </div>
       <div class="comment-content">
         <p><?php echo $var["commentText"]; ?></p>

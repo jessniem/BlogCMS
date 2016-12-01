@@ -366,9 +366,9 @@ form {
 
 .comment-form, .comment {
   background-color: #fff;
-  padding: 40px 20px 10px 20px;
 }
 .comment-form {
+  padding: 40px 20px 10px 20px;
   form {
     margin: 0 0 40px 0;
     input, textarea, button {
@@ -388,14 +388,17 @@ form {
   .comment-fa {
     flex: 0;
     margin-bottom: 20px;
+    text-align: center;
+    i.fa-user-circle {
+      font-size: 2em;
+    }
   }
-  i.fa-user {
-    font-size: 3.5em;
-  }
+ 
   .comment-content {
     flex: 3;
     p {
       margin-bottom: 15px;
+      line-height: 1.5em;
     }
     span {
       font-size: 0.8em;
