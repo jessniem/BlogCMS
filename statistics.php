@@ -26,8 +26,6 @@ $totalS = $totalComments / $totalPosts;
 ?>
 <main class="admin-main">
 	<section>
-
-		<h1>Statistics</h1>
 		<div class="statistics">
 			<div>
 				<div class="box"><?php echo $totalPosts;?></div>
