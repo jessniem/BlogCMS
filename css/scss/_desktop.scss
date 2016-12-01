@@ -15,7 +15,7 @@
   }
   .desktop-logo {
     display: block;
-		width: 70%;
+		width: 90%;
   }
 }
 
@@ -198,6 +198,7 @@ create_post.php/view_posts.php
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  margin-bottom:200px;
   flex-direction: row;
   div {
     flex-direction: column;
@@ -254,4 +255,35 @@ footer {
 			padding: 0;
 		}
 	}
+}
+
+  .social {
+    margin: 10px;
+    a {
+      color: $echogrey;
+      transition: all 200ms ease-in-out;
+      -webkit-transition: all 200ms ease-in-out;
+      -moz-transition: all 200ms ease-in-out;
+      -o-transition: all 200ms ease-in-out;
+      &:hover {
+        &:nth-child(1){
+          color: $echored;
+        }
+        &:nth-child(2){
+          color: $echoyellow;
+        }
+        &:nth-child(3){
+          color: $echopink;
+        }
+      }
+
+    
+  }
+  div:nth-child(3) {
+    font-size: 0.8em;
+  }
+  .fa {
+    font-size: 3.8em;
+    padding: 0 10px;
+  }
 }
