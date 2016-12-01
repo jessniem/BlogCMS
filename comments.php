@@ -40,6 +40,20 @@ include_once "./includes/top.php";
       }
   }
 
+  // fetch comments on this post from db
+  $query = "SELECT * FROM comments WHERE postid = $thisPostId ORDER BY id DESC";
+
+  if ($stmt->prepare($query)) {
+      $stmt->execute();
+      $stmt->bind_result($id, $email, $date, $name, $postid, $commentText);
+    }
+
+
+  $comments = [];
+  while (mysqli_stmt_fetch($stmt)) {
+    $comments[] = array ("id" => $id, "email" => $email, "date" => $date, "name" => $name, "postid" => $postid, "commentText" => $commentText);
+  }
+
   // Form for new comments
   ?>
   <section class="comment-form">
@@ -50,23 +64,16 @@ include_once "./includes/top.php";
       <input type="input" name="name" value="" placeholder="Your name">
       <input type="email" name="email" value="" placeholder="Your email">
       <button type="submit" name="submit">Post comment</button>
-    </form>
-    <h2>Comments:</h2>
+    </form> <?php
+    // lägg till "Comments:" om det finns kommentarer
+    if ($commentText != NULL) { ?>
+      <h2>Comments:</h2> <?php
+    } ?>
+
   </section>
 
   <?php
-  // fetch comments on this post from db
-  $query = "SELECT * FROM comments WHERE postid = $thisPostId ORDER BY id DESC";
 
-  if ($stmt->prepare($query)) {
-      $stmt->execute();
-      $stmt->bind_result($id, $email, $date, $name, $postid, $commentText);
-    }
-
-  $comments = [];
-  while (mysqli_stmt_fetch($stmt)) {
-    $comments[] = array ("id" => $id, "email" => $email, "date" => $date, "name" => $name, "postid" => $postid, "commentText" => $commentText);
-  }
 
   //print out the comments
   foreach ($comments as $var) {
