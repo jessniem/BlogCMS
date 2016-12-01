@@ -84,9 +84,12 @@ function listPostAdmin($isPub) {
         ?>
         <div class="row" style="display:flex; flex-direction: row; width:600px;">
           <div class="title" style="flex: 1.5;">
+            <a href="#"><i class="fa fa-trash-o" style="color:black; padding-right: 20px;" aria-hidden="true"></i></a>
             <a style="color:black;" href="view_posts.php?edit=<?php echo $id; ?>"> <?php echo $title;?> </a>
           </div>
-          <div class="createDate" style="flex: 1;"><?php echo $date; ?></div>
+          <div class="createDate" style="flex: 1; ">
+            <?php echo $date; ?>
+          </div>
         </div>
       <?php }
     }
