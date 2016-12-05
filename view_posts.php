@@ -22,12 +22,12 @@ $totalDrafts = $data['total'];
 	<section class="post-list">
 		<h1>Edit posts</h1> <?php
 		 	if ($totalDrafts > 0) { ?>
-				<h2>Drafts (<?php echo $totalDrafts-1; ?>)</h2> <?php // TODO: remove -1 när buggen är löst
+				<h2>Drafts (<?php echo $totalDrafts; ?>)</h2> <?php
 				// LIST OF CREATED DRAFTS
 				listPostAdmin(0);
 		 	}
 			if ($totalPub > 0) { ?>
-				<h2>Published posts (<?php echo $totalPub-1; ?>)</h2> <?php // TODO: remove -1 när buggen är löst
+				<h2>Published posts (<?php echo $totalPub; ?>)</h2> <?php
 				// LIST OF CREATED DRAFTS
 				listPostAdmin(1);
 			} ?>

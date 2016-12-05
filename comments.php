@@ -41,7 +41,7 @@ include_once "./includes/top.php";
   }
 
   // fetch comments on this post from db
-  $query = "SELECT * FROM comments WHERE postid = $thisPostId ORDER BY id DESC";
+  $query = "SELECT * FROM comments WHERE postid = $thisPostId ORDER BY date DESC";
 
   if ($stmt->prepare($query)) {
       $stmt->execute();
