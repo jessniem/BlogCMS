@@ -10,6 +10,7 @@ if( isset($_POST["send"]) ) {
 		$email = sanitizeMySql($conn, $_POST["email"]);
 		$pass = sanitizeMySql($conn, $_POST["password"]);
 
+
 		$stmt = $conn->stmt_init();
 		$query = "SELECT * FROM users WHERE email = '{$email}'";
 
@@ -20,7 +21,7 @@ if( isset($_POST["send"]) ) {
 			$stmt->bind_result($id, $accesslevel, $mail, $password, $firstname, $lastname, $profilepic, $ispub);
 			$stmt->fetch();
 
-			if ($id != 0 && $pass == $password) {
+			if ($id != 0 && password_verify($pass, $password)) {
 
 				$_SESSION["logged_in"] = true;
 				$_SESSION["username"] = $firstname;
