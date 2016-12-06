@@ -5,7 +5,6 @@ include_once "./includes/head.php";
 include_once "./includes/top_admin.php";
 require_once "functions.php";
 ?>
-
 <main>
 	<section>
 	<h1>About me</h1>

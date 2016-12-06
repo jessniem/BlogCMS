@@ -5,58 +5,59 @@ include_once "./includes/top_admin.php";
 require_once "functions.php";
 ?>
 <main class="admin-main">
-  
   <section>
     <h1>Dina uppgifter</h1>
-
     <?php
     $id = $_SESSION["userId"];
-    $stmt = $conn->stmt_init();
-    $query = "SELECT * FROM users WHERE id = $id";
 
-    if($stmt->prepare($query)) {
-      $stmt->execute();
-
-      $stmt->bind_result($id, $accesslevel, $email, $password, $firstname, $lastname, $profilepic, $description);
-      $stmt->fetch();
-    }
-
-    //TODO: få detta att funka!!!!!!!!!!!!!!!!!!!
-
-    /*  if(isset ($_POST["profilepic"]) ) {
+    //UPDATE PROFILE PICTURE
+     if(isset ($_POST["profilepic"]) ) {
 
           $targetfolder = './userimg/';
-          $targetname =  $targetfolder . basename ("user-". $id . ".jpg");
 
-          if (move_uploaded_file($_FILES["profilepic"]["tmp_name"], $targetname)) {
+          //CREATE A NEW FILENAME
+          $targetname =  $targetfolder . basename("user". -$id . ".jpg");
+
+          //PUTS THE URL FOR THE FILE INTO DB
+          if(move_uploaded_file($_FILES["profilepic"]["tmp_name"], $targetname)) {
               echo "Filuppladdningen gick bra!";
           }
-            // $profilepic = sanitizeMySql($conn, $_POST["profilepic"]);
-                
-            $query = "UPDATE users SET profilePic = '{$targetname}' WHERE id = $id"; 
+              
+          $query = "UPDATE users SET profilePic = '{$targetname}' WHERE id = '{$id}'"; 
+          $stmt = $conn->stmt_init();
 
-            if ($stmt->prepare($query)) {
-               $stmt->execute();
-              } else {
-               echo mysqli_error();
-              }
-        } */
-
+          if ($stmt->prepare($query)) {
+             $stmt->execute();
+            } else {
+             echo mysqli_error();
+            }
+        } 
+      //UPPDATE DESCRIPTION AND EMAIL
       if(isset ($_POST["submit"]) ) {
 
         $email = sanitizeMySql($conn, $_POST["email"]);
         $description = sanitizeMySql($conn, $_POST["description"]);
         $stmt = $conn->stmt_init();
 
-        $query2 = "UPDATE users SET email = '{$email}', description = '{$description}' WHERE id = $id"; 
+        $query = "UPDATE users SET email = '{$email}', description = '{$description}' WHERE id = $id"; 
 
-        if ($stmt->prepare($query2)) {
+        if ($stmt->prepare($query)) {
          $stmt->execute();
         } else {
          echo mysqli_error();
         }
       }
+
+    $stmt = $conn->stmt_init();
+    $query = "SELECT * FROM users WHERE id = $id";
+    if($stmt->prepare($query)) {
+      $stmt->execute();
+
+      $stmt->bind_result($id, $accesslevel, $email, $password, $firstname, $lastname, $profilepic, $description);
+      $stmt->fetch();
+    }
     ?>
+    <!-- PROFILE FORM -->
     <form method="post" enctype="multipart/form-data">
       <input name="profilepic" type="file" accept="image/*" onchange="loadFile(event)">
         <div class="img-preview">
@@ -71,7 +72,6 @@ require_once "functions.php";
     </form>
 
   </section>
-  
   <section>
     <?php
     if (isset($_GET["pw"])) {
