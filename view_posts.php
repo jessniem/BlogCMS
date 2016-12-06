@@ -7,6 +7,16 @@ require_once "functions.php";
 
 $stmt = $conn->stmt_init();
 
+// Delete post
+if (isset($_GET["delete"])) {
+		$id = $_GET["delete"];
+		$query = "DELETE FROM posts WHERE id = $id";
+		if ($stmt->prepare($query)) {
+      $stmt->execute();
+			echo "Post is deleted";
+		}
+}
+
 // count number of published posts
 $published = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1");
 $data = mysqli_fetch_assoc($published);
@@ -39,5 +49,8 @@ $totalDrafts = $data['total'];
 	?>
 </main>
 <?php
+
+
+
 include "./includes/footer.php";
 ?>

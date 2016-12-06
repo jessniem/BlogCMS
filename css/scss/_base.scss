@@ -510,6 +510,11 @@ create_post.php/view_posts.php
     padding: 0;
   }
 }
+.trash {
+  &:hover {
+    color: $echored;
+  }
+}
 /* ***************************
          VIEW/EDIT POSTS
         view_posts.php
