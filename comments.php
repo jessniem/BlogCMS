@@ -36,7 +36,7 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
       foreach ($blogPosts as $post) {
           $index = false;
           ?>
-          <div class="post-container">
+          <div class="post-container" id="start">
             <?php
             printPost($index, 0);
             ?>
