@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "db_connection.php";
 include_once "./includes/head.php";
 include_once "./includes/top_admin.php";
