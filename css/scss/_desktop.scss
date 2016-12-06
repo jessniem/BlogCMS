@@ -51,10 +51,7 @@
   justify-content: flex-end;
   a:hover {
     color: $echodarkblue;
-		transition: all 200ms ease-in-out;
-		-webkit-transition: all 200ms ease-in-out;
-		-moz-transition: all 200ms ease-in-out;
-		-o-transition: all 200ms ease-in-out;
+		@include transition(all 200ms ease-in-out);
   }
   .fa-home {
   	font-size: 1.4em;
@@ -69,10 +66,7 @@
 .filter-menu {
 	display: flex;
 	a {
-	  transition: all 200ms ease-in-out;
-      -webkit-transition: all 200ms ease-in-out;
-      -moz-transition: all 200ms ease-in-out;
-      -o-transition: all 200ms ease-in-out;
+	  @include transition(all 200ms ease-in-out);
 	}
 	a:hover, a:active {
 		background-color: $echogrey;
@@ -218,10 +212,7 @@ footer {
 	flex-direction: row;
 	.hide {
 	display: initial;
-	transition: all 200ms ease-in-out;
-	-webkit-transition: all 200ms ease-in-out;
-	-moz-transition: all 200ms ease-in-out;
-	-o-transition: all 200ms ease-in-out;
+	@include transition(all 200ms ease-in-out);
 	}
 	div {
 		flex: 1;
@@ -261,10 +252,7 @@ footer {
     margin: 10px;
     a {
       color: $echogrey;
-      transition: all 200ms ease-in-out;
-      -webkit-transition: all 200ms ease-in-out;
-      -moz-transition: all 200ms ease-in-out;
-      -o-transition: all 200ms ease-in-out;
+      @include transition(all 200ms ease-in-out);
       &:hover {
         &:nth-child(1){
           color: $echored;
