@@ -13,13 +13,19 @@ $comment = sanitizeMySql($conn, $_POST["comment"]);
 $email = sanitizeMySql($conn, $_POST["email"]);
 $name = sanitizeMySql($conn, $_POST["name"]);
 
-$query = "INSERT INTO comments VALUES (NULL, '$email', NULL, '$name', '$postid', '$comment')";
-if ($stmt->prepare($query)) {
-    $stmt->execute();
-} else {
-  echo mysqli_error();
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $query = "INSERT INTO comments VALUES (NULL, '$email', NULL, '$name', '$postid', '$comment')";
+  if ($stmt->prepare($query)) {
+      $stmt->execute();
+      header ("Location: comments.php?post=$postid");
+  } else {
+    echo mysqli_error();
+  }
+
+  } else {
+    header ("Location: comments.php?post=$postid&email=invalid");
+
 }
 
-header ("Location: comments.php?post=$postid");
 
   ?>

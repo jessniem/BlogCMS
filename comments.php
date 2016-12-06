@@ -3,6 +3,11 @@ require_once "db_connection.php";
 require_once "functions.php";
 include_once "./includes/head.php";
 include_once "./includes/top.php";
+
+// error message when email on comment is Invalid
+if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
+    echo "Your email is not valid";
+}
 ?>
 <main>
   <?php
@@ -62,7 +67,7 @@ include_once "./includes/top.php";
       <textarea name="comment" value="" placeholder="Comment..."></textarea>
       <h3>Who are you?</h3>
       <input type="input" name="name" value="" placeholder="Your name">
-      <input type="email" name="email" value="" placeholder="Your email">
+      <input type="text" name="email" value="" placeholder="Your email">
       <button type="submit" name="submit">Post comment</button>
     </form> <?php
     // lägg till "Comments:" om det finns kommentarer
