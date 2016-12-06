@@ -131,11 +131,13 @@ main {
 
 form {
 	button {
-		display:inline-block;
-  		width: 49%;
+    width: 49%;
 	}
 }
 
+div.post-content {
+  box-sizing:border-box; 
+}
 /* ***************************
           COMMENTS
         comments.php

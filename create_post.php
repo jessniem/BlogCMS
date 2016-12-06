@@ -39,8 +39,10 @@ require_once "functions.php";
             <label for="portrait">Portrait</label>
           </fieldset>
         </div>
-        <button type="submit" name="saveDraft">Save Draft</button>
-        <button type="submit" name="publish">Publish</button>
+        <div class="flex-container">
+          <button type="submit" name="saveDraft">Save Draft</button>
+          <button type="submit" name="publish">Publish</button>
+        </div>
       </div>
     </form>
   </section>
