@@ -35,8 +35,10 @@
 			</li>
 			<li><hr/></li>
 			<li><a href="index.php">Home</a></li>
-			<li><a href="about.php">About</a></li>
-			<li><a href="contact.php">Contact</a></li>
+			<li><a href="about.php">About me</a></li> <?php
+			if (isset($_SESSION["logged_in"])) { ?>
+				<li><a href="create_post.php">Admin</a></li> <?php
+			} ?>
 		</div>
 		</ul>
 </div>
@@ -45,8 +47,12 @@
 <!-- Topmenu -->
 <div class="menu top-menu">
 	<ul>
-		<li><a href="about.php">About</a></li>
-		<li><a href="contact.php">Contact</a></li>
+		<li><a href="about.php">About me</a></li><?php
+		if (isset($_SESSION["logged_in"])) { ?>
+			<li><a href="create_post.php">Admin</a></li>
+			<li><a href="logout.php">Log out</a></li>
+			 <?php
+		} ?>
 		<li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
 	</ul>
 </div>
