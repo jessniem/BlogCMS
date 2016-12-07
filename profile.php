@@ -72,7 +72,7 @@ require_once "functions.php";
     </form>
 
   </section>
-  <section>
+  <section class="relative">
     <?php
     // USER FEEDBACK change password
     if (isset($_GET["pw"])) {
@@ -95,7 +95,7 @@ require_once "functions.php";
 
 <?php
 if ($_SESSION["access"] == 2 ) { ?>
-  <section>
+  <section class="relative">
     <h2>Handle guest users</h2>
 
     <?php // USER FEEDBACK add guest user
