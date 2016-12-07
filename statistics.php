@@ -4,8 +4,9 @@ include "./includes/top_admin.php";
 include "./db_connection.php";
 
 $stmt = $conn->stmt_init();
+$id = $_SESSION["userId"];
 
-$totalP = "SELECT count(*) as total FROM posts WHERE isPub = 1";
+$totalP = "SELECT count(*) as total FROM posts WHERE isPub = 1 AND userid = $id";
 
 if ($stmt->prepare ($totalP)) {
 	$stmt->execute();
@@ -13,7 +14,7 @@ if ($stmt->prepare ($totalP)) {
 	$stmt->fetch();
 }
 
-$totalC = "SELECT count(*) as total FROM comments";
+$totalC = "SELECT count(*) as total FROM comments"; // TODO Lös det så att vi bara räknar kommentarer på de inlägg som är gjorda av den inloggade usern, nu räknar vi alla...
 
 if ($stmt->prepare ($totalC)) {
 	$stmt->execute();
