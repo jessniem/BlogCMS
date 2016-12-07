@@ -26,6 +26,7 @@ if( isset($_POST["send"]) ) {
 				$_SESSION["logged_in"] = true;
 				$_SESSION["username"] = $firstname;
 				$_SESSION["userId"] = $id;
+				$_SESSION["access"] = $accesslevel;
 
 			header("Location: create_post.php");
 

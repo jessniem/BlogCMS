@@ -14,7 +14,7 @@ if (isset($_GET['login']) && $_GET["login"] == "empty") {
     <section class="login">
       <form action="logincheck.php" method="post">
         <label for="email">Your email:</label>
-        <input name="email" type="email">
+        <input name="email" type="text">
         <label for="password">Your password:</label>
         <input name="password" type="password">
         <button name="send" type="submit">Login</button>
