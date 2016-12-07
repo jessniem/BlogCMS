@@ -4,7 +4,8 @@ require_once "db_connection.php";
 require_once "functions.php";
 
 $email = sanitizeMySql($conn, $_POST['email']);
-$pw = sanitizeMySql($conn, $_POST['password']);
+$password = $_POST['password'];
+$pw = password_hash($password, CRYPT_BLOWFISH);
 $fn = sanitizeMySql($conn, $_POST['fname']);
 $ln = sanitizeMySql($conn, $_POST['lname']);
 
@@ -27,7 +28,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
      $stmt->execute();
      header("Location: profile.php?user=success");
      $_SESSION["user_email"] = $email;
-     $_SESSION["user_pw"] = $pw;
+     $_SESSION["user_pw"] = $password;
     } else {
       echo mysqli_error();
     }
