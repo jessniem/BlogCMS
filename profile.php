@@ -100,14 +100,16 @@ if ($_SESSION["access"] == 2 ) { ?>
 
     <?php // USER FEEDBACK add guest user
     if (isset($_GET["user"])) {
-      if ($_GET["user"] == "registered") { ?>
+      if ($_GET["user"] == "already_registered") { ?>
         <div class="error feedback fadeOut">The email is already registered</div> <?php
+      } elseif ($_GET["user"] == "invalid_email") { ?>
+          <div class="error feedback fadeOut">Invalid email address</div> <?php
       } elseif ($_GET["user"] == "success") { ?>
-        <div class="feedback fadeOut">
-          The user was added successfully! <br>
-          User name: <?php echo $_SESSION["user_email"]; ?> <br>
-          Password: <?php echo $_SESSION["user_pw"]; ?>
-        </div><?php
+          <div class="feedback fadeOut">
+            The user was added successfully! <br>
+            User name: <?php echo $_SESSION["user_email"]; ?> <br>
+            Password: <?php echo $_SESSION["user_pw"]; ?>
+          </div><?php
       }
     } ?>
 
