@@ -76,10 +76,10 @@ require_once "functions.php";
     <?php
     // USER FEEDBACK change password
     if (isset($_GET["pw"])) {
-        if ($_GET["pw"] == "ok") {
-            echo "Your password has been updated!";
+        if ($_GET["pw"] == "ok") { ?>
+            <div class="feedback">Your password has been updated!</div> <?php
         } elseif ($_GET["pw"] == "error") { ?>
-          <div class="error">Somthing went wrong, your password has NOT been updated!</div> <?php
+          <div class="error feedback">Somthing went wrong, your password has NOT been updated!</div> <?php
         }
     }
     ?>
@@ -101,12 +101,12 @@ if ($_SESSION["access"] == 2 ) { ?>
     <?php // USER FEEDBACK add guest user
     if (isset($_GET["user"])) {
       if ($_GET["user"] == "registered") { ?>
-        <div class="error">The email is already registered</div> <?php
+        <div class="error feedback">The email is already registered</div> <?php
       } elseif ($_GET["user"] == "success") { ?>
-        <div>
-          <p>The user was added successfully!</p>
-          <p>User name: <?php echo $_SESSION["user_email"]; ?></p>
-          <p>Password: <?php echo $_SESSION["user_pw"]; ?></p>
+        <div class="feedback">
+          The user was added successfully! <br>
+          User name: <?php echo $_SESSION["user_email"]; ?> <br>
+          Password: <?php echo $_SESSION["user_pw"]; ?>
         </div><?php
       }
     } ?>

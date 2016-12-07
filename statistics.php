@@ -4,6 +4,7 @@ include "./includes/top_admin.php";
 include "./db_connection.php";
 
 $stmt = $conn->stmt_init();
+// logged in user id
 $id = $_SESSION["userId"];
 
 $totalP = "SELECT count(*) as total FROM posts WHERE isPub = 1 AND userid = $id";

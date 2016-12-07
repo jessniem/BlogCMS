@@ -4,9 +4,9 @@ require_once "functions.php";
 include_once "./includes/head.php";
 include_once "./includes/top.php";
 
-// error message when email on comment is Invalid
-if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
-    echo "Your email is not valid";
+// USER FEEDBACK when email address on comment is invalid
+if (isset($_GET["email"]) && $_GET["email"] == "invalid") { ?>
+    <div class="error feedback">Your email is not valid</div> <?php
 }
 ?>
 <main>
