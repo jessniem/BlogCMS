@@ -77,9 +77,9 @@ require_once "functions.php";
     // USER FEEDBACK change password
     if (isset($_GET["pw"])) {
         if ($_GET["pw"] == "ok") { ?>
-            <div class="feedback">Your password has been updated!</div> <?php
+            <div class="feedback fadeOut">Your password has been updated!</div> <?php
         } elseif ($_GET["pw"] == "error") { ?>
-          <div class="error feedback">Somthing went wrong, your password has NOT been updated!</div> <?php
+          <div class="error feedback fadeOut">Somthing went wrong, your password has NOT been updated!</div> <?php
         }
     }
     ?>
@@ -89,7 +89,7 @@ require_once "functions.php";
       <input type="password" name="currentPW" value="" placeholder="Current password">
       <input type="password" name="newPW" value="" placeholder="New password">
       <input type="password" name="newPW2" value="" placeholder="Repeat new password">
-      <input type="submit" name="submit" value="Change password">
+      <button type="submit" name="submit">Change password</button>
     </form>
   </section>
 
@@ -101,9 +101,9 @@ if ($_SESSION["access"] == 2 ) { ?>
     <?php // USER FEEDBACK add guest user
     if (isset($_GET["user"])) {
       if ($_GET["user"] == "registered") { ?>
-        <div class="error feedback">The email is already registered</div> <?php
+        <div class="error feedback fadeOut">The email is already registered</div> <?php
       } elseif ($_GET["user"] == "success") { ?>
-        <div class="feedback">
+        <div class="feedback fadeOut">
           The user was added successfully! <br>
           User name: <?php echo $_SESSION["user_email"]; ?> <br>
           Password: <?php echo $_SESSION["user_pw"]; ?>
@@ -117,7 +117,7 @@ if ($_SESSION["access"] == 2 ) { ?>
       <input type="text" name="lname" value="" placeholder="Last name" required="required">
       <input type="email" name="email" value="" placeholder="Email" required="required">
       <input type="text" name="password" value="" placeholder="Password" required="required">
-      <input type="submit" name="submit" value="Create new user">
+      <button type="submit" name="submit">Create new user</button>
     </form> <?php
 
      ?>

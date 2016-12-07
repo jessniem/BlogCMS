@@ -62,12 +62,31 @@ p {
   text-align: center;
   position: absolute;
   top: 20%;
-
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 2s;
+  -webkit-animation-fill-mode: both;
 }
 .error {
   color: $echogrey;
   background-color: $echored;
 }
+@-webkit-keyframes fadeOut {
+            0% {opacity: 1;}
+            100% {opacity: 0;}
+         }
+
+         @keyframes fadeOut {
+            0% {opacity: 1;}
+            100% {opacity: 0;}
+         }
+
+         .fadeOut {
+            -webkit-animation-name: fadeOut;
+            animation-name: fadeOut;
+         }
 
 /* ***************************
            BANNER

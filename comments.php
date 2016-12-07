@@ -6,7 +6,7 @@ include_once "./includes/top.php";
 
 // USER FEEDBACK when email address on comment is invalid
 if (isset($_GET["email"]) && $_GET["email"] == "invalid") { ?>
-    <div class="error feedback">Your email is not valid</div> <?php
+    <div class="error feedback fadeOut">Your email is not valid</div> <?php
 }
 ?>
 <main>
