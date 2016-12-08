@@ -45,9 +45,11 @@ $totalDrafts = $data['total'];
 	</section>
 
 	<!-- UPDATE POST -->
-	<?php
-	editPost();
-	?>
+	<div id="update">	
+		<?php
+		editPost();
+		?>
+	</div>
 </main>
 
 <?php

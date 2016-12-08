@@ -84,8 +84,8 @@ function listPostAdmin($isPub) {
         <div class="flex-list row">
           <div class="title">
             <a href="edit_posts.php?delete=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this post?');" class="trash"><i class="fa fa-trash-o"></i></a>
-            <a href="edit_posts.php?edit=<?php echo $id; ?>"><i class="fa fa-pencil"></i></a>
-            <a href="edit_posts.php?edit=<?php echo $id; ?>"> <?php echo $title;?> </a>
+            <a href="edit_posts.php?edit=<?php echo $id; ?>#update"><i class="fa fa-pencil"></i></a>
+            <a href="edit_posts.php?edit=<?php echo $id; ?>#update"> <?php echo $title;?> </a>
           </div>
           <div class="create-date">
             <?php echo $date; ?>

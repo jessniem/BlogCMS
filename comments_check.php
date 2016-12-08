@@ -17,7 +17,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $query = "INSERT INTO comments VALUES (NULL, '$email', NULL, '$name', '$postid', '$comment')";
   if ($stmt->prepare($query)) {
       $stmt->execute();
-      header ("Location: comments.php?post=$postid");
+      header ("Location: comments.php?post=$postid#comments");
   } else {
     echo mysqli_error();
   }

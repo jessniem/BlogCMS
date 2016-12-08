@@ -83,7 +83,7 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") { ?>
   //print out the comments
   foreach ($comments as $var) {
     $time = strtotime($var["date"]);?>
-    <div class="comment">
+    <div class="comment" id="comments">
       <div class="comment-fa">
         <i class="fa fa-user-circle" aria-hidden="true"></i>
       </div>
