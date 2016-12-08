@@ -79,7 +79,6 @@ function listPostAdmin($isPub) {
       $stmt->fetch();
 
       while (mysqli_stmt_fetch($stmt)) {
-
         $date = substr($createDate, 0, -9);
         ?>
         <div class="flex-list row">
@@ -123,6 +122,7 @@ function editPost() {
             <div class="upload-image">
               <h2>Upload image</h2>
               <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)">
+              <label>Text about the image (for SEO and accessibility):</label>
               <input type="text" name="alt" value="<?php echo $alt; ?>">
             </div> <!-- .upload-image -->
             <!-- IMAGE PREVIEW -->
@@ -266,8 +266,14 @@ function saveOrPub($isPub){
   }
 
   if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
-			//filluppladdningen har gått bra!
-			echo "Filuppladdningen gick bra!";
+			//filluppladdningen har gått bra! ?>
+			<div class="feedback fadeOut"> <?php
+      if ($isPub == 1) {
+        echo "The post has been published!";
+      } else {
+        echo "The post has been saved as a draft!";
+      } ?>
+			</div> <?php
 
 			$query = "INSERT INTO posts VALUES
       (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', '$alt', NULL, '{$isPub}')";
@@ -279,8 +285,10 @@ function saveOrPub($isPub){
       } else {
         echo mysqli_error();
       }
-    } else {
-      echo "Ett fel har uppstått";
+    } else { ?>
+      <div class="error feedback fadeOut">
+        Something went wrong, the post is not created.
+      </div> <?php
     }
 }
 

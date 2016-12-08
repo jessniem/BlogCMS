@@ -11,8 +11,10 @@ if (isset($_GET["delete"])) {
 		$id = $_GET["delete"];
 		$query = "DELETE FROM posts WHERE id = $id";
 		if ($stmt->prepare($query)) {
-      $stmt->execute();
-			echo "Post is deleted";
+      $stmt->execute(); ?>
+			<div class="feedback fadeOut">
+				The post is deleted!
+			</div> <?php
 		}
 }
 
@@ -47,9 +49,7 @@ $totalDrafts = $data['total'];
 	editPost();
 	?>
 </main>
+
 <?php
-
-
-
 include "./includes/footer.php";
 ?>

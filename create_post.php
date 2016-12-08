@@ -14,6 +14,7 @@ require_once "functions.php";
         <div class="upload-image">
           <h2>Upload image</h2>
           <input name="postImage" type="file" accept="image/*" onchange="loadFile(event)" required="required">
+          <label>Text about the image (for SEO and accessibility):</label>
           <input type="text" name="alt" value="" placeholder="Image description (alt)">
         </div> <!-- .upload-image -->
         <!-- IMAGE PREVIEW -->
@@ -47,6 +48,7 @@ require_once "functions.php";
     </form>
   </section>
 </main>
+
 <?php
 if (isset($_POST["publish"])) {
     saveOrPub(1);
@@ -54,6 +56,7 @@ if (isset($_POST["publish"])) {
     saveOrPub(0);
   }
 ?>
+
 <?php
 include "./includes/footer.php";
 ?>
