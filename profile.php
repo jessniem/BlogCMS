@@ -132,4 +132,5 @@ if ($_SESSION["access"] == 2 ) { ?>
 </main>
 
 <?php
+include_once "./includes/footer.php";
  ?>
