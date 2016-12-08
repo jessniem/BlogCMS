@@ -23,7 +23,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
   }
 
   } else {
-    header ("Location: comments.php?post=$postid&email=invalid");
+    header ("Location: comments.php?post=$postid&email=invalid#start");
 
 }
 
