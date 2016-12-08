@@ -70,7 +70,7 @@ function listPostAdmin($isPub) {
     global $conn;
     $userId = $_SESSION["userId"];
     $stmt = $conn->stmt_init();
-    $query = "SELECT id, title, createDate FROM posts WHERE isPub = '{$isPub}' AND userid = '{$userId}'";
+    $query = "SELECT id, title, createDate FROM posts WHERE isPub = '{$isPub}' AND userid = '{$userId}' ORDER BY createDate DESC";
 
     if ($stmt->prepare($query)) {
       $stmt->execute();
@@ -83,7 +83,7 @@ function listPostAdmin($isPub) {
         ?>
         <div class="flex-list row">
           <div class="title">
-            <a href="edit_posts.php?delete=<?php echo $id; ?>" class="trash"><i class="fa fa-trash-o"></i></a>
+            <a href="edit_posts.php?delete=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this post?');" class="trash"><i class="fa fa-trash-o"></i></a>
             <a href="edit_posts.php?edit=<?php echo $id; ?>"><i class="fa fa-pencil"></i></a>
             <a href="edit_posts.php?edit=<?php echo $id; ?>"> <?php echo $title;?> </a>
           </div>
