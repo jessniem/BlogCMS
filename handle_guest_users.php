@@ -3,6 +3,8 @@ session_start();
 require_once "db_connection.php";
 require_once "functions.php";
 
+// ADD NEW GUEST USER
+
 $email = sanitizeMySql($conn, $_POST['email']);
 $password = $_POST['password'];
 $pw = password_hash($password, CRYPT_BLOWFISH);
@@ -32,10 +34,20 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
     } else {
       echo mysqli_error();
     }
-
   }
 
 } else {
   header("Location: profile.php?user=invalid_email");
 }
+
+
+// DELETE GUEST USER
+
+if (isset($_GET["delete"])) {
+  $stmt = $conn->stmt_init();
+  $query = "DELETE "
+}
+
+
+
  ?>

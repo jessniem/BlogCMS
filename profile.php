@@ -113,22 +113,32 @@ if ($_SESSION["access"] == 2 ) { ?>
       }
     } ?>
 
+    <h3>Guest users</h3> <?php
+    $query = "SELECT id, email, firstName, lastName FROM users WHERE accesslevel = 3";
+    if($stmt->prepare($query)) {
+      $stmt->execute();
+      $stmt->bind_result($id, $email, $firstname, $lastname);
+      $stmt->fetch();
+
+      while (mysqli_stmt_fetch($stmt)) { ?>
+        <div class="flex-list row">
+            <a href="handle_guest_users.php?delete=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="trash"><i class="fa fa-trash-o"></i></a>
+            <?php echo "$firstname $lastname - $email"; ?>
+        </div> <?php
+      }
+    }?>
+
+
     <h3>Add new guest user</h3>
-    <form class="addGuest" action="add_guest.php" method="post">
+    <form class="addGuest" action="handle_guest_users.php" method="post">
       <input type="text" name="fname" value="" placeholder="First name" required="required">
       <input type="text" name="lname" value="" placeholder="Last name" required="required">
       <input type="email" name="email" value="" placeholder="Email" required="required">
       <input type="text" name="password" value="" placeholder="Password" required="required">
       <button type="submit" name="submit">Create new user</button>
-    </form> <?php
-
-     ?>
-
+    </form>
   </section>  <?php
-}
- ?>
-
-
+} ?>
 </main>
 
 <?php
