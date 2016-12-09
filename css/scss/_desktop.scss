@@ -178,7 +178,6 @@ div.post-content {
             margin:20px 40px 20px 0; 
           }
           p {
-            margin-top: 25px; 
             width: 85%;
             line-height: 1.5em;  
           }
@@ -234,6 +233,38 @@ create_post.php/view_posts.php
     margin: 30px;
   }
 }
+
+ /* ***************************
+           PROFILE
+          profile.php
+*************************** */
+.profile {
+  display:flex; 
+  flex-direction:row; 
+  justify-content: flex-start; 
+  flex-wrap: wrap; 
+
+  .flex {
+    width:50%;
+    
+  }
+    img {
+      width:70%;
+    }
+    button {
+      width: 100%;
+    }
+    .description {
+      margin-top: 50px;
+    }
+    .password {
+      margin-top: 61px;
+    }
+    .guest {
+      padding: 40px;
+    }
+} 
+
 
 /* ***************************
            FOOTER

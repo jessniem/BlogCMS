@@ -675,6 +675,28 @@ create_post.php/view_posts.php
   }
 }
 
+
+ /* ***************************
+           PROFILE
+          profile.php
+*************************** */
+
+.admin-main {
+  section {
+    textarea {
+      width:100%;
+      height: 300px;  
+    }
+
+    input {
+      width:100%; 
+    }
+
+  }
+ }
+   
+
+
 /* ***************************
            FOOTER
     index.php/comments.php
