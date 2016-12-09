@@ -1,15 +1,16 @@
 <?php
 require_once "db_connection.php";
 include_once "./includes/head.php";
-include_once "./includes/top_admin.php";
+include_once "./includes/top.php";
 require_once "functions.php";
 ?>
 
-<main>
+<main class="about-main">
+
 	<section>
 	<h1>About me</h1>
     <?php
-    $id = $_SESSION["userId"];
+    //$id = $_SESSION["userId"];
     $stmt = $conn->stmt_init();
     $query = "SELECT * FROM users WHERE id = 2";
 
@@ -22,8 +23,17 @@ require_once "functions.php";
     ?>
     <img src="<?php echo $profilepic; ?>" alt="<?php echo $profilepic; ?>">
     <?php
-    echo "$description";
-    echo "$email";
+    echo "<p>" . $description . "</p>";
     ?>
+        <div class="email"> 
+            <h2>Contact and inquiries</h2>
+            <a href="mailto: <?php echo "$email"; ?>">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            <?php echo $email; ?>
+            </a>
+        </div> 
 	</section>
 </main>
+
+
+<?php include_once "./includes/footer.php"; ?>

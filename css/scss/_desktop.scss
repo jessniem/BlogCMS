@@ -160,6 +160,37 @@ div.post-content {
   }
  }
 
+
+ /* ***************************
+           ABOUT ME
+    aboutme.php
+*************************** */
+
+.about-main {
+    margin-top: 80px;
+
+      section {
+        padding: 40px;
+      
+          img {
+            width: 30%;
+            float:left; 
+            margin:20px 40px 20px 0; 
+          }
+          p {
+            margin-top: 20px; 
+            width: 85%;
+            line-height: 1.5em;  
+          }
+          .email {
+            clear:both;
+            
+            
+        }
+    }
+}
+
+
 /* ***************************
          POST FORM
 create_post.php/view_posts.php
@@ -277,3 +308,4 @@ footer {
     padding: 0 10px;
   }
 }
+
