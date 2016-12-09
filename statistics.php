@@ -6,7 +6,6 @@ include "./db_connection.php";
 $stmt = $conn->stmt_init();
 // logged in user id
 $id = $_SESSION["userId"];
-
 $totalP = "SELECT count(*) as total FROM posts WHERE isPub = 1 AND userid = $id";
 
 if ($stmt->prepare ($totalP)) {
@@ -15,7 +14,7 @@ if ($stmt->prepare ($totalP)) {
 	$stmt->fetch();
 }
 
-$totalC = "SELECT count(*) as total FROM comments"; // TODO Lös det så att vi bara räknar kommentarer på de inlägg som är gjorda av den inloggade usern, nu räknar vi alla...
+$totalC = "SELECT count(*) as total FROM comments JOIN posts ON (comments.postid = posts.id) WHERE userid = $id;"; 
 
 if ($stmt->prepare ($totalC)) {
 	$stmt->execute();

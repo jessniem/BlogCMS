@@ -17,14 +17,14 @@ if (isset($_GET["delete"])) {
 			</div> <?php
 		}
 }
-
+$userid = $_SESSION['userId'];
 // count number of published posts
-$published = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1");
+$published = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1 AND userid = $userid");
 $data = mysqli_fetch_assoc($published);
 $totalPub = $data['total'];
 
 // count number of drafts
-$drafts = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 0");
+$drafts = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 0 AND userid = $userid");
 $data = mysqli_fetch_assoc($drafts);
 $totalDrafts = $data['total'];
 
@@ -45,7 +45,7 @@ $totalDrafts = $data['total'];
 	</section>
 
 	<!-- UPDATE POST -->
-	<div id="update">	
+	<div id="update">
 		<?php
 		editPost();
 		?>
