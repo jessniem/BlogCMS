@@ -120,6 +120,7 @@ if ($_SESSION["access"] == 2 ) { ?>
       $stmt->bind_result($id, $email, $firstname, $lastname);
       $stmt->fetch();
 
+      // TODO: Kan man göra detta med POST för att göra det säkrare?
       while (mysqli_stmt_fetch($stmt)) { ?>
         <div class="flex-list row">
             <a href="handle_guest_users.php?delete=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this user?');" class="trash"><i class="fa fa-trash-o"></i></a>
