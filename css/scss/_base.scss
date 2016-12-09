@@ -60,19 +60,23 @@ p {
 
 .feedback {
   color: $echogrey;
-  padding: 30px;
+  font-size: 1.3em;
+  padding: 60px 100px;
   background-color: $echodarkblue;
   text-align: center;
   position: absolute;
-  top: 100px; /* Ändra detta för kommentarssidan */
+  top: 100px;
   left:  50%;
-  animation-duration: 3s;
-  animation-delay: 2s;
+  animation-duration: 2s;
+  animation-delay: 1.5s;
   animation-fill-mode: both;
-  -webkit-animation-duration: 3s;
-  -webkit-animation-delay: 2s;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 1.5s;
   -webkit-animation-fill-mode: both;
   @include centerer;
+}
+.comment-feedback {
+  top: 850px;
 }
 .error {
   color: $echogrey;
