@@ -22,7 +22,7 @@ if (!empty($_POST)) {
         exit;
     }
 
-    if ($_SESSION["access"] == 2) {
+    if ($_SESSION["access"] <= 2) {
 
       $stmt = $conn->stmt_init();
       $query = "INSERT INTO users VALUES (NULL, 3, '$email', '$pw', '$fn', '$ln',  NULL, NULL)";

@@ -18,13 +18,21 @@ if (isset($_GET["delete"])) {
 		}
 }
 $userid = $_SESSION['userId'];
-// count number of published posts
-$published = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1 AND userid = $userid");
+$access = $_SESSION["access"];
+
+// Count drafts & published posts
+if ($access == 1) { //if admin
+	// count number of all published posts for admin
+	$published = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1");
+	$drafts = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 0");
+} else { // if user or guest
+	// count number of published posts by user
+	$published = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1 AND userid = $userid");
+	$drafts = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 0 AND userid = $userid");
+}
 $data = mysqli_fetch_assoc($published);
 $totalPub = $data['total'];
 
-// count number of drafts
-$drafts = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 0 AND userid = $userid");
 $data = mysqli_fetch_assoc($drafts);
 $totalDrafts = $data['total'];
 
@@ -35,12 +43,12 @@ $totalDrafts = $data['total'];
 		 	if ($totalDrafts > 0) { ?>
 				<h2>Drafts (<?php echo $totalDrafts; ?>)</h2> <?php
 				// LIST OF CREATED DRAFTS
-				listPostAdmin(0);
+				listPostAdmin(0, $access);
 		 	}
 			if ($totalPub > 0) { ?>
 				<h2>Published posts (<?php echo $totalPub; ?>)</h2> <?php
 				// LIST OF CREATED DRAFTS
-				listPostAdmin(1);
+				listPostAdmin(1, $access);
 			} ?>
 	</section>
 

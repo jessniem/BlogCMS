@@ -3,6 +3,7 @@ include "./includes/head.php";
 include "db_connection.php";
 
 //If email or password is empty
+// TODO Fixa feedback ??
 if (isset($_GET['login']) && $_GET["login"] == "empty") {
 		echo "<p class='fail'>You must fill in email address and password</p>";
 		//If email or password doesn't match db

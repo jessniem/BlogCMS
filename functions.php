@@ -66,16 +66,27 @@ function printPost($index, $num) {
 *
 * @param int $isPub Send in 0 to print out unpublished, 1 for published posts
 **/
-function listPostAdmin($isPub) {
+function listPostAdmin($isPub, $access) {
+
     global $conn;
     $userId = $_SESSION["userId"];
     $stmt = $conn->stmt_init();
-    $query = "SELECT id, title, createDate FROM posts WHERE isPub = '{$isPub}' AND userid = '{$userId}' ORDER BY createDate DESC";
+    if ($access == 1) {
+      $query = "SELECT posts.id, posts.title, posts.createDate, users.firstName, users.lastName FROM posts
+                JOIN users ON (posts.userid = users.id)
+                WHERE isPub = '{$isPub}' ORDER BY createDate DESC";
+    } else {
+      $query = "SELECT id, title, createDate FROM posts WHERE isPub = '{$isPub}' AND userid = '{$userId}' ORDER BY createDate DESC";
+    }
 
     if ($stmt->prepare($query)) {
       $stmt->execute();
-
-      $stmt->bind_result($id, $title, $createDate);
+      if ($access == 1) {
+        // if admin, present the name of the author in the list
+        $stmt->bind_result($id, $title, $createDate, $fn, $ln);
+      } else {
+        $stmt->bind_result($id, $title, $createDate);
+      }
       $stmt->fetch();
 
       while (mysqli_stmt_fetch($stmt)) {
@@ -87,7 +98,10 @@ function listPostAdmin($isPub) {
             <a href="edit_posts.php?edit=<?php echo $id; ?>#update"><i class="fa fa-pencil"></i></a>
             <a href="edit_posts.php?edit=<?php echo $id; ?>#update"> <?php echo $title;?> </a>
           </div>
-          <div class="create-date">
+          <div class="create-date"> <?php
+            if ($access == 1) {
+              echo "$fn $ln | ";
+            }?>
             <?php echo $date; ?>
           </div>
         </div>
