@@ -3,26 +3,48 @@ include "./includes/head.php";
 include "./includes/top_admin.php";
 include "./db_connection.php";
 
-$stmt = $conn->stmt_init();
-// logged in user id
-$id = $_SESSION["userId"];
-$totalP = "SELECT count(*) as total FROM posts WHERE isPub = 1 AND userid = $id";
+$access = $_SESSION["access"];
 
+$stmt = $conn->stmt_init();
+if ($access == 1) {
+	$user = "admin";
+} else {
+	$user = "notadmin";
+}
+$userid = $_SESSION["userId"];
+
+switch ($user) {
+	case 'admin':
+		$totalP = "SELECT count(*) as total FROM posts WHERE isPub = 1";
+		break;
+	default:
+		$totalP = "SELECT count(*) as total FROM posts WHERE isPub = 1 AND userid = $userid";
+		break;
+}
 if ($stmt->prepare ($totalP)) {
 	$stmt->execute();
 	$stmt->bind_result($totalPosts);
 	$stmt->fetch();
 }
 
-$totalC = "SELECT count(*) as total FROM comments JOIN posts ON (comments.postid = posts.id) WHERE userid = $id;"; 
-
+switch ($user) {
+	case 'admin':
+		$totalC = "SELECT count(*) as total FROM comments";
+		break;
+	default:
+		$totalC = "SELECT count(*) as total FROM comments JOIN posts ON (comments.postid = posts.id) WHERE userid = $userid;";
+		break;
+}
 if ($stmt->prepare ($totalC)) {
 	$stmt->execute();
 	$stmt->bind_result($totalComments);
 	$stmt->fetch();
 }
-
-$totalS = $totalComments / $totalPosts;
+if ($totalComments == 0) {
+	$totalS = 0;
+} else {
+	$totalS = $totalComments / $totalPosts;
+}
 
 ?>
 <main class="admin-main">
