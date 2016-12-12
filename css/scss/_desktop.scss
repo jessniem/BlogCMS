@@ -214,8 +214,9 @@ create_post.php/view_posts.php
          VIEW/EDIT POSTS
         view_posts.php
 *************************** */
-.post-list > .flex-list {
-  flex-direction: row;
+
+.img-preview img {
+  margin-left: 10px;
 }
 
 
@@ -253,12 +254,6 @@ create_post.php/view_posts.php
     }
     button {
       width: 100%;
-    }
-    .description {
-      margin-top: 50px;
-    }
-    .password {
-      margin-top: 61px;
     }
     .guest {
       padding: 40px;
