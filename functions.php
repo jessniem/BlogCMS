@@ -82,7 +82,7 @@ function listPostAdmin($isPub, $access) {
     if ($stmt->prepare($query)) {
       $stmt->execute();
       if ($access == 1) {
-        // if admin, present the name of the author in the list
+        // if admin, also present the name of the author in the list
         $stmt->bind_result($id, $title, $createDate, $fn, $ln);
       } else {
         $stmt->bind_result($id, $title, $createDate);
@@ -99,6 +99,7 @@ function listPostAdmin($isPub, $access) {
             <a href="edit_posts.php?edit=<?php echo $id; ?>#update"> <?php echo $title;?> </a>
           </div>
           <div class="create-date"> <?php
+          // Print out the autor of the post when logged in for admin
             if ($access == 1) {
               echo "$fn $ln | ";
             }?>
