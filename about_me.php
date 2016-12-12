@@ -1,8 +1,13 @@
 <?php
 require_once "db_connection.php";
 include_once "./includes/head.php";
-include_once "./includes/top.php";
 require_once "functions.php";
+if (isset($_SESSION["logged_in"])) {
+	include "./includes/top_admin.php";
+	include "./includes/top.php";
+} else {
+	include_once "./includes/top.php";
+}
 ?>
 
 <main class="about-main">
@@ -25,13 +30,13 @@ require_once "functions.php";
     <?php
     echo "<p>" . $description . "</p>";
     ?>
-        <div class="email"> 
+        <div class="email">
             <h2>Contact and inquiries</h2>
             <a href="mailto: <?php echo "$email"; ?>">
             <i class="fa fa-envelope-o" aria-hidden="true"></i>
             <?php echo $email; ?>
             </a>
-        </div> 
+        </div>
 	</section>
 </main>
 
