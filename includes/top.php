@@ -1,3 +1,10 @@
+<?php
+require_once "db_connection.php";
+
+$stmt = $conn->stmt_init();
+ ?>
+
+
 <!--- hamburger menu ---->
 <div class="menu2">
 	<header class="hamburgerheader">
@@ -44,7 +51,12 @@
 		</ul>
 </div>
 </div>
+<?php
+if (isset($_SESSION["logged_in"])) {
 
+}
+
+?>
 <!-- Topmenu -->
 <div class="menu top-menu">
 	<ul>
@@ -75,8 +87,19 @@
 			<li>
 				<button class="dropdown-btn">Months <i class="fa fa-caret-down" aria-hidden="true"></i></button>
 			</li>
-			<div class="dropdown-content">
-				<a class="month" href="index.php?month=1">January</a>
+			<div class="dropdown-content"> <?php
+				$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+				for($i = 0; $i<13; $i++) {
+					$query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = months['$i']");
+					$data = mysqli_fetch_assoc($query);
+					$monthsum = $data['total'];
+					if($monthsum == 0) { ?>
+					<a class="month empty" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a> <?php
+					} else { ?>
+						<a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a><?php
+					}
+				}?>
+
 				<a class="month" href="index.php?month=2">February</a>
 				<a class="month" href="index.php?month=3">March</a>
 				<a class="month" href="index.php?month=4">April</a>

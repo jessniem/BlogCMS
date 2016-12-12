@@ -131,25 +131,23 @@ $totalDrafts = $data['total'];
 	          $userId = sanitizeMySql($conn, $_SESSION["userId"]);
 	          $content = sanitizeMySql($conn, $_POST["content"]);
 
-	          //echo $image;
+						$query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}', content = '{$content}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'";
 
-	          if($image != $targetname) {
+						if(move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
+							$query .= ", image = '{$targetname}'";
+						}
 
-	            if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
-	                echo "Filuppladdningen gick bra!";
-	            }
-	            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
-	          } else {
-	            $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}',content = '{$content}', image = '{$targetname}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'  WHERE id = '{$id}'";
-	          }
-	      }
-	      $stmt = $conn->stmt_init();
+						$query .= " WHERE id = '{$id}'";
 
-	      if ($stmt->prepare($query)) {
-	       $stmt->execute();
-	      } else {
-	       echo mysqli_error();
-	      }
+						// kör queryn
+						$stmt = $conn->stmt_init();
+
+						if ($stmt->prepare($query)) {
+							$stmt->execute();
+						} else {
+							echo mysqli_error();
+						}
+	      	}
 	      }
 	    }
 	  } ?>

@@ -87,7 +87,6 @@ function listPostAdmin($isPub, $access) {
       } else {
         $stmt->bind_result($id, $title, $createDate);
       }
-      $stmt->fetch();
 
       while (mysqli_stmt_fetch($stmt)) {
         $date = substr($createDate, 0, -9);
@@ -99,7 +98,7 @@ function listPostAdmin($isPub, $access) {
             <a href="edit_posts.php?edit=<?php echo $id; ?>#update"> <?php echo $title;?> </a>
           </div>
           <div class="create-date"> <?php
-          // Print out the autor of the post when logged in for admin
+          // Print out the autor of the post when logged in as admin
             if ($access == 1) {
               echo "$fn $ln | ";
             }?>
