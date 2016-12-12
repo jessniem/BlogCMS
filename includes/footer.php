@@ -6,9 +6,9 @@
         </ul>
     </div>
     <div class="social">
-        <a href="#"><i class="fa fa-facebook-official"></i></a>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-        <a href="#"><i class="fa fa-tumblr-square"></i></a>
+        <a href="https://www.facebook.com/angelina.fredriksson"><i class="fa fa-facebook-official"></i></a>
+        <a href="https://www.instagram.com/angelinaf/"><i class="fa fa-instagram"></i></a>
+        <a href="http://angelinafredriksson-blog.tumblr.com/"><i class="fa fa-tumblr-square"></i></a>
     </div>
     <div>
          &copy; Angelina Fredriksson 2016
