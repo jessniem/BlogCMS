@@ -41,8 +41,7 @@ ul {
   }
 }
 h1, h2, h3, h4 {
-  margin: 0;
-  margin-bottom:10px;
+  margin: 0 0 10px 0;
 }
 p {
   color: $echodarkturq;
@@ -57,7 +56,6 @@ p {
 .realtive {
   position: relative;
 }
-
 .feedback {
   color: $echogrey;
   font-size: 1.3em;
@@ -83,17 +81,17 @@ p {
   background-color: $echored;
 }
 @-webkit-keyframes fadeOut {
-            0% {opacity: 1;}
-            100% {opacity: 0;}
-         }
-         @keyframes fadeOut {
-            0% {opacity: 1;}
-            100% {opacity: 0;}
-         }
-         .fadeOut {
-            animation-name: fadeOut;
-            -webkit-animation-name: fadeOut;
-         }
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+.fadeOut {
+  animation-name: fadeOut;
+  -webkit-animation-name: fadeOut;
+}
 
 /* ***************************
            BANNER
@@ -119,13 +117,13 @@ p {
     index.php/comments.php
 *************************** */
 
-.hamburgerheader{
+.hamburgerheader {
   width:100%;
   background:$echoturq;
   height:60px;
   line-height:60px;
 }
-.hamburger{
+.hamburger {
   background:none;
   position:absolute;
   top:0;
@@ -140,7 +138,7 @@ p {
   outline:none;
   z-index:10000000000000;
 }
-.cross{
+.cross {
   background:none;
   position:absolute;
   top:0px;
@@ -259,7 +257,6 @@ main {
   min-height: 500px;
 }
 .admin-main {
-  // margin-top: 0;
   section {
     box-sizing: border-box;
     background-color: #fff;
@@ -271,12 +268,6 @@ main {
          BLOG POSTS
          index.php
 *************************** */
-
-// Gammal klass som användes för "load-more"
-
-// .load-post {
-//   display:none;
-// }
 
 .post {
   box-sizing: border-box;
@@ -355,15 +346,15 @@ main {
 
 /* ***************************
            FORMS
-    all pages with forms
+     base for all forms
 *************************** */
 
 form {
   margin-top: 40px;
   input[type="file"] {
-    border:none;
-    padding:0;
-    margin-top:20px;
+    border: none;
+    padding: 0;
+    margin-top: 20px;
   }
   input, button, textarea {
     border-radius: 5px;
@@ -373,7 +364,7 @@ form {
   input, textarea {
     box-sizing: border-box;
     padding: 10px;
-    border:1px solid #ccc;
+    border: 1px solid #ccc;
   }
   input, button {
     height: 40px;
@@ -390,7 +381,6 @@ form {
     color:#fff;
   }
 }
-
 
 /* ***************************
           COMMENTS
@@ -412,13 +402,11 @@ form {
     font-size: 1.2em;
   }
 }
-
 .post-container {
   .post {
     margin: 0;
   }
 }
-
 .comment-form, .comment {
   background-color: #fff;
 }
@@ -448,7 +436,6 @@ form {
       font-size: 2em;
     }
   }
-
   .comment-content {
     flex: 3;
     p {
@@ -462,49 +449,42 @@ form {
   }
 }
 
-
- /* ***************************
+/* ***************************
            ABOUT ME
-        aboutme.php
+         aboutme.php
 *************************** */
+
 .about-main {
   section {
     background-color:white;
     padding:20px 0 40px 0;  
-
     h1 {
       padding-left: 20px; 
       color:$echoturq; 
     }
-
     img {
       width:100%; 
       margin: 20px 0 20px 0; 
     }
-
     p {
       padding:0 20px; 
     }
     .email {
        margin-top: 20px; 
        padding: 0 20px; 
-
       h2 {
          color:$echoturq;
       }
-
       .fa {
          font-size: 1.3em; 
          margin-right: 5px; 
       }
-    
       a {
         font-size: 1.1em; 
+      }
     }
-   }
   }
 }
-
 
 /* ***************************
          LOGIN PAGE
@@ -605,10 +585,12 @@ create_post.php/view_posts.php
     color: $echored;
   }
 }
+
 /* ***************************
          VIEW/EDIT POSTS
         view_posts.php
 *************************** */
+
 .post-list {
   .flex-list{
   display: flex;
@@ -637,12 +619,9 @@ create_post.php/view_posts.php
     }
   }
 }
-
 .edit-form {
   border-top: 2px dotted #ccc;
 }
-
-
 
 /* ***************************
            STATISTICS
@@ -678,35 +657,61 @@ create_post.php/view_posts.php
   }
 }
 
-
- /* ***************************
+/* ***************************
            PROFILE
           profile.php
 *************************** */
 
-.admin-main {
+// .admin-main {
+//   section {
+//     // padding: 20px 10px;
+//     .flex {
+//       padding: 0;
+//       margin-bottom: 30px;
+//       form {
+//         margin-top: 15px;
+//       }
+//     }
+//     textarea {
+//       width:100%;
+//       height: 300px;
+//     }
+//     input {
+//       width:100%; 
+//     }
+//   }
+// }
+
+.profile {
   section {
-    padding: 20px 10px;
-    .flex {
-      padding: 0;
-      margin-bottom: 30px;
-      form {
-        margin-top: 15px;
+    padding: 0;
+    .img-preview {
+      img {
+        margin: 0;
       }
     }
-    textarea {
-      width:100%;
-      height: 300px;
+    .upload-image {
+      margin-bottom: 20px;
     }
-
-    input {
-      width:100%; 
-    }
-
   }
- }
-   
-
+  section:not(.profile-info) {
+    margin-top: 40px;
+    width: 100%;
+    form {
+      margin: 0;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    textarea {
+      height: 200px;
+    }
+    button {
+      width: 100%;
+    }
+  }
+}
 
 /* ***************************
            FOOTER

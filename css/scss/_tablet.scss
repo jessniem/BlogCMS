@@ -32,9 +32,9 @@ main {
 	margin-bottom: 80px;
 	.post-img {
 		flex: 1.5;
-	img {
-	  width: 100%;
-	}
+  	img {
+  	  width: 100%;
+  	}
 	}
 	.post-text {
 		flex: 1;
@@ -70,29 +70,25 @@ main {
         aboutme.php
 *************************** */
 .about-main {
-
 	section {
-		padding:20px 20px 40px 20px;
-
+		padding: 20px 20px 40px 20px;
 	  h1 {
-		padding:0; 
+		  padding: 0; 
 		}
-
-      img {
-        width: 40%;
-        float:left; 
-        margin:20px 20px 20px 0; 
-      }
-      p {
-      	margin-top:25px; 
-        width: 95%;
-        line-height: 1.5em;  
-        padding:0; 
-      }
-      .email {
-        clear:both;
-        padding:0; 
-            
-      }
-   }
+    img {
+      width: 40%;
+      float: left; 
+      margin: 20px 20px 20px 0; 
+    }
+    p {
+    	margin-top:25px; 
+      width: 95%;
+      line-height: 1.5em;  
+      padding: 0; 
+    }
+    .email {
+      clear: both;
+      padding: 0;   
+    }
+  }
 }
