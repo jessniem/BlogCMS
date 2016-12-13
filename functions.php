@@ -40,18 +40,18 @@ function printPost($index, $num) {
       <div class="load-post">
         <article class="post">
           <div class="post-img">
-            <img src="<?php echo $post['image']; ?>" alt="<?php echo $post['alt']; ?>">
+            <a href="comments.php?post=<?php echo $post['id'] ?>#start"><img src="<?php echo $post['image']; ?>" alt="<?php echo $post['alt']; ?>"></a>
           </div>
           <div class="post-text">
             <div>
-              <p class="tags"><?php echo $post["tag"]; ?></p>
-              <h1><?php echo $post["title"]; ?></h1>
+              <p class="tags"><i class="fa fa-hashtag" aria-hidden="true"></i> <?php echo $post["tag"]; ?></p>
+              <h1><a href="comments.php?post=<?php echo $post['id'] ?>#start"><?php echo $post["title"]; ?></a></h1>
               <div class="blog-content"><?php echo $post["content"]; ?></div>
             </div>
             <div>
               <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p> <?php
               if ($index) { ?>
-                  <a href="comments.php?post=<?php echo $post['id'] ?>#start"><p class="comments">Comments (<?php echo $num; ?>)</p></a><?php
+                  <a href="comments.php?post=<?php echo $post['id'] ?>#start"><p class="comments"><i class="fa fa-comment" aria-hidden="true"></i> Comments (<?php echo $num; ?>)</p></a><?php
               } ?>
             </div>
         </div> <!-- post-text -->

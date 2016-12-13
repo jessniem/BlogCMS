@@ -292,16 +292,24 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    .tags, .post-info, .comments {
+    a, h1, .comments {
       color: $echoturq;
-      font-weight: 700;
-      font-size: 0.8em;
-    }
-    .comments {
-      text-decoration: underline;
       &:hover {
         color: $echodarkturq;
       }
+    }
+    .tags, .post-info, .comments {
+      font-weight: 700;
+      font-size: 0.8em;
+    }
+    .tags {
+      color: $echoturq;
+    }
+    .fa-hashtag {
+      font-size: 0.8em;
+    }
+    .fa-comment {
+      margin-right: 5px; 
     }
     div:first-child, .tags {
       margin-bottom: 25px;
@@ -310,7 +318,6 @@ main {
       line-height: 1.5em;
     }
     h1 {
-      color: $echoturq;
       font-size: 2.5em;
       font-weight: 300;
     }
