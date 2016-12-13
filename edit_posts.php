@@ -6,17 +6,33 @@ require_once "functions.php";
 
 $stmt = $conn->stmt_init();
 
-// Delete post
+// DELETE POST
 if (isset($_GET["delete"])) {
 		$id = $_GET["delete"];
 		$query = "DELETE FROM posts WHERE id = $id";
 		if ($stmt->prepare($query)) {
-      $stmt->execute(); ?>
+      		$stmt->execute(); 
+      		?>
 			<div class="feedback fadeOut">
 				The post is deleted!
-			</div> <?php
+			</div> 
+			<?php
 		}
 }
+//DELETE COMMENT
+if (isset($_GET["deleteComment"])) {
+		$commentid = $_GET["deleteComment"];
+		$query = "DELETE FROM comments WHERE id = $commentid";
+		if ($stmt->prepare($query)) {
+		    $stmt->execute(); 
+		    ?>
+			<div class="feedback fadeOut">
+				The comment is deleted!
+			</div> 
+			<?php
+		}
+}
+
 $userid = $_SESSION['userId'];
 $access = $_SESSION["access"];
 
@@ -38,7 +54,7 @@ $totalDrafts = $data['total'];
 
 ?>
 <main class="admin-main">
-	<section class="post-list">
+	<section class="list">
 		<h1>Edit posts</h1> <?php
 		 	if ($totalDrafts > 0) { ?>
 				<h2>Drafts (<?php echo $totalDrafts; ?>)</h2> <?php
@@ -51,15 +67,11 @@ $totalDrafts = $data['total'];
 				listPostAdmin(1, $access);
 			} ?>
 	</section> <?php
-
-
-	/**
-	* The function is used to update posts with get. //TODO: SKRIV BÄTTRE FUNKTIONSKOMMENTAR!
-	*
-	*
-	**/
-	function editPost() {
-	  if (isset ($_GET["edit"])) {
+ ?>
+	<!-- UPDATE POST -->
+	<div id="update">
+		<?php
+		  if (isset ($_GET["edit"])) {
 	    global $conn;
 	    $id = $_GET["edit"];
 	    $stmt = $conn->stmt_init();
@@ -72,7 +84,7 @@ $totalDrafts = $data['total'];
 	      $stmt->fetch();
 	?>
 	      <!-- ECHO OUT BLOG POST -->
-	      <section class="edit-form">
+	      <section class="border-top">
 	        <h1>Update post</h1>
 	        <form method="post" enctype="multipart/form-data">
 	          <div class="flex-container">
@@ -120,7 +132,7 @@ $totalDrafts = $data['total'];
 	            $isPub = 1;
 	          } else {
 	            $isPub = 0;
-	          }
+          	  }
 
 	          $targetfolder = "./illustrations/";
 	          $date = date('c');
@@ -131,38 +143,65 @@ $totalDrafts = $data['total'];
 	          $userId = sanitizeMySql($conn, $_SESSION["userId"]);
 	          $content = sanitizeMySql($conn, $_POST["content"]);
 
-						$query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}', content = '{$content}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'";
+				$query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}', content = '{$content}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'";
 
-						if(move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
-							$query .= ", image = '{$targetname}'";
-						}
+				if(move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
+					$query .= ", image = '{$targetname}'";
+				}
 
-						$query .= " WHERE id = '{$id}'";
+				$query .= " WHERE id = '{$id}'";
 
-						// kör queryn
-						$stmt = $conn->stmt_init();
+				// kör queryn
+				$stmt = $conn->stmt_init();
 
-						if ($stmt->prepare($query)) {
-							$stmt->execute();
-						} else {
-							echo mysqli_error();
-						}
+				if ($stmt->prepare($query)) {
+					$stmt->execute();
+				} else {
+					echo mysqli_error();
+			}
 	      	}
 	      }
 	    }
-	  } ?>
-
-
-
-
-
-
-	<!-- UPDATE POST -->
-	<div id="update">
-		<?php
-		editPost();
 		?>
 	</div>
+	<?php
+	//LISTS CURRENT COMMENTS
+	if (isset ($_GET["edit"])) {
+		$thisPostId = sanitizeMySql($conn, $_GET["edit"]);
+		$query = "SELECT * FROM comments WHERE postid = $thisPostId ORDER BY date DESC";
+
+		if ($stmt->prepare($query)) {
+		    $stmt->execute();
+		    $stmt->bind_result($commentid, $email, $date, $name, $postid, $commentText);
+		?>
+		<section class="list border-top">
+			<h2 class="comment-h2">Comments</h2>
+				<?php
+				while (mysqli_stmt_fetch($stmt)) {
+		        ?>
+		        <div class="flex-list row">
+		          <div class="comment-row">
+		            <a href="edit_posts.php?deleteComment=<?php echo $commentid; ?>" onclick="return confirm('Are you sure you want to delete this post?');" class="trash"><i class="fa fa-trash-o"></i></a>
+		            <?php echo $commentText;?>
+		          </div>
+		          <div class="create-date">
+		            <?php echo $email; ?>
+		          </div>
+		        </div>
+		    
+      			<?php 
+	    		}
+	    	//IF NO COMMENT AVAILABLE	
+		 	if ( empty($commentid) ) {
+			echo "<p>This post does not contain any comments</p>";
+			}
+		} 
+		?>
+		</section>
+		<?php
+	}
+	?>	
+	
 </main>
 
 <?php

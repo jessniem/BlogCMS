@@ -217,21 +217,26 @@ select {
 // OBS - Detta är egentligen "top-menyn" i amin-läget, eller? Egen klass?
 
 .filter-menu {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-items: center;
+ display: flex;
+ justify-content: flex-start;
+ flex-direction: row;
+ align-items: center;
 
-  .first {
-    display: flex;
-    flex: 2;
-  }
-  .logout {
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-    align-items: center;
-  }
+ .first {
+   display: flex;
+   flex: 2;
+ }
+ .logout {
+   display: flex;
+   flex: 1;
+   justify-content: flex-end;
+   align-items: center;
+ }
+ // Måndasmenyn när det inte finns inlägg
+ .empty {
+   color: $echogrey;
+   background-color: lightgrey;
+ }
 }
 
 //HIDES DESKTOP MENU
@@ -604,8 +609,8 @@ form {
         view_posts.php
 *************************** */
 
-.post-list {
-  h2 {
+.list {
+  h2:not(.comment-h2) {
     margin-top: 40px;
   }
   .flex-list{
@@ -622,18 +627,19 @@ form {
     margin-right: 15px;
     font-size: 1.3em;
   }
-  .title, .create-date {
-    height: 30px;
+  .title, .create-date, .comment-row {
     display: flex;
     align-items: center;
+    padding: 8px 0;
   }
+
   .row {
      &:nth-child(even) {
       background-color: $echogrey;
     }
   }
 }
-.edit-form {
+.border-top {
   border-top: 2px dotted #ccc;
 }
 
