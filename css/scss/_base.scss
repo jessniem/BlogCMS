@@ -336,11 +336,20 @@ main {
 .pagination {
   text-align: center;
   color: $echodarkturq;
+  a, span {
+    padding: 5px;
+    font-size: 1.6em;
+  } 
   a {
     color: $echoturq;
     &:hover {
-      color: $echodarkblue;
+      color: $echodarkturq;
     }
+  }
+  span {
+    font-weight: bold;
+    color: $echodarkturq;
+    text-decoration: underline;
   }
 }
 

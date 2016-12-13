@@ -160,7 +160,7 @@ if ($stmt->prepare($query)) {
         // current page
         if ($i == $currPage) {
            // make current page bold
-           echo " [<b>$i</b>] ";
+           echo "<span>$i</span> ";
         // make links of the other pages
         } else {
            // make it a link
