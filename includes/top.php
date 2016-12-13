@@ -1,7 +1,7 @@
 <?php
 require_once "db_connection.php";
 
-$stmt = $conn->stmt_init();
+
  ?>
 
 
@@ -84,28 +84,19 @@ if (!isset($_SESSION["logged_in"])) { ?>
 			</li>
 			<div class="dropdown-content"> <?php
 				$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-				for($i = 0; $i<13; $i++) {
-					$query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = months['$i']");
+				$stmt = $conn->stmt_init();
+
+				for($i = 0; $i<12; $i++) {
+          $month = $months["$i"];
+					$query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
 					$data = mysqli_fetch_assoc($query);
 					$monthsum = $data['total'];
 					if($monthsum == 0) { ?>
-					<a class="month empty" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a> <?php
+					<p class="month empty" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></p> <?php
 					} else { ?>
 						<a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a><?php
 					}
 				}?>
-
-				<a class="month" href="index.php?month=2">February</a>
-				<a class="month" href="index.php?month=3">March</a>
-				<a class="month" href="index.php?month=4">April</a>
-				<a class="month" href="index.php?month=5">May</a>
-				<a class="month" href="index.php?month=6">June</a>
-				<a class="month" href="index.php?month=7">July</a>
-				<a class="month" href="index.php?month=8">August</a>
-				<a class="month" href="index.php?month=9">September</a>
-				<a class="month" href="index.php?month=10">October</a>
-				<a class="month" href="index.php?month=11">November</a>
-				<a class="month" href="index.php?month=12">December</a>
 			</div>
 		</div> <!-- //dropdown -->
 	</ul>
