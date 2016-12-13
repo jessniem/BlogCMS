@@ -592,14 +592,17 @@ create_post.php/view_posts.php
 *************************** */
 
 .post-list {
+  h2 {
+    margin-top: 40px;
+  }
   .flex-list{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 10px;
-  // box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+    // box-sizing: border-box;
     .create-date {
       padding-left: 64px;
     }
@@ -693,8 +696,11 @@ create_post.php/view_posts.php
     .upload-image {
       margin-bottom: 20px;
     }
+    h2, label {
+      margin-bottom: 15px;
+    }
   }
-  section:not(.profile-info) {
+  section:not(.profile-pic) {
     margin-top: 40px;
     width: 100%;
     form {

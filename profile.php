@@ -7,7 +7,7 @@ require_once "functions.php";
 <main class="admin-main">
   <section class="profile"> 
     <h1>Your information</h1>
-    <section class="profile-info">
+    <section class="profile-pic">
       <?php
       $id = $_SESSION["userId"];
 
@@ -69,7 +69,7 @@ require_once "functions.php";
           </div> <!-- .img-preview -->
         </div> <!-- .flex-container -->
       </form>
-    </section> <!-- .profile-info -->
+    </section> <!-- .profile-pic -->
     <section>
       <form method="post">
         <label>About you:</label>
@@ -126,7 +126,7 @@ require_once "functions.php";
           <button type="submit" name="submit">Create new user</button>
         </form>
       </section> 
-      <section class="guest">
+      <section>
         <!-- LIST OF CURRENT GUEST USERS -->
         <h3>Guest users</h3> <?php
         $query = "SELECT id, email, firstName, lastName FROM users WHERE accesslevel = 3";
@@ -145,7 +145,7 @@ require_once "functions.php";
           }
         }
       }?>
-      </section> <!-- .guest -->
+      </section>
   </section> <!-- .profile -->
 </main>
 <?php
