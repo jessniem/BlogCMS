@@ -669,7 +669,6 @@ form {
         margin-right: 5px;
       }
     }
-    
     .img-preview {
       img {
         margin: 0;
@@ -685,6 +684,11 @@ form {
   section:not(.profile-pic) {
     margin-top: 40px;
     width: 100%;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 40px;
+    &:last-child {
+      border: 0;
+    }
     form {
       margin: 0;
     }
