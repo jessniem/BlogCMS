@@ -1,7 +1,24 @@
 <?php
   require_once "db_connection.php";
-?>
 
+// array for the tag menu:
+$tags = array(
+        array("href" => "index.php",       "name" => "Most recent"),
+        array("href" => "index.php?tag=3", "name" => "Black and white"),
+        array("href" => "index.php?tag=5", "name" => "Color"),
+        array("href" => "index.php?tag=1", "name" => "Illustration"),
+        array("href" => "index.php?tag=2", "name" => "Portrait")
+        );
+// array for the admin menu (but NOT logout.php)
+$admin = array(
+         array("href" => "create_post.php", "name" => "Create post"),
+         array("href" => "edit_posts.php", "name" => "Edit posts"),
+         array("href" => "statistics.php", "name" => "Statistics"),
+         array("href" => "profile.php", "name" => "Profile")
+);
+$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+
+?>
 
 <!--- hamburger menu ---->
 <div class="menu2">
@@ -13,19 +30,17 @@
 		<ul>
 			<li>
 				<select>
-					<option value="kategorier" disabled selected>Categories</option>
-					<option><li><a href="index.php"> Most recent</a></li></option>
-					<option><li><a href="index.php?tag=3"> Black and white</a></li></option>
-					<option><li><a href="index.php?tag=5"> Color</a></li></option>
-					<option><li><a href="index.php?tag=1"> Illustration</a></li></option>
-					<option><li><a href="index.php?tag=2"> Portrait</a></li></option>
+					<option value="kategorier" disabled selected>Categories</option><?php
+          //print out the tags menu
+          for ($i = 0; $i < count($tags); $i++) { ?>
+            <option><li><a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a></li></option> <?php
+          } ?>
 				</select>
 			</li>
 			<li>
 				<select>
 					<option value="months" disabled selected>Months</option>
           <div class="dropdown-content"> <?php
-    				$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     				$stmt = $conn->stmt_init();
             // Check which months that have posts
     				for($i = 0; $i<12; $i++) {
@@ -44,35 +59,28 @@
       <li><a href="about_me.php">About me</a></li>
       <li><a href="index.php">Home</a></li> <?php
       // options only visible for logged in users
-      if (isset($_SESSION["logged_in"])) { ?>
-        <li><a href="create_post.php">Create post</a></li>
-  			<li><a href="edit_posts.php">Edit posts</a></li>
-  			<li><a href="statistics.php">Statistics</a></li>
-  			<li><a href="profile.php">Profile</a></li>
-  			<li><a href="logout.php">Logout</a></li> <?php
+      if (isset($_SESSION["logged_in"])) {
+        for ($i = 0; $i < count($admin); $i++) { ?>
+          <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
+        } ?>
+        <li><a href="logout.php">Logout</a></li> <?php
       } ?>
 		</div>
 		</ul>
 </div> <!-- /hamburger menu -->
-</div>
 
-<?php
-if (isset($_SESSION["logged_in"])) {
 
-}
 
-?>
 <!-- Topmenu -->
 <div class="menu top-menu"> <?php
 
   // admin options only visible for logged in users
   if (isset($_SESSION["logged_in"])) { ?>
     <div class="left">
-      <ul>
-        <li><a href="create_post.php">Create post</a></li>
-        <li><a href="edit_posts.php">Edit posts</a></li>
-        <li><a href="statistics.php">Statistics</a></li>
-        <li><a href="profile.php">Profile</a></li>
+      <ul> <?php
+        for ($i = 0; $i < count($admin); $i++) { ?>
+          <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
+        } ?>
       </ul>
     </div> <?php
   } ?>
@@ -96,18 +104,16 @@ if (isset($_SESSION["logged_in"])) {
 <div class="bluefiller">
 </div>
 <div class="menu filter-menu">
-	<ul>
-		<li><a href="index.php"> Most recent</a></li>
-		<li><a href="index.php?tag=3"> Black and white</a></li>
-		<li><a href="index.php?tag=5"> Color</a></li>
-		<li><a href="index.php?tag=1"> Illustration</a></li>
-		<li><a href="index.php?tag=2"> Portrait</a></li>
+	<ul> <?php
+  //print out the tags menu
+  for ($i = 0; $i < count($tags); $i++) { ?>
+    <li><a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a></li> <?php
+  } ?>
 		<div class="dropdown">
 			<li>
 				<button class="dropdown-btn">Months <i class="fa fa-caret-down" aria-hidden="true"></i></button>
 			</li>
 			<div class="dropdown-content"> <?php
-				$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 				$stmt = $conn->stmt_init();
         // Check which months that have posts and not
 				for($i = 0; $i<12; $i++) {
