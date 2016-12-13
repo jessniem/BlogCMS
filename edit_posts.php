@@ -1,7 +1,7 @@
 <?php
 require_once "db_connection.php";
 include_once "./includes/head.php";
-include_once "./includes/top_admin.php";
+include_once "./includes/top.php";
 require_once "functions.php";
 
 $stmt = $conn->stmt_init();
@@ -11,11 +11,11 @@ if (isset($_GET["delete"])) {
 		$id = $_GET["delete"];
 		$query = "DELETE FROM posts WHERE id = $id";
 		if ($stmt->prepare($query)) {
-      		$stmt->execute(); 
+      		$stmt->execute();
       		?>
 			<div class="feedback fadeOut">
 				The post is deleted!
-			</div> 
+			</div>
 			<?php
 		}
 }
@@ -24,11 +24,11 @@ if (isset($_GET["deleteComment"])) {
 		$commentid = $_GET["deleteComment"];
 		$query = "DELETE FROM comments WHERE id = $commentid";
 		if ($stmt->prepare($query)) {
-		    $stmt->execute(); 
+		    $stmt->execute();
 		    ?>
 			<div class="feedback fadeOut">
 				The comment is deleted!
-			</div> 
+			</div>
 			<?php
 		}
 }
@@ -188,20 +188,20 @@ $totalDrafts = $data['total'];
 		            <?php echo $email; ?>
 		          </div>
 		        </div>
-		    
-      			<?php 
+
+      			<?php
 	    		}
-	    	//IF NO COMMENT AVAILABLE	
+	    	//IF NO COMMENT AVAILABLE
 		 	if ( empty($commentid) ) {
 			echo "<p>This post does not contain any comments</p>";
 			}
-		} 
+		}
 		?>
 		</section>
 		<?php
 	}
-	?>	
-	
+	?>
+
 </main>
 
 <?php

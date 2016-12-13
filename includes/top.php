@@ -1,8 +1,6 @@
 <?php
-require_once "db_connection.php";
-
-
- ?>
+  require_once "db_connection.php";
+?>
 
 
 <!--- hamburger menu ---->
@@ -16,7 +14,7 @@ require_once "db_connection.php";
 			<li>
 				<select>
 					<option value="kategorier" disabled selected>Categories</option>
-					<option><li><a href="index.phpindex.php"> Most recent</a></li></option>
+					<option><li><a href="index.php"> Most recent</a></li></option>
 					<option><li><a href="index.php?tag=3"> Black and white</a></li></option>
 					<option><li><a href="index.php?tag=5"> Color</a></li></option>
 					<option><li><a href="index.php?tag=1"> Illustration</a></li></option>
@@ -26,44 +24,70 @@ require_once "db_connection.php";
 			<li>
 				<select>
 					<option value="months" disabled selected>Months</option>
-					<option><a class="month" href="index.php?month=1">January</a></option>
-					<option><a class="month" href="index.php?month=2">February</a></option>
-					<option><a class="month" href="index.php?month=3">March</a></option>
-					<option><a class="month" href="index.php?month=4">April</a></option>
-					<option><a class="month" href="index.php?month=5">May</a></option>
-					<option><a class="month" href="index.php?month=6">June</a></option>
-					<option><a class="month" href="index.php?month=7">July</a></option>
-					<option><a class="month" href="index.php?month=8">August</a></option>
-					<option><a class="month" href="index.php?month=9">September</a></option>
-					<option><a class="month" href="index.php?month=10">October</a></option>
-					<option><a class="month" href="index.php?month=11">November</a></option>
-					<option><a class="month" href="index.php?month=12">December</a></option>
+          <div class="dropdown-content"> <?php
+    				$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+    				$stmt = $conn->stmt_init();
+            // Check which months that have posts
+    				for($i = 0; $i<12; $i++) {
+              $month = $months["$i"];
+    					$query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
+    					$data = mysqli_fetch_assoc($query);
+    					$monthsum = $data['total'];
+    					if($monthsum > 0) { ?>
+    						<option><a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a></option><?php
+    					}
+    				}?>
+    			</div>
 				</select>
 			</li>
 			<li><hr/></li>
-			<li><a href="index.php">Home</a></li>
-			<li><a href="about_me.php">About me</a></li>
-			<li><a href="create_post.php">Admin</a></li>
-			<li><a href="logout.php">Log out</a></li>
+      <li><a href="about_me.php">About me</a></li>
+      <li><a href="index.php">Home</a></li> <?php
+      // options only visible for logged in users
+      if (isset($_SESSION["logged_in"])) { ?>
+        <li><a href="create_post.php">Create post</a></li>
+  			<li><a href="edit_posts.php">Edit posts</a></li>
+  			<li><a href="statistics.php">Statistics</a></li>
+  			<li><a href="profile.php">Profile</a></li>
+  			<li><a href="logout.php">Logout</a></li> <?php
+      } ?>
 		</div>
 		</ul>
+</div> <!-- /hamburger menu -->
 </div>
-</div>
+
 <?php
 if (isset($_SESSION["logged_in"])) {
 
 }
 
 ?>
-<!-- Topmenu --> <?php
-if (!isset($_SESSION["logged_in"])) { ?>
-<div class="menu top-menu">
-	<ul>
-		<li><a href="about_me.php">About me</a></li>
-		<li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-	</ul>
-</div><?php
-} ?>
+<!-- Topmenu -->
+<div class="menu top-menu"> <?php
+
+  // admin options only visible for logged in users
+  if (isset($_SESSION["logged_in"])) { ?>
+    <div class="left">
+      <ul>
+        <li><a href="create_post.php">Create post</a></li>
+        <li><a href="edit_posts.php">Edit posts</a></li>
+        <li><a href="statistics.php">Statistics</a></li>
+        <li><a href="profile.php">Profile</a></li>
+      </ul>
+    </div> <?php
+  } ?>
+
+  <div class="right">
+    <ul>
+  		<li><a href="about_me.php">About me</a></li> <?php
+      //logout link for logged in users
+      if (isset($_SESSION["logged_in"])) { ?>
+        <li><a href="logout.php">Logout</a></li> <?php
+      } ?>
+  		<li><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+  	</ul>
+  </div>
+</div>
 <!-- Banner -->
 <div class="banner">
 	<img class="mobile-logo" src="./img/logo_mobile.png" alt="logo">
@@ -85,7 +109,7 @@ if (!isset($_SESSION["logged_in"])) { ?>
 			<div class="dropdown-content"> <?php
 				$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 				$stmt = $conn->stmt_init();
-
+        // Check which months that have posts and not
 				for($i = 0; $i<12; $i++) {
           $month = $months["$i"];
 					$query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
@@ -98,6 +122,6 @@ if (!isset($_SESSION["logged_in"])) { ?>
 					}
 				}?>
 			</div>
-		</div> <!-- //dropdown -->
+		</div> <!-- /dropdown -->
 	</ul>
 </div>

@@ -1,6 +1,6 @@
 <?php
 include "./includes/head.php";
-include "./includes/top_admin.php";
+include "./includes/top.php";
 include "./db_connection.php";
 
 $access = $_SESSION["access"];

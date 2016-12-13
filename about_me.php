@@ -2,12 +2,7 @@
 require_once "db_connection.php";
 include_once "./includes/head.php";
 require_once "functions.php";
-if (isset($_SESSION["logged_in"])) {
-	include "./includes/top_admin.php";
-	include "./includes/top.php";
-} else {
-	include_once "./includes/top.php";
-}
+include_once "./includes/top.php";
 ?>
 
 <main class="about-main">

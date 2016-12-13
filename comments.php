@@ -2,12 +2,7 @@
 require_once "db_connection.php";
 require_once "functions.php";
 include_once "./includes/head.php";
-if (isset($_SESSION["logged_in"])) {
-  include "./includes/top_admin.php";
-  include "./includes/top.php";
-} else {
 include_once "./includes/top.php";
-}
 
 // USER FEEDBACK when email address on comment is invalid
 if (isset($_GET["email"]) && $_GET["email"] == "invalid") { ?>

@@ -1,7 +1,7 @@
 <?php
 require_once "db_connection.php";
 include_once "./includes/head.php";
-include_once "./includes/top_admin.php";
+include_once "./includes/top.php";
 require_once "functions.php";
 ?>
 <main class="admin-main">

@@ -1,11 +1,11 @@
 <?php
 require_once "db_connection.php";
 include_once "./includes/head.php";
-include_once "./includes/top_admin.php";
+include_once "./includes/top.php";
 require_once "functions.php";
 ?>
 <main class="admin-main">
-  <section class="profile"> 
+  <section class="profile">
     <h1>Your information</h1>
     <section class="profile-pic">
       <?php
@@ -125,7 +125,7 @@ require_once "functions.php";
           <input type="text" name="password" value="" placeholder="Password" required="required">
           <button type="submit" name="submit">Create new user</button>
         </form>
-      </section> 
+      </section>
       <section>
         <!-- LIST OF CURRENT GUEST USERS -->
         <h3>Guest users</h3> <?php
