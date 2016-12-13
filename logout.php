@@ -7,5 +7,5 @@ unset($_SESSION["userId"]);
 
 session_destroy();
 
-header("Location: login.php?logout=true");
+header("Location: index.php?logout=true");
 ?>
