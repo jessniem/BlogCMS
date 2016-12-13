@@ -496,18 +496,25 @@ form {
   justify-content: center;
   align-items: center;
   background-color: $echoturq;
-  padding: 40px;
-  form {
-    margin: 0;
-    input, button {
-      background-color: #fff;
-      width: 30em;
-    }
-    button:hover {
-      background-color: $echodarkblue;
-    }
-    label {
-      color: #fff;
+  width: 100%;
+  min-height: calc(100vh);
+  margin: 0;
+  .login-form {
+    width: 500px;
+    padding: 20px;
+    form {
+      width: 100%;
+      margin: 0;
+      input, button {
+        width: 100%;
+        background-color: #fff;
+      }
+      button:hover {
+        background-color: $echodarkblue;
+      }
+      label {
+        color: #fff;
+      }
     }
   }
 }

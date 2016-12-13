@@ -11,8 +11,8 @@ if (isset($_GET['login']) && $_GET["login"] == "empty") {
 		echo "<p class='fail'>Wrong username or password</p>";
 	}
 ?>
-  <main>
-    <section class="login">
+  <main class="login">
+    <section class="login-form">
       <form action="logincheck.php" method="post">
         <label for="email">Your email:</label>
         <input name="email" type="text">
