@@ -47,7 +47,7 @@ if ($totalComments == 0) {
 }
 
 ?>
-<main class="admin-main">
+<main class="admin-main margin">
 	<section>
 		<div class="statistics">
 			<div>
@@ -65,11 +65,8 @@ if ($totalComments == 0) {
 				<h3>Average comment/post</h3>
 			</div>
 		</div>
-</section>
+	</section>
 </main>
 <?php
-
 include_once "./includes/footer.php";
-
-
 ?>
