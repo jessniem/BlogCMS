@@ -134,7 +134,6 @@ require_once "functions.php";
 
           $stmt->execute();
           $stmt->bind_result($id, $email, $firstname, $lastname);
-          $stmt->fetch();
 
           // TODO: Kan man göra detta med POST för att göra det säkrare?
           while (mysqli_stmt_fetch($stmt)) { ?>

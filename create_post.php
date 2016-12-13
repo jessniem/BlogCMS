@@ -30,7 +30,7 @@ require_once "functions.php";
         <div class="select-tag">
           <fieldset>
             <h3>Select tag</h3>
-            <input type="radio" id="blackandwhite" name="tag" value="3">
+            <input type="radio" id="blackandwhite" name="tag" value="3" required="required">
             <label for="blackandwhite">Blackandwhite</label>
             <input type="radio" id="color" name="tag" value="5">
             <label for="color">Color</label>

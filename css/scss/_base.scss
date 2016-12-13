@@ -663,6 +663,13 @@ form {
 .profile {
   section {
     padding: 0;
+    .flex-list.row {
+      margin-bottom: 7px;
+      .fa {
+        margin-right: 5px;
+      }
+    }
+    
     .img-preview {
       img {
         margin: 0;
