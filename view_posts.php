@@ -7,7 +7,7 @@ require_once "functions.php";
 
 $stmt = $conn->stmt_init();
 
-// Delete post
+// DELETE POST
 if (isset($_GET["delete"])) {
 		$id = $_GET["delete"];
 		$query = "DELETE FROM posts WHERE id = $id";
@@ -17,12 +17,12 @@ if (isset($_GET["delete"])) {
 		}
 }
 
-// count number of published posts
+// COUNT NUMBER OF PUBLISHED POSTS
 $published = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1");
 $data = mysqli_fetch_assoc($published);
 $totalPub = $data['total'];
 
-// count number of drafts
+// COUNT NUMBER OF DRAFTS
 $drafts = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 0");
 $data = mysqli_fetch_assoc($drafts);
 $totalDrafts = $data['total'];
@@ -49,8 +49,5 @@ $totalDrafts = $data['total'];
 	?>
 </main>
 <?php
-
-
-
 include "./includes/footer.php";
 ?>
