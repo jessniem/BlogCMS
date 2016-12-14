@@ -3,11 +3,11 @@ require_once "db_connection.php";
 
 // ARRAY FOR TAG MENU:
 $tags = array(
-        array("href" => "index.php",       "name" => "Most recent"),
-        array("href" => "index.php?tag=3", "name" => "Black and white"),
-        array("href" => "index.php?tag=5", "name" => "Color"),
-        array("href" => "index.php?tag=1", "name" => "Illustration"),
-        array("href" => "index.php?tag=2", "name" => "Portrait")
+        array("href" => "index.php",       "name" => "Most recent", 	"num" => 0),
+        array("href" => "index.php?tag=3", "name" => "Black and white", "num" => 3),
+        array("href" => "index.php?tag=5", "name" => "Color", 			"num" => 5),
+        array("href" => "index.php?tag=1", "name" => "Illustration", 	"num" => 1),
+        array("href" => "index.php?tag=2", "name" => "Portrait", 		"num" => 2)
         );
 // ARRAY FOR ADMIN (but NOT logout.php):
 $admin = array(
@@ -26,47 +26,51 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
         <button class="hamburgericon">&#9776;</button>
         <button class="cross">&#735;</button>
     </header>
-    <div class="basemenu">
-        <ul>
-            <li>
-                <select>
-                  <option value="kategorier" disabled selected>Categories</option><?php
-                  // LOOP OUT TAGS MENU
-                  for ($i = 0; $i < count($tags); $i++) { ?>
-                    <option><li><a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a></li></option> <?php
-                  } ?>
-                </select>
-            </li>
-            <li>
-                <select>
-                    <option value="months" disabled selected>Months</option>
-                    <div class="dropdown-content"> <?php
-                        $stmt = $conn->stmt_init();
-                        // Check which months that have posts
-                        for($i = 0; $i<12; $i++) {
-                              $month = $months["$i"];
-                              $query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
-                              $data = mysqli_fetch_assoc($query);
-                              $monthsum = $data['total'];
-                              if($monthsum > 0) { ?>
-                                  <option><a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a></option><?php
-                              }
-                        } ?>
-                    </div>
-                </select>
-            </li>
-            <li><hr/></li>
-            <li><a href="about_me.php">About me</a></li>
-            <li><a href="index.php">Home</a></li> <?php
-            // ONLY FOR LOGGED IN USERS
-            if (isset($_SESSION["logged_in"])) {
-                for ($i = 0; $i < count($admin); $i++) { ?>
-                    <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
-                } ?>
-                <li><a href="logout.php">Logout</a></li> <?php
-            } ?>
-        </ul>
-    </div>
+    <form method="get" action="" id="filter">
+	    <div class="basemenu">
+	        <ul>
+	            <li>
+	                <select name="tag" onchange="reload();">
+	                  <option value="kategorier" disabled selected>Categories</option><?php
+	                  // LOOP OUT TAGS MENU
+	                  for ($i = 0; $i < count($tags); $i++) { ?>
+	                    <option value="<?php echo $tags[$i]["num"]; ?>"><li><a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a></li></option> <?php
+	                  } ?>
+	                </select>
+	            </li>
+	            <li>
+	            	<!-- TODO: fixa så denna funkar........ -->
+	                <select name="month" onchange="reload()">
+	                    <option value="months" disabled selected>Months</option>
+	                    <div class="dropdown-content"> <?php
+	                        $stmt = $conn->stmt_init();
+	                        // Check which months that have posts
+	                        for($i = 0; $i<12; $i++) {
+	                              $month = $months["$i"];
+	                              $query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
+	                              $data = mysqli_fetch_assoc($query);
+	                              $monthsum = $data['total'];
+	                              if($monthsum > 0) { ?>
+	                                  <option><a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a></option><?php
+	                              }
+	                        } ?>
+	                    </div>
+	                </select>
+	            </li>
+	            <li><hr/></li>
+	            <li><a href="about_me.php">About me</a></li>
+	            <li><a href="index.php">Home</a></li> <?php
+	            // ONLY FOR LOGGED IN USERS
+	            if (isset($_SESSION["logged_in"])) {
+	                for ($i = 0; $i < count($admin); $i++) { ?>
+	                    <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
+	                } ?>
+	                <li><a href="logout.php">Logout</a></li> <?php
+	            } ?>
+	        </ul>
+	    </div>
+	    <input type="submit" value="Sortera" hidden>
+    </form>
 </div> <!-- /hamburger menu -->
 
 
@@ -146,3 +150,9 @@ if (($currentfile == "/index.php") ||
         </ul>
     </div> <?php
 } ?>
+
+<script>
+function reload() {
+	$('#filter').submit();
+}
+</script>
