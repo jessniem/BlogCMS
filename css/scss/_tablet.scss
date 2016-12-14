@@ -1,6 +1,13 @@
+/* ***************************
+           ASSETS
+*************************** */
+
 @import "assets/_colors.scss";
 
-// Banner
+/* ***************************
+           BANNER
+*************************** */
+
 .banner {
 	.mobile-logo {
 		display: none;
@@ -11,15 +18,14 @@
   }
 }
 
-// Main
-main {
-	margin: 120px 40px 60px 40px;
-}
+/* ***************************
+            MAIN
+        all pages
+*************************** */
 
-//Blog posts
-// .post {
-//   margin-bottom: 60px;
-// }
+main {
+	margin: 60px 40px;
+}
 
 /* ***************************
          BLOG POSTS
