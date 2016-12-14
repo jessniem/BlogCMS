@@ -3,9 +3,9 @@
 /**
 * THE FUNCTION PREVENT ESCAPE CHARACTERS TO BE INJECTED IN THE STRINGS PRESENTED TO MYSQL.
 *
-* @param STRING $VAR THE STRING FROM THE USER INPUT.
-* @param STRING $CONN DB CONNECTION
-* @return STRING $VAR RETURN A SAFE SANITIZED STRING.
+* @param string $var - THE STRING FROM THE USER INPUT.
+* @param string $conn - DB CONNECTION
+* @return string var -  RETURN A SAFE SANITIZED STRING.
 **/
 //TODO: KOLLA VARFÖR INTE MYSQLI_REAL_ESCAPE_STRING FUNKAR
 function sanitizeMySql($conn, $var) {
@@ -17,8 +17,8 @@ function sanitizeMySql($conn, $var) {
 /**
 * THE FUNCTION REMOVES UNWANTED SLASHES AND HTML FROM USER INPUT.
 *
-* @param STRING $VAR THE STRING FROM THE USER INPUT.
-* @return STRING $VAR RETURN A SAFE SANITIZED STRING.
+* @param string $var - THE STRING FROM THE USER INPUT.
+* @return string $var - RETURN A SAFE SANITIZED STRING.
 **/
 function sanitizeString($var) {
     $var = stripslashes($var);
@@ -30,7 +30,7 @@ function sanitizeString($var) {
 
 
 /**
-* THE FUNCTION PRINT OUT THE BLOG POSTS
+* THE FUNCTION PRINTS OUT THE BLOG POSTS
 *
 **/
 function printPost($index, $num) {
@@ -56,7 +56,7 @@ function printPost($index, $num) {
                 </div>
             </div> <!-- POST-TEXT -->
         </article>
-    </div> <!-- LOAD-POST --> 
+    </div> <!-- LOAD-POST -->
     <?php
 }
 
@@ -65,7 +65,7 @@ function printPost($index, $num) {
 /**
 * THE FUNCTION PREVENT ESCAPE CHARACTERS TO BE INJECTED IN THE STRINGS PRESENTED TO MYSQL.
 *
-* @param INT $ISPUB SEND IN 0 TO PRINT OUT UNPUBLISHED, 1 FOR PUBLISHED POSTS
+* @param int $ispub - SEND IN 0 TO PRINT OUT UNPUBLISHED, 1 FOR PUBLISHED POSTS
 **/
 function listPostAdmin($isPub, $access) {
 
@@ -116,10 +116,10 @@ function listPostAdmin($isPub, $access) {
 /**
 * THE FUNCTION TAKES THE DATE SENT IN AND RETURNS HOW LONG AGO THAT WAS IN UNITS OF: YEARS, MONTHS, WEEKS, DAYS, HOURS, MINUTES OR SECONDS.
 *
-* @param STRING $TIME - TAKES THE DATE FOR THE CALCULATION
+* @param string $time - TAKES THE DATE FOR THE CALCULATION
 *
-* @return INT $NUMBEROFUNITS - CALCULATED TIME
-* @return STRING $TEXT - RETURN THE UNIT
+* @return int $numberOfUnits - CALCULATED TIME
+* @return string $text - RETURN THE UNIT
 **/
 function timeElapsedString($commentTime) {
     $today = strtotime('today');
@@ -157,7 +157,7 @@ function timeElapsedString($commentTime) {
 /**
 * THE FUNCTION IS USED TO PUBLISH OR SAVE A DRAFT
 *
-* @param BOOL $ISPUB - 1 FOR PUBLISH, 0 FOR SAVE
+* @param bool $isPub - 1 FOR PUBLISH, 0 FOR SAVE
 **/
 function saveOrPub($isPub){
     global $conn;
