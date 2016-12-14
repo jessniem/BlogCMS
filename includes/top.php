@@ -1,7 +1,7 @@
 <?php
   require_once "db_connection.php";
 
-// array for the tag menu:
+//ARRAY FOR THE TAG MENU:
 $tags = array(
         array("href" => "index.php",       "name" => "Most recent"),
         array("href" => "index.php?tag=3", "name" => "Black and white"),
@@ -9,7 +9,7 @@ $tags = array(
         array("href" => "index.php?tag=1", "name" => "Illustration"),
         array("href" => "index.php?tag=2", "name" => "Portrait")
         );
-// array for the admin menu (but NOT logout.php)
+// ARRAY FOR THE ADMIN MENU (BUT NOT logout.php) 
 $admin = array(
          array("href" => "create_post.php", "name" => "Create post"),
          array("href" => "edit_posts.php", "name" => "Edit posts"),
@@ -20,7 +20,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 
 ?>
 
-<!--- hamburger menu ---->
+<!--- HAMBURGER MENU ---->
 <div class="menu2">
   <header class="hamburgerheader">
     <button class="hamburger">&#9776;</button>
@@ -31,7 +31,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
       <li>
         <select>
           <option value="kategorier" disabled selected>Categories</option><?php
-          //print out the tags menu
+          //PRINT OUT THE TAGS
           for ($i = 0; $i < count($tags); $i++) { ?>
             <option><li><a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a></li></option> <?php
           } ?>
@@ -42,7 +42,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
           <option value="months" disabled selected>Months</option>
           <div class="dropdown-content"> <?php
             $stmt = $conn->stmt_init();
-            // Check which months that have posts
+            // CHECK WHICH MONTHS THAT HAVE POSTS
             for($i = 0; $i<12; $i++) {
               $month = $months["$i"];
               $query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
@@ -58,7 +58,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
       <li><hr/></li>
       <li><a href="about_me.php">About me</a></li>
       <li><a href="index.php">Home</a></li> <?php
-      // options only visible for logged in users
+      // OPTIONS ONLY VISIBLE FOR LOGGED IN USERS 
       if (isset($_SESSION["logged_in"])) {
         for ($i = 0; $i < count($admin); $i++) { ?>
           <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
@@ -67,14 +67,14 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
       } ?>
     </div>
   </ul>
-</div> <!-- /hamburger menu -->
+</div> <!-- /HAMBURGER MENU -->
 
 
 
-<!-- Topmenu -->
+<!-- TOPMENU -->
 <div class="menu top-menu"> <?php
 
-  // admin options only visible for logged in users
+  // ADMIN OPTIONS ONLY VISIBLE FOR LOGGED IN USERS 
   if (isset($_SESSION["logged_in"])) { ?>
     <div class="left">
       <ul> <?php
@@ -88,7 +88,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
   <div class="right">
     <ul>
       <li><a href="about_me.php">About me</a></li> <?php
-      //logout link for logged in users
+      //LOGOUT LINK FOR LOGGED IN USERS 
       if (isset($_SESSION["logged_in"])) { ?>
         <li><a href="logout.php">Logout</a></li> <?php
       } ?>
@@ -96,7 +96,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
     </ul>
   </div>
 </div>
-<!-- Banner -->
+<!-- BANNER -->
 <div class="banner">
   <img class="mobile-logo" src="./img/logo_mobile.png" alt="logo">
   <img class="desktop-logo" src="./img/logo_desktop.png" alt="logo">
@@ -105,7 +105,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 </div>
 <div class="menu filter-menu">
   <ul> <?php
-  //print out the tags menu
+  //PRINT OUT THE TAGS MENU
   for ($i = 0; $i < count($tags); $i++) { ?>
     <li><a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a></li> <?php
   } ?>
@@ -115,7 +115,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
     </li>
     <div class="dropdown-content"> <?php
       $stmt = $conn->stmt_init();
-      // Check which months that have posts and not
+      // CHECK WHICH MONTHS THAT HAVE POSTS AND NOT
       for($i = 0; $i<12; $i++) {
       $month = $months["$i"];
       $query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
@@ -128,6 +128,6 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
       }
     }?>
     </div>
-  </div> <!-- /dropdown -->
+  </div> <!-- /DROPDOWN -->
   </ul>
 </div>
