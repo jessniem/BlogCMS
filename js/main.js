@@ -28,9 +28,9 @@ window.onload = function(){
 /* HAMBURGER */
 $( ".cross" ).hide();
 $( ".basemenu" ).hide();
-$( ".hamburger" ).click(function() {
+$( ".hamburgericon" ).click(function() {
 $( ".basemenu" ).slideToggle( "slow", function() {
-$( ".hamburger" ).hide();
+$( ".hamburgericon" ).hide();
 $( ".cross" ).show();
 });
 });
@@ -38,6 +38,6 @@ $( ".cross" ).show();
 $( ".cross" ).click(function() {
 $( ".basemenu" ).slideToggle( "slow", function() {
 $( ".cross" ).hide();
-$( ".hamburger" ).show();
+$( ".hamburgericon" ).show();
 });
 });
