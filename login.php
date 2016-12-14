@@ -5,14 +5,14 @@ include "db_connection.php";
 //USER FEEDBACK: IF EMAIL OR PASSWORD IS EMPTY
 if (isset($_GET['login']) && $_GET["login"] == "empty") {
     ?>
-		<div class="error feedback fadeOut">You have to fill in your email and password</div> 
+	<div class="error feedback fadeOut">You have to fill in your email and password</div> 
     <?php
-		//USER FEEDBACK: IF EMAIL OR PASSWORD DOESN'T MATCH DB
-	} elseif (isset($_GET['login']) && $_GET["login"] == "fail") {
+//USER FEEDBACK: IF EMAIL OR PASSWORD DOESN'T MATCH DB
+} elseif (isset($_GET['login']) && $_GET["login"] == "fail") {
     ?>
-		<div class="error feedback fadeOut">Wrong email or password</div>
+	<div class="error feedback fadeOut">Wrong email or password</div>
     <?php
-	}
+}
 ?>
 <main class="login">
     <section class="login-form">

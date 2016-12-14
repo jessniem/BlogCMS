@@ -2,6 +2,7 @@
 session_start();
 include "db_connection.php";
 require_once "functions.php";
+
 //CHECK IF EMAIL AND PASSWORD MATCH DB
 if( isset($_POST["send"]) ) {
 	if( !empty($_POST["email"]) && !empty($_POST["password"]) ) {
