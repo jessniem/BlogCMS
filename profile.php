@@ -13,9 +13,7 @@ require_once "functions.php";
             //UPDATE PROFILE PICTURE
             if(isset ($_POST["profilepic"]) ) {
             $targetfolder = './userimg/';
-            //CREATE A NEW FILENAME
             $targetname =  $targetfolder . basename("user". -$id . ".jpg");
-                //PUTS THE URL FOR THE FILE INTO DB
                 if(move_uploaded_file($_FILES["profilepic"]["tmp_name"], $targetname)) {
                     echo "Filuppladdningen gick bra!";
                 }
@@ -133,7 +131,6 @@ require_once "functions.php";
                 if($stmt->prepare($query)) {
                     $stmt->execute();
                     $stmt->bind_result($id, $email, $firstname, $lastname);
-                    // TODO: Kan man göra detta med POST för att göra det säkrare?
                     while (mysqli_stmt_fetch($stmt)) {
                     ?>
                     <div class="flex-list row">
