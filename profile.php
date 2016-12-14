@@ -7,15 +7,20 @@ require_once "functions.php";
 <main class="admin-main">
     <section class="profile">
         <h1>Your information</h1>
+
+        <!-- PROFILE PICTURE -->
         <section class="profile-pic">
             <?php
             $id = $_SESSION["userId"];
-            //UPDATE PROFILE PICTURE
+            // UPDATE PROFILE PICTURE
             if(isset ($_POST["profilepic"]) ) {
-            $targetfolder = './userimg/';
-            $targetname =  $targetfolder . basename("user". -$id . ".jpg");
+                $targetfolder = './userimg/';
+                $targetname =  $targetfolder . basename("user". -$id . ".jpg");
                 if(move_uploaded_file($_FILES["profilepic"]["tmp_name"], $targetname)) {
-                    echo "Filuppladdningen gick bra!";
+                    ?>
+                    <!-- USER FEEDBACK: CHANGED PROFILE PICTURE -->
+                    <div class="feedback fadeOut">Your profile picture has been updated!</div>
+                    <?php
                 }
                 $query = "UPDATE users SET profilePic = '{$targetname}' WHERE id = '{$id}'";
                 $stmt = $conn->stmt_init();
@@ -25,7 +30,8 @@ require_once "functions.php";
                   echo mysqli_error();
                 }
             }
-            //UPPDATE DESCRIPTION AND EMAIL
+
+            // DESCRIPTION AND EMAIL
             if(isset ($_POST["submit"]) ) {
                 $email = sanitizeMySql($conn, $_POST["email"]);
                 $description = sanitizeMySql($conn, $_POST["description"]);
@@ -33,6 +39,10 @@ require_once "functions.php";
                 $query = "UPDATE users SET email = '{$email}', description = '{$description}' WHERE id = $id";
                 if ($stmt->prepare($query)) {
                     $stmt->execute();
+                    ?>
+                    <!-- USER FEEDBACK: CHANGED DESCRIPTION OR EMAIL -->
+                    <div class="feedback fadeOut">Your information has been updated!</div>
+                    <?php
                 } else {
                     echo mysqli_error();
                 }
@@ -40,13 +50,12 @@ require_once "functions.php";
             $stmt = $conn->stmt_init();
             $query = "SELECT * FROM users WHERE id = $id";
             if($stmt->prepare($query)) {
-            $stmt->execute();
-            $stmt->bind_result($id, $accesslevel, $email, $password, $firstname, $lastname, $profilepic, $description);
-            $stmt->fetch();
+                $stmt->execute();
+                $stmt->bind_result($id, $accesslevel, $email, $password, $firstname, $lastname, $profilepic, $description);
+                $stmt->fetch();
             }
             ?>
-
-            <!-- FORM: PROFILE -->
+            <!-- FORM: DESCRIPTION AND EMAIL -->
             <form method="post" enctype="multipart/form-data">
                 <div class="flex-container">
                     <div class="upload-image">
@@ -69,6 +78,8 @@ require_once "functions.php";
                 <button type="submit" name="submit" class="description">Save</button>
             </form>
         </section>
+        
+        <!-- CHANGE PASSWORD -->
         <section>
             <?php
             // USER FEEDBACK: CHANGED PASSWORD
@@ -89,6 +100,8 @@ require_once "functions.php";
                 <button type="submit" name="submit" class="password">Change password</button>
             </form>
         </section>
+        
+        <!-- ADD GUEST USER -->
         <?php
         if ($_SESSION["access"] <= 2 ) { ?>
             <section>
@@ -123,6 +136,7 @@ require_once "functions.php";
                     <button type="submit" name="submit">Create new user</button>
                 </form>
             </section>
+            
             <!-- LIST OF CURRENT GUEST USERS -->
             <section>
                 <h3>Guest users</h3>
