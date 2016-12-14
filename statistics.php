@@ -12,7 +12,7 @@ if ($access == 1) {
 	$user = "notadmin";
 }
 $userid = $_SESSION["userId"];
-
+//COUNTS POSTS IN TOTAL
 switch ($user) {
 	case 'admin':
 		$totalP = "SELECT count(*) as total FROM posts WHERE isPub = 1";
@@ -26,7 +26,7 @@ if ($stmt->prepare ($totalP)) {
 	$stmt->bind_result($totalPosts);
 	$stmt->fetch();
 }
-
+//COUNTS COMMENTS IN TOTAL
 switch ($user) {
 	case 'admin':
 		$totalC = "SELECT count(*) as total FROM comments";
@@ -40,13 +40,15 @@ if ($stmt->prepare ($totalC)) {
 	$stmt->bind_result($totalComments);
 	$stmt->fetch();
 }
+
+//COUNTS AVERAGE COMMENTS PER POST
 if ($totalComments == 0) {
 	$totalS = 0;
 } else {
 	$totalS = $totalComments / $totalPosts;
 }
-
 ?>
+
 <main class="admin-main margin">
 	<section>
 		<div class="statistics">
