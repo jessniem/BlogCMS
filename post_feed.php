@@ -1,12 +1,11 @@
 <?php
-
-// saves the current selection of tag when using the paging-links
+// SAVES THE CURRENT SELECTION OF TAG WHEN USING THE PAGING-LINKS
 $get = "";
 if (isset($_GET["month"]) || isset($_GET["tag"])) {
     if (isset($_GET["month"])) {
-      $get = "month=".$_GET["month"];
+        $get = "month=".$_GET["month"];
     } elseif ($_GET["tag"]) {
-      $get = "tag=".$_GET["tag"];
+        $get = "tag=".$_GET["tag"];
     }
 }
 
@@ -17,56 +16,56 @@ $stmt = $conn->stmt_init();
 
 // PAGINATION
 
-// posts per page
+// POSTS PER PAGE
 $perPage = 5;
 
-// set $result to the number of posts
+// SET $RESULT TO THE NUMBER OF POSTS
 if (isset($_GET["month"]) ) {
-  $month = $_GET["month"];
+    $month = $_GET["month"];
     $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTH(createDate) = $month");
 } elseif (isset($_GET["tag"])) {
-  $tagid = $_GET["tag"];
-  $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND categoryid = $tagid");
+    $tagid = $_GET["tag"];
+    $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND categoryid = $tagid");
 } else {
-  $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1");
+    $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1");
 }
 
 
 
-// check number of posts in db
+// CHECK NUMBER OF POSTS IN DB
 
 $data = mysqli_fetch_assoc($result);
 $totPosts = $data['total'];
 
-// number of pages
+// NUMBER OF PAGES
 $totPages = ceil($totPosts / $perPage);
 
-// get the current page or set a default
+// GET THE CURRENT PAGE OR SET A DEFAULT
 if (isset($_GET["page"]) && is_numeric($_GET["page"])) {
-   $currPage = (int) $_GET["page"];
+    $currPage = (int) $_GET["page"];
 } else {
-   // default page
-   $currPage = 1;
+   // DEFAULT PAGE
+    $currPage = 1;
 }
 
-// if current page is greater than total pages
+// IF CURRENT PAGE IS GREATER THAN TOTAL PAGES
 if ($currPage > $totPages) {
-   // set current page to last page
+   // SET CURRENT PAGE TO LAST PAGE
    $currPage = $totPages;
 }
 
-// if current page is less than first page...
+// IF CURRENT PAGE IS LESS THAN FIRST PAGE...
 if ($currPage < 1) {
-   // set current page to first page
-   $currPage = 1;
+    // SET CURRENT PAGE TO FIRST PAGE
+    $currPage = 1;
 }
 
-// the offset of the list, based on current page
+// THE OFFSET OF THE LIST, BASED ON CURRENT PAGE
 $offset = ($currPage - 1) * $perPage;
 
 // END OF PAGINATION
 
-// get posts from db
+// GET POSTS FROM DB
 if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
     $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
     JOIN users ON (users.id = posts.userid)
@@ -102,25 +101,21 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
     JOIN categories ON (categories.id = posts.categoryid)
     WHERE isPub = 1 AND categoryid = $tagid
     ORDER BY createDate $sortBy";
-
-
 }
 
-//var_dump($stmt->prepare($query));
-//var_dump($stmt->error_list);
 $blogPosts = [];
 if ($stmt->prepare($query)) {
     $stmt->execute();
 
     $stmt->bind_result($id, $title, $categoryid, $userid, $content, $image, $alt, $createDate, $isPub, $fname, $lname, $tag);
 
-    //save blog posts in blogPosts array
+    //SAVE BLOG POSTS IN BLOGPOSTS ARRAY
     while (mysqli_stmt_fetch($stmt)) {
       $blogPosts[] = array ("id" => $id, "title" => $title, "categoryid" => $categoryid, "userid" => $userid, "content" => $content, "image" => $image, "alt" => $alt, "createDate" => $createDate, "isPub" => $isPub, "fname" => $fname, "lname" => $lname, "tag" => $tag);
     }
       // TODO: Fixa sorteringen så att den inte försvinner när klickar på något
 
-      // echo out the blogPosts array
+      // ECHO OUT THE BLOGPOSTS ARRAY
       foreach ($blogPosts as $post) {
         $thisPost = $post["id"];
         // count the comments
@@ -129,70 +124,56 @@ if ($stmt->prepare($query)) {
           $num = mysqli_num_rows($result);
         }
 
-          // when $index is true the link for comments is printed in the post
+          // WHEN $INDEX IS TRUE THE LINK FOR COMMENTS IS PRINTED IN THE POST
           $index = true;
           printPost($index, $num);
       }
 }
-
-
-
 // PAGINATION LINKS
-// how many links to show
+// HOW MANY LINKS TO SHOW
 ?>
-<div class="pagination"> <?php
-  $pageRange = 3;
+<div class="pagination"> 
+    <?php
+    $pageRange = 3;
 
-  // if not on page 1, don't show back links
-  if ($currPage > 1) {
-     // show << link to go back to page 1      TODO Hur kan man ta bort & och sätta det i $get istället? nu hamnar det framför page om $get är tom
-     echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=1'><i class='fa fa-caret-left' aria-hidden='true'></i><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
-     // get previous page num
-     $prevPage = $currPage - 1;
-     // show < link to go back to 1 page
-     echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$prevPage'><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
+    // IF NOT ON PAGE 1, DON'T SHOW BACK LINKS
+    if ($currPage > 1) {
+        // SHOW << LINK TO GO BACK TO PAGE 1      TODO HUR KAN MAN TA BORT & OCH SÄTTA DET I $GET ISTÄLLET? NU HAMNAR DET FRAMFÖR PAGE OM $GET ÄR TOM
+        echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=1'><i class='fa fa-caret-left' aria-hidden='true'></i><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
+        // GET PREVIOUS PAGE NUM
+        $prevPage = $currPage - 1;
+        // SHOW < LINK TO GO BACK TO 1 PAGE
+        echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$prevPage'><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
   }
 
-  // loop to show links to range of pages around current page
-  for ($i = ($currPage - $pageRange); $i < (($currPage + $pageRange) + 1); $i++) {
-     // if it's a valid page number...
-     if (($i > 0) && ($i <= $totPages)) {
-        // current page
+// LOOP TO SHOW LINKS TO RANGE OF PAGES AROUND CURRENT PAGE
+for ($i = ($currPage - $pageRange); $i < (($currPage + $pageRange) + 1); $i++) {
+    // IF IT'S A VALID PAGE NUMBER...
+    if (($i > 0) && ($i <= $totPages)) {
+        // CURRENT PAGE
         if ($i == $currPage) {
-           // make current page bold
+           // MAKE CURRENT PAGE BOLD
            echo "<span>$i</span> ";
-        // make links of the other pages
+        // MAKE LINKS OF THE OTHER PAGES
         } else {
-           // make it a link
+           // MAKE IT A LINK
            echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$i'>$i</a> ";
         }
-     }
-  }
+    }
+}
 
-  // show forward and last page links if not on last page
-  if ($currPage != $totPages) {
-     // get next page
-     $nextPage = $currPage + 1;
-      // link to next page
+// SHOW FORWARD AND LAST PAGE LINKS IF NOT ON LAST PAGE
+if ($currPage != $totPages) {
+    // GET NEXT PAGE
+    $nextPage = $currPage + 1;
+      // LINK TO NEXT PAGE
      echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$nextPage'<i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
-     // link to the last page
+     // LINK TO THE LAST PAGE
      echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$totPages'<i class='fa fa-caret-right' aria-hidden='true'></i><i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
   } // END OF PAGINATION LINKS ?>
 
-</div> <!-- pagination -->
+</div> <!-- PAGINATION -->
 
-
-<!--  <div class="load">
-  <a href="#" id="loadMore"><i class="fa fa-angle-double-down" aria-hidden="true"></i></i></a>
-</div> --> <!-- .load-btn -->
-
-<!-- <p class="totop">
-    <a href="#top">Back to top</a>
-</p> -->
 <?php
-
-// close db connection
-//$stmt->close();
 $conn->close();
-
 ?>
