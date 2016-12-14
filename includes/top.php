@@ -72,18 +72,26 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 
 
 <!-- TOPMENU -->
-<div class="menu top-menu"> <?php
-
+<div class="menu top-menu"> 
+   <div class="left">
+    <?php
     // ADMIN OPTIONS
     if (isset($_SESSION["logged_in"])) { ?>
-        <div class="left">
             <ul> <?php
             for ($i = 0; $i < count($admin); $i++) { ?>
                 <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
             } ?>
-            </ul>
-        </div> <?php
-    } ?>
+            </ul> 
+          <?php
+    } else {
+      ?>
+        <ul>
+            <li><a href="login.php">Login</a></li>
+        </ul> 
+      <?php
+    }
+    ?>
+    </div> 
 
     <div class="right">
         <ul>
