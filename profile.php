@@ -25,7 +25,7 @@ require_once "functions.php";
                 $query = "UPDATE users SET profilePic = '{$targetname}' WHERE id = '{$id}'";
                 $stmt = $conn->stmt_init();
                 if ($stmt->prepare($query)) {
-                   $stmt->execute();
+                    $stmt->execute();
                 } else {
                   echo mysqli_error();
                 }
@@ -78,17 +78,17 @@ require_once "functions.php";
                 <button type="submit" name="submit" class="description">Save</button>
             </form>
         </section>
-        
+
         <!-- CHANGE PASSWORD -->
         <section>
             <?php
             // USER FEEDBACK: CHANGED PASSWORD
             if (isset($_GET["pw"])) {
-              if ($_GET["pw"] == "ok") { ?>
-                <div class="feedback fadeOut">Your password has been updated!</div> <?php
-              } elseif ($_GET["pw"] == "error") { ?>
-                <div class="error feedback fadeOut">Somthing went wrong, your password has NOT been updated!</div> <?php
-              }
+                if ($_GET["pw"] == "ok") { ?>
+                    <div class="feedback fadeOut">Your password has been updated!</div> <?php
+                } elseif ($_GET["pw"] == "error") { ?>
+                    <div class="error feedback fadeOut">Somthing went wrong, your password has NOT been updated!</div> <?php
+                }
             }
             ?>
             <!-- FORM: CHANGE PASSWORD -->
@@ -100,23 +100,23 @@ require_once "functions.php";
                 <button type="submit" name="submit" class="password">Change password</button>
             </form>
         </section>
-        
+
         <!-- ADD GUEST USER -->
         <?php
         if ($_SESSION["access"] <= 2 ) { ?>
             <section>
                 <h2>Add new guest user</h2>
-                <?php 
+                <?php
                 // USER FEEDBACK: ADD GUEST USER
                 if (isset($_GET["user"])) {
-                    if ($_GET["user"] == "already_registered") { 
+                    if ($_GET["user"] == "already_registered") {
                         ?>
                         <div class="error feedback fadeOut">The email is already registered</div>
                         <?php
                     } elseif ($_GET["user"] == "invalid_email") { ?>
                         <div class="error feedback fadeOut">Invalid email address</div>
                         <?php
-                    } elseif ($_GET["user"] == "success") { 
+                    } elseif ($_GET["user"] == "success") {
                         ?>
                         <div class="feedback fadeOut">
                             The user was added successfully! <br>
@@ -125,7 +125,7 @@ require_once "functions.php";
                         </div>
                         <?php
                     }
-                } 
+                }
                 ?>
                 <!-- FORM: ADD GUEST USER -->
                 <form class="addGuest" action="handle_guest_users.php" method="post">
@@ -136,7 +136,7 @@ require_once "functions.php";
                     <button type="submit" name="submit">Create new user</button>
                 </form>
             </section>
-            
+
             <!-- LIST OF CURRENT GUEST USERS -->
             <section>
                 <h3>Guest users</h3>
