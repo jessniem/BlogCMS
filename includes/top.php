@@ -17,7 +17,6 @@ $admin = array(
          array("href" => "profile.php", "name" => "Profile")
 );
 $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-
 ?>
 
 <!--- HAMBURGER MENU ---->
@@ -76,31 +75,26 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 
 
 <!-- TOPMENU -->
-<div class="menu top-menu"> 
-   <div class="left">
-    <?php
+<div class="menu top-menu">
+    <div class="left"> <?php
     // ADMIN OPTIONS
     if (isset($_SESSION["logged_in"])) { ?>
             <ul> <?php
             for ($i = 0; $i < count($admin); $i++) { ?>
                 <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
             } ?>
-            </ul> 
-          <?php
-    } else {
-      ?>
+            </ul> <?php
+    } else { ?>
         <ul>
             <li><a href="login.php">Login</a></li>
-        </ul> 
-      <?php
-    }
-    ?>
-    </div> 
+        </ul> <?php
+    } ?>
+    </div>
 
     <div class="right">
         <ul>
             <li><a href="about_me.php">About me</a></li> <?php
-            // LOGOUT ONLY FOR LOGGED IN USERS
+            // LOGOUT (ONLY FOR LOGGED IN USERS)
             if (isset($_SESSION["logged_in"])) { ?>
                 <li><a href="logout.php">Logout</a></li> <?php
             } ?>
@@ -135,16 +129,16 @@ if (($currentfile == "/index.php") ||
                     $stmt = $conn->stmt_init();
                     // LOOP OUT MONTHS WITH AND WITHOUT POSTS
                     for($i = 0; $i<12; $i++) {
-                    $month = $months["$i"];
-                    $query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
-                    $data = mysqli_fetch_assoc($query);
-                    $monthsum = $data['total'];
-                    if($monthsum == 0) { ?>
-                        <p class="month empty" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></p> <?php
-                    } else { ?>
-                        <a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a><?php
-                    }
-                    }?>
+                        $month = $months["$i"];
+                        $query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
+                        $data = mysqli_fetch_assoc($query);
+                        $monthsum = $data['total'];
+                        if($monthsum == 0) { ?>
+                            <p class="month empty" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></p> <?php
+                        } else { ?>
+                            <a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?> </a> <?php
+                        }
+                    } ?>
                 </div>
             </div> <!-- /dropdown -->
         </ul>

@@ -135,33 +135,33 @@ if ($stmt->prepare($query)) {
         $prevPage = $currPage - 1;
         // SHOW < LINK TO GO BACK TO 1 PAGE
         echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$prevPage'><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
-  }
+    }
 
-// LOOP TO SHOW LINKS TO RANGE OF PAGES AROUND CURRENT PAGE
-for ($i = ($currPage - $pageRange); $i < (($currPage + $pageRange) + 1); $i++) {
-    // IF IT'S A VALID PAGE NUMBER...
-    if (($i > 0) && ($i <= $totPages)) {
-        // CURRENT PAGE
-        if ($i == $currPage) {
-           // MAKE CURRENT PAGE BOLD
-           echo "<span>$i</span> ";
-        // MAKE LINKS OF THE OTHER PAGES
-        } else {
-           // MAKE IT A LINK
-           echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$i'>$i</a> ";
+    // LOOP TO SHOW LINKS TO RANGE OF PAGES AROUND CURRENT PAGE
+    for ($i = ($currPage - $pageRange); $i < (($currPage + $pageRange) + 1); $i++) {
+        // IF IT'S A VALID PAGE NUMBER...
+        if (($i > 0) && ($i <= $totPages)) {
+            // CURRENT PAGE
+            if ($i == $currPage) {
+               // MAKE CURRENT PAGE BOLD
+               echo "<span>$i</span> ";
+            // MAKE LINKS OF THE OTHER PAGES
+            } else {
+               // MAKE IT A LINK
+               echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$i'>$i</a> ";
+            }
         }
     }
-}
 
-// SHOW FORWARD AND LAST PAGE LINKS IF NOT ON LAST PAGE
-if ($currPage != $totPages) {
-    // GET NEXT PAGE
-    $nextPage = $currPage + 1;
-      // LINK TO NEXT PAGE
-     echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$nextPage'<i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
-     // LINK TO THE LAST PAGE
-     echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$totPages'<i class='fa fa-caret-right' aria-hidden='true'></i><i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
-  } // END OF PAGINATION LINKS ?>
+    // SHOW FORWARD AND LAST PAGE LINKS IF NOT ON LAST PAGE
+    if ($currPage != $totPages) {
+        // GET NEXT PAGE
+        $nextPage = $currPage + 1;
+          // LINK TO NEXT PAGE
+         echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$nextPage'<i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
+         // LINK TO THE LAST PAGE
+         echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$totPages'<i class='fa fa-caret-right' aria-hidden='true'></i><i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
+      } // END OF PAGINATION LINKS ?>
 
 </div> <!-- PAGINATION -->
 

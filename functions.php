@@ -4,8 +4,8 @@
 * THE FUNCTION PREVENT ESCAPE CHARACTERS TO BE INJECTED IN THE STRINGS PRESENTED TO MYSQL.
 *
 * @param string $var - THE STRING FROM THE USER INPUT.
-* @param string $conn - DB CONNECTION
-* @return string var -  RETURN A SAFE SANITIZED STRING.
+* @param string $conn DB CONNECTION
+* @return string $VAR RETURN A SAFE SANITIZED STRING.
 **/
 //TODO: KOLLA VARFÖR INTE MYSQLI_REAL_ESCAPE_STRING FUNKAR
 function sanitizeMySql($conn, $var) {
@@ -17,8 +17,8 @@ function sanitizeMySql($conn, $var) {
 /**
 * THE FUNCTION REMOVES UNWANTED SLASHES AND HTML FROM USER INPUT.
 *
-* @param string $var - THE STRING FROM THE USER INPUT.
-* @return string $var - RETURN A SAFE SANITIZED STRING.
+* @param string $var THE STRING FROM THE USER INPUT.
+* @return string $var RETURN A SAFE SANITIZED STRING.
 **/
 function sanitizeString($var) {
     $var = stripslashes($var);
@@ -44,7 +44,7 @@ function printPost($index, $num) {
             </div>
             <div class="post-text">
                 <div>
-                    <p class="tags"><i class="fa fa-hashtag" aria-hidden="true"></i> <?php echo $post["tag"]; ?></p>
+                    <p class="tags"><i class="fa fa-hashtag" aria-hidden="true"></i> <?php echo $post["category"]; ?></p>
                     <h1><a href="comments.php?post=<?php echo $post['id'] ?>#start"><?php echo $post["title"]; ?></a></h1>
                     <div class="blog-content"><?php echo $post["content"]; ?></div>
                 </div>
@@ -122,17 +122,17 @@ function listPostAdmin($isPub, $access) {
 * @return string $text - RETURN THE UNIT
 **/
 function timeElapsedString($commentTime) {
-    $today = strtotime('today');
-    $yesterday = strtotime('yesterday');
-    $todaysHours = strtotime('now') - strtotime('today');
+    $today = strtotime("today");
+    $yesterday = strtotime("yesterday");
+    $todaysHours = strtotime("now") - strtotime("today");
     $tokens = array(
-        31536000 => 'year',
-        2592000 => 'month',
-        604800 => 'week',
-        86400 => 'day',
-        3600 => 'hour',
-        60 => 'minute',
-        1 => 'second');
+        31536000 => "year",
+        2592000 => "month",
+        604800 => "week",
+        86400 => "day",
+        3600 => "hour",
+        60 => "minute",
+        1 => "second");
 
     $time = time() - $commentTime;
     $time = ($time < 1) ? 1 : $time;
@@ -141,15 +141,15 @@ function timeElapsedString($commentTime) {
             if ($time < $unit) {
                 continue;
             }
-            if ($text == 'day') {
+            if ($text == "day") {
                 $numberOfUnits = floor(($time - $todaysHours) / $unit) + 1;
             } else {
                 $numberOfUnits = floor(($time)/ $unit);
             }
-            return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '') . ' ago';
+            return $numberOfUnits . " " . $text . (($numberOfUnits > 1) ? "s" : "") . " ago";
         }
     } else {
-        return 'Yesterday';
+        return "Yesterday";
     }
 }
 
@@ -177,7 +177,7 @@ function saveOrPub($isPub){
     // check the file extension
     $type = pathinfo($targetname, PATHINFO_EXTENSION);
     if ($type != "jpeg" && $type != "jpg" && $type != "png") { ?>
-      <p class="error">Endast JPG, JPEG och PNG-filer är tillåtna.</p> <?php
+      <p class="error">Only JPG, JPEG and PNG files are allowed.</p> <?php
     }
 
     if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
