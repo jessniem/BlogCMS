@@ -1,17 +1,17 @@
 @mixin border-radius($radius) {
-	border-radius:$radius;
+    border-radius:$radius;
 }
 
-/* transition for links and buttons */
+/* TRANSITION FOR LINKS AND BUTTONS */
 @mixin transition($str) {
-	-webkit-transition: $str;
-	-moz-transition: $str;
-	-o-transition: $str;
+    -webkit-transition: $str;
+    -moz-transition: $str;
+    -o-transition: $str;
 }
 
-
+/* PLACES THE USER FEEDBACK IN CENTER */
 @mixin centerer {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
