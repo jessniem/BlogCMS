@@ -99,9 +99,10 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 
 <!-- BANNER -->
 <?php
-if (($_SERVER['PHP_SELF'] == "/echo-blog/index.php") ||
-    ($_SERVER['PHP_SELF'] == "/echo-blog/about_me.php") ||
-    ($_SERVER['PHP_SELF'] == "/echo-blog/comments.php")) { ?>
+$currentfile = strrchr($_SERVER['PHP_SELF'], "/");
+if (($currentfile == "/index.php") ||
+    ($currentfile == "/about_me.php") ||
+    ($currentfile == "/comments.php")) { ?>
     <div class="banner">
         <img class="mobile-logo" src="./img/logo_mobile.png" alt="logo">
         <img class="desktop-logo" src="./img/logo_desktop.png" alt="logo">
