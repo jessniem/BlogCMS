@@ -9,6 +9,7 @@ require_once "functions.php";
         <!-- FORM: CREATE NEW BLOG POST -->
         <h1>Create new post</h1>
         <form method="post" enctype="multipart/form-data">
+            
             <!-- UPLOAD IMAGE -->
             <div class="flex-container">
                 <div class="upload-image">
@@ -21,6 +22,7 @@ require_once "functions.php";
                 <img src="#" id="output" alt="preview of uploaded image">
             </div> <!-- /img-preview -->
             </div> <!-- /flex-container -->
+            
             <!-- INSERT POST CONTENT -->
             <div class="post-content">
                 <input type="text" name="title" placeholder="Title" required="required">
@@ -46,6 +48,7 @@ require_once "functions.php";
         </form>
     </section>
 </main> <!-- /admin-main -->
+
 <?php
 //SAVE OR PUBLISH POST
 if (isset($_POST["publish"])) {
