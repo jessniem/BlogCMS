@@ -23,7 +23,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 <!--- hamburger menu ---->
 <div class="hamburgermenu">
   <header class="hamburgerheader">
-    <button class="hamburger">&#9776;</button>
+    <button class="hamburgericon">&#9776;</button>
     <button class="cross">&#735;</button>
   </header>
   <div class="basemenu">
