@@ -54,22 +54,22 @@ $totalDrafts = $data['total'];
 <main class="admin-main">
     <!-- LIST POSTS -->
     <section class="list">
-        <h1>Edit posts</h1> 
+        <h1>Edit posts</h1>
         <?php
         // LIST CREATED DRAFTS
-        if ($totalDrafts > 0) { 
+        if ($totalDrafts > 0) {
             ?>
-            <h2>Drafts (<?php echo $totalDrafts; ?>)</h2> 
+            <h2>Drafts (<?php echo $totalDrafts; ?>)</h2>
             <?php
             listPostAdmin(0, $access);
         }
         // LIST PUBLISHED POSTS
-        if ($totalPub > 0) { 
+        if ($totalPub > 0) {
             ?>
-            <h2>Published posts (<?php echo $totalPub; ?>)</h2> 
+            <h2>Published posts (<?php echo $totalPub; ?>)</h2>
             <?php
             listPostAdmin(1, $access);
-        } 
+        }
         ?>
     </section> <!-- /list -->
 
@@ -90,7 +90,7 @@ $totalDrafts = $data['total'];
                 <section class="border-top">
                     <h1>Update post</h1>
                     <form method="post" enctype="multipart/form-data">
-                        
+
                         <!-- UPLOAD IMAGE -->
                         <div class="flex-container">
                             <div class="upload-image">
@@ -103,7 +103,7 @@ $totalDrafts = $data['total'];
                                     <img src="<?php echo $image ?>" id="output" alt="Preview of uploaded image"/>
                             </div> <!-- /img-preview -->
                         </div> <!-- /flex-container -->
-                            
+
                         <!-- POST CONTENT -->
                         <div class="post-content">
                             <input type="text" value="<?php echo $title;?>" name="title" placeholder="Title" required="required">
@@ -128,7 +128,7 @@ $totalDrafts = $data['total'];
                         </div> <!-- /post-content -->
                     </form>
                 </section> <!-- /border-top -->
-	      
+
                 <?php
                 //SAVE OR PUBLISH POST
                 if(isset ($_POST["publish"]) || isset($_POST["saveDraft"])) {
@@ -140,6 +140,7 @@ $totalDrafts = $data['total'];
                     $targetfolder = "./illustrations/";
                     $date = date('c');
                     $targetname = $targetfolder . basename ($date.".jpg");
+                    $alt = sanitizeMySql($conn, $_POST["alt"]);
                     $title = sanitizeMySql($conn, $_POST["title"]);
                     $categoryId = sanitizeMySql($conn, $_POST["tag"]);
                     $userId = sanitizeMySql($conn, $_SESSION["userId"]);
