@@ -31,6 +31,11 @@ if (isset($_GET["month"]) ) {
   $result = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 1");
 }
 
+if($result == false) {
+  echo mysqli_error($conn);
+  exit;
+}
+
 
 
 // check number of posts in db
