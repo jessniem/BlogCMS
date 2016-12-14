@@ -1,4 +1,7 @@
 <?php
+require_once "db_connection.php";
+require_once "functions.php";
+
 // SAVES THE CURRENT SELECTION OF TAG WHEN USING THE PAGING-LINKS
 $get = "";
 if (isset($_GET["month"]) || isset($_GET["tag"])) {
@@ -9,15 +12,10 @@ if (isset($_GET["month"]) || isset($_GET["tag"])) {
     }
 }
 
-require_once "db_connection.php";
-require_once "functions.php";
-
-$stmt = $conn->stmt_init();
-
 // PAGINATION
 
-// POSTS PER PAGE
 $perPage = 5;
+$stmt = $conn->stmt_init();
 
 // SET $RESULT TO THE NUMBER OF POSTS
 if (isset($_GET["month"]) ) {
@@ -35,10 +33,7 @@ if($result == false) {
   exit;
 }
 
-
-
 // CHECK NUMBER OF POSTS IN DB
-
 $data = mysqli_fetch_assoc($result);
 $totPosts = $data['total'];
 
@@ -49,7 +44,6 @@ $totPages = ceil($totPosts / $perPage);
 if (isset($_GET["page"]) && is_numeric($_GET["page"])) {
     $currPage = (int) $_GET["page"];
 } else {
-   // DEFAULT PAGE
     $currPage = 1;
 }
 
@@ -70,21 +64,19 @@ $offset = ($currPage - 1) * $perPage;
 
 // END OF PAGINATION
 
+
 // GET POSTS FROM DB
+$query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
+JOIN users ON (users.id = posts.userid)
+JOIN categories ON (categories.id = posts.categoryid)
+WHERE isPub = 1";
+
 if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
-    $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
-    JOIN users ON (users.id = posts.userid)
-    JOIN categories ON (categories.id = posts.categoryid)
-    WHERE  isPub = 1
-    ORDER BY createDate DESC LIMIT $offset, $perPage";
+    $query .= " ORDER BY createDate DESC LIMIT $offset, $perPage";
 
 } elseif (isset($_GET["month"]) ) {
   $month = $_GET["month"];
-  $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
-    JOIN users ON (users.id = posts.userid)
-    JOIN categories ON (categories.id = posts.categoryid)
-    WHERE isPub = 1 AND MONTH(createDate) = $month
-    ORDER BY createDate DESC";
+  $query .= " AND MONTH(createDate) = $month ORDER BY createDate DESC";
 
 } elseif (isset($_GET["tag"])) {
     $get2 = "?tag=".$_GET["tag"];
@@ -92,8 +84,8 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
     $sortBy = "DESC";
       ?>
     <div class="sortby">
-        <a href="index.php<?php echo $get2; ?>">Descending<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
-        <a href="<?php echo $get2 . $and; ?>asc=true">Ascending<i class="fa fa-sort-asc" aria-hidden="true"></i></a>
+        <a href="index.php<?php echo $get2; ?>">Newest first<i class="fa fa-sort-desc" aria-hidden="true"></i></a>
+        <a href="<?php echo $get2 . $and; ?>asc=true">Oldest first<i class="fa fa-sort-asc" aria-hidden="true"></i></a>
     </div>
     <?php
     if(isset($_GET["asc"]) && $_GET["asc"]==true) {
@@ -101,11 +93,7 @@ if (!isset($_GET["tag"]) && (!isset($_GET["month"]))) {
     }
 
   $tagid = $_GET["tag"];
-  $query = "SELECT posts.id, posts.title, posts.categoryid, posts.userid, posts.content, posts.image, posts.alt, DATE(posts.createDate), posts.isPub, users.firstName, users.lastName, categories.category FROM posts
-    JOIN users ON (users.id = posts.userid)
-    JOIN categories ON (categories.id = posts.categoryid)
-    WHERE isPub = 1 AND categoryid = $tagid
-    ORDER BY createDate $sortBy";
+  $query .= " AND categoryid = $tagid ORDER BY createDate $sortBy";
 }
 
 $blogPosts = [];
@@ -114,13 +102,12 @@ if ($stmt->prepare($query)) {
 
     $stmt->bind_result($id, $title, $categoryid, $userid, $content, $image, $alt, $createDate, $isPub, $fname, $lname, $tag);
 
-    //SAVE BLOG POSTS IN BLOGPOSTS ARRAY
+    //SAVE BLOG POSTS IN ARRAY
     while (mysqli_stmt_fetch($stmt)) {
       $blogPosts[] = array ("id" => $id, "title" => $title, "categoryid" => $categoryid, "userid" => $userid, "content" => $content, "image" => $image, "alt" => $alt, "createDate" => $createDate, "isPub" => $isPub, "fname" => $fname, "lname" => $lname, "tag" => $tag);
     }
-      // TODO: Fixa sorteringen så att den inte försvinner när klickar på något
 
-      // ECHO OUT THE BLOGPOSTS ARRAY
+      // ECHO OUT ARRAY OF BLOG POSTS
       foreach ($blogPosts as $post) {
         $thisPost = $post["id"];
         // count the comments
@@ -135,9 +122,8 @@ if ($stmt->prepare($query)) {
       }
 }
 // PAGINATION LINKS
-// HOW MANY LINKS TO SHOW
 ?>
-<div class="pagination"> 
+<div class="pagination">
     <?php
     $pageRange = 3;
 
