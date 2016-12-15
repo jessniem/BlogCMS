@@ -22,10 +22,6 @@ window.onload = function(){
     ran_col();
 };
 
-
-
-
-
 /* HAMBURGER */
 $( ".cross" ).hide();
 $( ".basemenu" ).hide();
@@ -47,3 +43,8 @@ $( ".cross" ).click(function() {
         $( ".hamburgericon" ).show();
     });
 });
+
+
+function reload() {
+    $('#filter').submit();
+}
