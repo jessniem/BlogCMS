@@ -26,16 +26,16 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
         $stmt->bind_result($id, $title, $categoryid, $userid, $content, $image, $alt, $createDate, $isPub, $fname, $lname, $tag);
         // SAVE BLOG POST IN ARRAY
         while (mysqli_stmt_fetch($stmt)) {
-            $blogPosts[] = array ("id" => $id, "title" => $title, "categoryid" => $categoryid, "userid" => $userid, "content" => $content, "image" => $image, "alt" => $alt, "createDate" => $createDate, "isPub" => $isPub, "fname" => $fname, "lname" => $lname, "category" => $tag);
+            $blogPosts[] = array ("id" => $id, "title" => $title, "categoryid" => $categoryid, "userid" => $userid, "content" => $content, "image" => $image, "alt" => $alt, "createDate" => $createDate, "isPub" => $isPub, "fname" => $fname, "lname" => $lname, "tag" => $tag);
         }
         // SHOW BLOG POST
         foreach ($blogPosts as $post) {
             $index = false; ?>
-            <div class="post-container" id="start"> 
+            <div class="post-container" id="start">
                 <?php
-                printPost($index, 0); 
+                printPost($index, 0);
                 ?>
-            </div> <!-- /post-container --> 
+            </div> <!-- /post-container -->
             <?php
         }
     }
@@ -49,7 +49,7 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
     $comments = [];
     while (mysqli_stmt_fetch($stmt)) {
         $comments[] = array ("id" => $id, "email" => $email, "date" => $date, "name" => $name, "postid" => $postid, "commentText" => $commentText);
-    } 
+    }
     ?>
 
     <!-- FORM: ADD NEW COMMENT -->
@@ -64,11 +64,11 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
         </form>
         <?php
         // SHOW HEADING IF COMMENTS ARE AVAILABLE
-        if ($commentText != NULL) { 
+        if ($commentText != NULL) {
             ?>
-            <h2>Comments:</h2> 
+            <h2>Comments:</h2>
             <?php
-        } 
+        }
         ?>
     </section> <!-- /comment-form -->
 
