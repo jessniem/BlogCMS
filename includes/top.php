@@ -3,7 +3,7 @@ require_once "db_connection.php";
 
 // ARRAY FOR TAG MENU:
 $tags = array(
-        array("href" => "index.php",       "name" => "Most recent", 	"num" => 0),
+        array("href" => "index.php",       "name" => "Most recent"),
         array("href" => "index.php?tag=3", "name" => "Black and white", "num" => 3),
         array("href" => "index.php?tag=5", "name" => "Color", 			"num" => 5),
         array("href" => "index.php?tag=1", "name" => "Illustration", 	"num" => 1),
@@ -19,20 +19,21 @@ $admin = array(
 $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 ?>
 
-<!--- HAMBURGER MENU ---->
+<!-- HAMBURGER MENU -->
 <div class="hamburgermenu">
     <header class="hamburgerheader">
         <button class="hamburgericon">&#9776;</button>
         <button class="cross">&#735;</button>
     </header>
-    <form method="get" action="" id="filter">
+    <form method="get" action="index.php" id="filter">
 	    <div class="basemenu">
 	        <ul>
 	            <li>
 	                <select name="tag" onchange="reload();">
-                        <option value="kategorier" disabled selected>Categories</option><?php
+                        <option value="categories" disabled selected>Categories</option>
+                        <?php
                         // LOOP OUT TAGS MENU
-                        for ($i = 0; $i < count($tags); $i++) { ?>
+                        for ($i = 1; $i < count($tags); $i++) { ?>
 	                       <option value="<?php echo $tags[$i]["num"]; ?>"><li><a href="<?php echo $tags["$i"]["href"]; ?>">  <?php echo $tags["$i"]["name"]; ?></a></li></option> <?php
                         } ?>
 	                </select>
@@ -56,15 +57,18 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 	                </select>
 	            </li>
 	            <li><hr/></li>
+                <li><a href="index.php">Home</a></li>
 	            <li><a href="about_me.php">About me</a></li>
-	            <li><a href="index.php">Home</a></li> <?php
+                <?php
 	            // ONLY FOR LOGGED IN USERS
 	            if (isset($_SESSION["logged_in"])) {
-	                for ($i = 0; $i < count($admin); $i++) { ?>
+	                for ($i = 0; $i < count($admin); $i++) { 
+                        ?>
 	                    <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
 	                } 
                     ?>
-	                <li><a href="logout.php">Logout</a></li> <?php
+	                <li><a href="logout.php">Logout</a></li> 
+                    <?php
 	            } 
                 ?>
 	        </ul>
@@ -76,17 +80,26 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 <div class="menu top-menu">
     <div class="left"> <?php
     // ADMIN OPTIONS
-    if (isset($_SESSION["logged_in"])) { ?>
-            <ul> <?php
-            for ($i = 0; $i < count($admin); $i++) { ?>
-                <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> <?php
-            } ?>
-            </ul> <?php
-    } else { ?>
+    if (isset($_SESSION["logged_in"])) { 
+            ?>
+            <ul> 
+            <?php
+            for ($i = 0; $i < count($admin); $i++) { 
+                ?>
+                <li><a href="<?php echo $admin["$i"]["href"]; ?>"><?php echo $admin["$i"]["name"]; ?></a></li> 
+                <?php
+            } 
+            ?>
+            </ul> 
+            <?php
+    } else { 
+        ?>
         <ul>
             <li><a href="login.php">Login</a></li>
-        </ul> <?php
-    } ?>
+        </ul> 
+        <?php
+    } 
+    ?>
     </div>
 
     <div class="right">
@@ -140,18 +153,21 @@ if (($currentfile == "/index.php") ||
                         $query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
                         $data = mysqli_fetch_assoc($query);
                         $monthsum = $data['total'];
-                        if($monthsum == 0) { ?>
+                        if($monthsum == 0) { 
+                            ?>
                             <p class="month empty" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></p> 
                         <?php
                         } else { 
                             ?>
-                            <a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?> </a> <?php
+                            <a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?> </a> 
+                            <?php
                         }
                     } 
                     ?>
                 </div>
             </div> <!-- /dropdown -->
         </ul>
-    </div> <?php
+    </div> 
+    <?php
 }
 ?>
