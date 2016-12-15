@@ -30,7 +30,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 	        <ul>
 	            <li>
 	                <select name="tag" onchange="reload();">
-                        <option value="categories" disabled selected>Categories</option>
+                        <option value="categories" disabled selected>Categories &#43;</i></option>
                         <?php
                         // LOOP OUT TAGS MENU
                         for ($i = 1; $i < count($tags); $i++) { ?>
@@ -40,7 +40,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 	            </li>
 	            <li>
 	                <select name="month" onchange="reload()">
-	                    <option value="months" disabled selected>Months</option>
+	                    <option value="months" disabled selected>Months &#43;</option>
 	                     <?php
 	                        $stmt = $conn->stmt_init();
 	                        // CHECK WHICH MONTHS THAT HAVE POSTS
