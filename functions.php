@@ -1,11 +1,11 @@
 <?php
 
 /**
-* THE FUNCTION PREVENT ESCAPE CHARACTERS TO BE INJECTED IN THE STRINGS PRESENTED TO MYSQL.
+* The funtion precent escape characters to be injected in the string presented to MySQL.
 *
-* @param string $var - THE STRING FROM THE USER INPUT.
-* @param string $conn DB CONNECTION
-* @return string $VAR RETURN A SAFE SANITIZED STRING.
+* @param string $var - The string from the user input.
+* @param string $conn - DB connection.
+* @return string $VAR - Return a safe sanitized string.
 **/
 //TODO: KOLLA VARFÖR INTE MYSQLI_REAL_ESCAPE_STRING FUNKAR
 function sanitizeMySql($conn, $var) {
@@ -15,10 +15,10 @@ function sanitizeMySql($conn, $var) {
 }
 
 /**
-* THE FUNCTION REMOVES UNWANTED SLASHES AND HTML FROM USER INPUT.
+* The function removes unvanter slashes and HTML from user input.
 *
-* @param string $var THE STRING FROM THE USER INPUT.
-* @return string $var RETURN A SAFE SANITIZED STRING.
+* @param string $var The string from the user inout.
+* @return string $var Rerturn a string without html, slashes and tags.
 **/
 function sanitizeString($var) {
     $var = stripslashes($var);
@@ -30,8 +30,10 @@ function sanitizeString($var) {
 
 
 /**
-* THE FUNCTION PRINTS OUT THE BLOG POSTS
+* The funtion prints out the blog post.
 *
+* @param bool $index - 1 to publish, 0 to save draft.
+* @param int $num - The number of comments on the post.
 **/
 function printPost($index, $num) {
     global $tag;
@@ -63,9 +65,9 @@ function printPost($index, $num) {
 
 
 /**
-* THE FUNCTION PREVENT ESCAPE CHARACTERS TO BE INJECTED IN THE STRINGS PRESENTED TO MYSQL.
+* The function prints out a list of the blog post for the admin users
 *
-* @param int $ispub - SEND IN 0 TO PRINT OUT UNPUBLISHED, 1 FOR PUBLISHED POSTS
+* @param int $ispub - 0 for drafts, 1 for published posts.
 **/
 function listPostAdmin($isPub, $access) {
 
@@ -114,12 +116,12 @@ function listPostAdmin($isPub, $access) {
 
 
 /**
-* THE FUNCTION TAKES THE DATE SENT IN AND RETURNS HOW LONG AGO THAT WAS IN UNITS OF: YEARS, MONTHS, WEEKS, DAYS, HOURS, MINUTES OR SECONDS.
+* The function takes the date sent in and returns how long ago that was in units of: years, months, weeks, days, hours, minutes or seconds.
 *
-* @param string $time - TAKES THE DATE FOR THE CALCULATION
+* @param string $time - The date for the calculation.
 *
-* @return int $numberOfUnits - CALCULATED TIME
-* @return string $text - RETURN THE UNIT
+* @return int $numberOfUnits - Calculated time
+* @return string $text - Returns the unit
 **/
 function timeElapsedString($commentTime) {
     $today = strtotime("today");
@@ -155,9 +157,9 @@ function timeElapsedString($commentTime) {
 
 
 /**
-* THE FUNCTION IS USED TO PUBLISH OR SAVE A DRAFT
+* The function is used to publish or save a draft.
 *
-* @param bool $isPub - 1 FOR PUBLISH, 0 FOR SAVE
+* @param bool $isPub - 1 to publish, 0 to save
 **/
 function saveOrPub($isPub){
     global $conn;
