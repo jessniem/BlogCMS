@@ -59,6 +59,7 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 	            <li><hr/></li>
                 <li><a href="index.php">Home</a></li>
 	            <li><a href="about_me.php">About me</a></li>
+                <li><a href="login.php">Login</a></li>
                 <?php
 	            // ONLY FOR LOGGED IN USERS
 	            if (isset($_SESSION["logged_in"])) {
