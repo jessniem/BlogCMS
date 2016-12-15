@@ -31,9 +31,12 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
         // SHOW BLOG POST
         foreach ($blogPosts as $post) {
             $index = false; ?>
-            <div class="post-container" id="start"> <?php
-                printPost($index, 0); ?>
-            </div> <!-- /post-container --> <?php
+            <div class="post-container" id="start"> 
+                <?php
+                printPost($index, 0); 
+                ?>
+            </div> <!-- /post-container --> 
+            <?php
         }
     }
 
@@ -46,7 +49,8 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
     $comments = [];
     while (mysqli_stmt_fetch($stmt)) {
         $comments[] = array ("id" => $id, "email" => $email, "date" => $date, "name" => $name, "postid" => $postid, "commentText" => $commentText);
-    } ?>
+    } 
+    ?>
 
     <!-- FORM: ADD NEW COMMENT -->
     <section class="comment-form">
@@ -60,9 +64,12 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
         </form>
         <?php
         // SHOW HEADING IF COMMENTS ARE AVAILABLE
-        if ($commentText != NULL) { ?>
-            <h2>Comments:</h2> <?php
-        } ?>
+        if ($commentText != NULL) { 
+            ?>
+            <h2>Comments:</h2> 
+            <?php
+        } 
+        ?>
     </section> <!-- /comment-form -->
 
     <?php
