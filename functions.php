@@ -44,7 +44,7 @@ function printPost($index, $num) {
             </div>
             <div class="post-text">
                 <div>
-                    <p class="tags"><i class="fa fa-hashtag" aria-hidden="true"></i> <?php echo $post["category"]; ?></p>
+                    <p class="tags"><i class="fa fa-hashtag" aria-hidden="true"></i> <?php echo $post["tag"]; ?></p>
                     <h1><a href="comments.php?post=<?php echo $post['id'] ?>#start"><?php echo $post["title"]; ?></a></h1>
                     <div class="blog-content"><?php echo $post["content"]; ?></div>
                 </div>
