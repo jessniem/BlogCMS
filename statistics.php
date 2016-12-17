@@ -6,12 +6,11 @@ require_once "./db_connection.php";
 $access = $_SESSION["access"];
 
 $stmt = $conn->stmt_init();
-if ($access == 1) {
-    $user = "admin";
-} else {
-    $user = "notadmin";
-}
+
+$user = ($access == 1) ? "admin" : "notadmin";
+
 $userid = $_SESSION["userId"];
+
 //COUNTS POSTS IN TOTAL
 switch ($user) {
     case 'admin':
@@ -42,11 +41,7 @@ if ($stmt->prepare ($totalC)) {
 }
 
 //COUNTS AVERAGE COMMENTS PER POST
-if ($totalComments == 0) {
-    $totalS = 0;
-} else {
-    $totalS = $totalComments / $totalPosts;
-}
+$totalS = ($totalComments == 0) ? 0 : $totalComments / $totalPosts;
 ?>
 
 <main class="admin-main margin">
