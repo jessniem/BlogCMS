@@ -18,9 +18,9 @@ include "db_connection.php";
         <section class="login-form">
             <!-- FORM: LOGIN -->
             <form action="logincheck.php" method="post">
-                <label for="email">Your email:</label>
+                <label>Your email:</label>
                 <input name="email" type="text">
-                <label for="password">Your password:</label>
+                <label>Your password:</label>
                 <input name="password" type="password">
                 <button name="send" type="submit">Login</button>
             </form>
