@@ -23,7 +23,7 @@ include_once "./includes/top.php";
         ?>
         <div class="email">
             <h2>Contact and inquiries</h2>
-            <a href="mailto: <?php echo "$email"; ?>">
+            <a href="mailto:<?php echo "$email"; ?>">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
             <?php echo $email; ?>
             </a>
