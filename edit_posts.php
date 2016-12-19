@@ -142,7 +142,7 @@ $totalDrafts = $data['total'];
                     $targetname = $targetfolder . basename ($date.".jpg");
                     $alt = sanitizeMySql($conn, $_POST["alt"]);
                     $title = sanitizeMySql($conn, $_POST["title"]);
-                    $categoryId = sanitizeMySql($conn, $_POST["tag"]);
+                    $categoryid = $_POST["tag"];
                     $userId = sanitizeMySql($conn, $_SESSION["userId"]);
                     $content = sanitizeMySql($conn, $_POST["content"]);
                     $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}', content = '{$content}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'";

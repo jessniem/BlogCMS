@@ -35,7 +35,7 @@ function sanitizeString($var) {
 function printPost($index, $num) {
     global $tag;
     global $post;
-    global $categoryid; 
+    global $categoryid;
     ?>
     <div class="load-post">
         <article class="post">
@@ -49,11 +49,11 @@ function printPost($index, $num) {
                     <div class="blog-content"><?php echo $post["content"]; ?></div>
                 </div>
                  <div>
-                    <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p> 
+                    <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p>
                     <?php
                     if ($index) { ?>
                     <a href="comments.php?post=<?php echo $post['id'] ?>#start"><p class="comments"><i class="fa fa-comment" aria-hidden="true"></i> Comments (<?php echo $num; ?>)</p></a><?php
-                    } 
+                    }
                     ?>
                 </div>
             </div> <!-- /post-text -->
@@ -95,13 +95,13 @@ function listPostAdmin($isPub, $access) {
                     <a href="edit_posts.php?edit=<?php echo $id; ?>#update"><i class="fa fa-pencil"></i></a>
                     <a href="edit_posts.php?edit=<?php echo $id; ?>#update"> <?php echo $title;?> </a>
                 </div> <!-- /title -->
-                <div class="create-date"> 
+                <div class="create-date">
                     <?php
                     // PRINT OUT THE AUTOR OF THE POST WHEN LOGGED IN AS ADMIN
                     if ($access == 1) {
                       echo "$fn $ln | ";
-                    } 
-                    echo $date; 
+                    }
+                    echo $date;
                     ?>
                 </div> <!-- /create-date -->
             </div> <!-- /flex-list row -->
@@ -162,10 +162,10 @@ function saveOrPub($isPub){
     $targetfolder = "./illustrations/";
     $filetype = ".".substr($_FILES["postImage"]["type"], 6);
     $date = date('c');
-    $targetname = $targetfolder . basename ($date . $filetype); // TODO: KANSKE MÅSTE BYTA DATE, POSTID, HAR VI INTE HÄR, KAN MAN LÖSA DET?
+    $targetname = $targetfolder . basename ($date . $filetype);
     $alt = sanitizeMySql($conn, $_POST["alt"]);
     $title = sanitizeMySql($conn, $_POST["title"]);
-    $categoryId = sanitizeMySql($conn, $_POST["tag"]);
+    $categoryId = $_POST["tag"];
     $userId = $_SESSION["userId"];
     $content = sanitizeMySql($conn, $_POST["content"]);
     $type = pathinfo($targetname, PATHINFO_EXTENSION);
@@ -180,9 +180,9 @@ function saveOrPub($isPub){
             echo "The post has been published!";
         } else {
             echo "The post has been saved as a draft!";
-        } 
+        }
         ?>
-		</div> 
+		</div>
         <?php
         $query = "INSERT INTO posts VALUES
         (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', '$alt', NULL, '{$isPub}')";
@@ -191,7 +191,7 @@ function saveOrPub($isPub){
         } else {
             echo mysqli_error();
         }
-    } else { 
+    } else {
         ?>
         <div class="error feedback fadeOut">
             Something went wrong, the post is not created.
