@@ -4,6 +4,7 @@ include_once "./includes/head.php";
 require_once "functions.php";
 include_once "./includes/top.php";
 ?>
+
 <main class="about-main">
     <section>
     	<h1>About me</h1>
@@ -22,13 +23,14 @@ include_once "./includes/top.php";
         ?>
         <div class="email">
             <h2>Contact and inquiries</h2>
-            <a href="mailto: <?php echo "$email"; ?>">
+            <a href="mailto:<?php echo "$email"; ?>">
                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
             <?php echo $email; ?>
             </a>
         </div> <!-- /email -->
 	</section>
 </main> <!-- /about-main -->
+
 <?php 
 include_once "./includes/footer.php"; 
 ?>

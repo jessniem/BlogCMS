@@ -160,7 +160,7 @@ $totalDrafts = $data['total'];
             }
         }
         ?>
-    </div>
+    </div> <!-- /update -->
 
     <?php
     //GET COMMENTS
@@ -199,6 +199,7 @@ $totalDrafts = $data['total'];
     }
     ?>
 </main> <!-- /admin-main -->
+
 <?php
 include "./includes/footer.php";
 ?>

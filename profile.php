@@ -4,6 +4,7 @@ include_once "./includes/head.php";
 include_once "./includes/top.php";
 require_once "functions.php";
 ?>
+
 <main class="admin-main">
     <section class="profile">
         <h1>Your information</h1>
@@ -111,10 +112,10 @@ require_once "functions.php";
                 if (isset($_GET["user"])) {
                     if ($_GET["user"] == "already_registered") {
                         ?>
-                        <div class="error feedback fadeOut">The email is already registered</div>
+                        <div class="error feedback fadeOut">The email is already registered</div> <!-- /error feedback fadeOut -->
                         <?php
                     } elseif ($_GET["user"] == "invalid_email") { ?>
-                        <div class="error feedback fadeOut">Invalid email address</div>
+                        <div class="error feedback fadeOut">Invalid email address</div> <!-- /error feedback fadeOut -->
                         <?php
                     } elseif ($_GET["user"] == "success") {
                         ?>
@@ -122,7 +123,7 @@ require_once "functions.php";
                             The user was added successfully! <br>
                             User name: <?php echo $_SESSION["user_email"]; ?> <br>
                             Password: <?php echo $_SESSION["user_pw"]; ?>
-                        </div>
+                        </div> <!-- /feedback fadeOut -->
                         <?php
                     }
                 }
@@ -152,7 +153,7 @@ require_once "functions.php";
                         <?php
                         echo "$firstname $lastname - $email";
                         ?>
-                    </div>
+                    </div> <!-- /flex-list row -->
                     <?php
                     }
                 }
@@ -163,6 +164,7 @@ require_once "functions.php";
         ?>
     </section> <!-- /profile -->
 </main>
+
 <?php
 include_once "./includes/footer.php";
 ?>

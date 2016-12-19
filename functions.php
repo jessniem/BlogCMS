@@ -1,5 +1,4 @@
 <?php
-
 /**
 * The funtion precent escape characters to be injected in the string presented to MySQL.
 *
@@ -27,8 +26,6 @@ function sanitizeString($var) {
     return $var;
 }
 
-
-
 /**
 * The funtion prints out the blog post.
 *
@@ -38,12 +35,13 @@ function sanitizeString($var) {
 function printPost($index, $num) {
     global $tag;
     global $post;
-    global $categoryid; ?>
+    global $categoryid; 
+    ?>
     <div class="load-post">
         <article class="post">
             <div class="post-img">
                 <a href="comments.php?post=<?php echo $post['id'] ?>#start"><img src="<?php echo $post['image']; ?>" alt="<?php echo $post['alt']; ?>"></a>
-            </div>
+            </div> <!-- /post-img -->
             <div class="post-text">
                 <div>
                     <p class="tags"><i class="fa fa-hashtag" aria-hidden="true"></i> <?php echo $post["tag"]; ?></p>
@@ -51,18 +49,18 @@ function printPost($index, $num) {
                     <div class="blog-content"><?php echo $post["content"]; ?></div>
                 </div>
                  <div>
-                    <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p> <?php
+                    <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p> 
+                    <?php
                     if ($index) { ?>
                     <a href="comments.php?post=<?php echo $post['id'] ?>#start"><p class="comments"><i class="fa fa-comment" aria-hidden="true"></i> Comments (<?php echo $num; ?>)</p></a><?php
-                    } ?>
+                    } 
+                    ?>
                 </div>
-            </div> <!-- POST-TEXT -->
-        </article>
-    </div> <!-- LOAD-POST -->
+            </div> <!-- /post-text -->
+        </article> <!-- /post -->
+    </div> <!-- /load-post -->
     <?php
 }
-
-
 
 /**
 * The function prints out a list of the blog post for the admin users
@@ -70,7 +68,6 @@ function printPost($index, $num) {
 * @param int $ispub - 0 for drafts, 1 for published posts.
 **/
 function listPostAdmin($isPub, $access) {
-
     global $conn;
     $userId = $_SESSION["userId"];
     $stmt = $conn->stmt_init();
@@ -81,7 +78,6 @@ function listPostAdmin($isPub, $access) {
     } else {
         $query = "SELECT id, title, createDate FROM posts WHERE isPub = '{$isPub}' AND userid = '{$userId}' ORDER BY createDate DESC";
     }
-
     if ($stmt->prepare($query)) {
         $stmt->execute();
         if ($access == 1) {
@@ -90,30 +86,29 @@ function listPostAdmin($isPub, $access) {
         } else {
             $stmt->bind_result($id, $title, $createDate);
         }
-
-    while (mysqli_stmt_fetch($stmt)) {
-        $date = substr($createDate, 0, -9);
-        ?>
-        <div class="flex-list row">
-            <div class="title">
-                <a href="edit_posts.php?delete=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this post?');" class="trash"><i class="fa fa-trash-o"></i></a>
-                <a href="edit_posts.php?edit=<?php echo $id; ?>#update"><i class="fa fa-pencil"></i></a>
-                <a href="edit_posts.php?edit=<?php echo $id; ?>#update"> <?php echo $title;?> </a>
-            </div>
-            <div class="create-date"> <?php
-                // PRINT OUT THE AUTOR OF THE POST WHEN LOGGED IN AS ADMIN
-                if ($access == 1) {
-                  echo "$fn $ln | ";
-                }?>
-                <?php echo $date; ?>
-            </div>
-        </div>
-      <?php }
+        while (mysqli_stmt_fetch($stmt)) {
+            $date = substr($createDate, 0, -9);
+            ?>
+            <div class="flex-list row">
+                <div class="title">
+                    <a href="edit_posts.php?delete=<?php echo $id; ?>" onclick="return confirm('Are you sure you want to delete this post?');" class="trash"><i class="fa fa-trash-o"></i></a>
+                    <a href="edit_posts.php?edit=<?php echo $id; ?>#update"><i class="fa fa-pencil"></i></a>
+                    <a href="edit_posts.php?edit=<?php echo $id; ?>#update"> <?php echo $title;?> </a>
+                </div> <!-- /title -->
+                <div class="create-date"> 
+                    <?php
+                    // PRINT OUT THE AUTOR OF THE POST WHEN LOGGED IN AS ADMIN
+                    if ($access == 1) {
+                      echo "$fn $ln | ";
+                    } 
+                    echo $date; 
+                    ?>
+                </div> <!-- /create-date -->
+            </div> <!-- /flex-list row -->
+            <?php
+        }
     }
 }
-
-
-
 
 /**
 * The function takes the date sent in and returns how long ago that was in units of: years, months, weeks, days, hours, minutes or seconds.
@@ -155,7 +150,6 @@ function timeElapsedString($commentTime) {
     }
 }
 
-
 /**
 * The function is used to publish or save a draft.
 *
@@ -169,40 +163,40 @@ function saveOrPub($isPub){
     $filetype = ".".substr($_FILES["postImage"]["type"], 6);
     $date = date('c');
     $targetname = $targetfolder . basename ($date . $filetype); // TODO: KANSKE MÅSTE BYTA DATE, POSTID, HAR VI INTE HÄR, KAN MAN LÖSA DET?
-
     $alt = sanitizeMySql($conn, $_POST["alt"]);
     $title = sanitizeMySql($conn, $_POST["title"]);
     $categoryId = sanitizeMySql($conn, $_POST["tag"]);
     $userId = $_SESSION["userId"];
     $content = sanitizeMySql($conn, $_POST["content"]);
-
-    // check the file extension
     $type = pathinfo($targetname, PATHINFO_EXTENSION);
+
     if ($type != "jpeg" && $type != "jpg" && $type != "png") { ?>
       <p class="error">Only JPG, JPEG and PNG files are allowed.</p> <?php
     }
-
     if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
-            //FILLUPPLADDNINGEN HAR GÅTT BRA! ?>
+            ?>
 			<div class="feedback fadeOut"> <?php
         if ($isPub == 1) {
             echo "The post has been published!";
         } else {
             echo "The post has been saved as a draft!";
-        } ?>
-		</div> <?php
-            $query = "INSERT INTO posts VALUES
-            (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', '$alt', NULL, '{$isPub}')";
-
+        } 
+        ?>
+		</div> 
+        <?php
+        $query = "INSERT INTO posts VALUES
+        (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', '$alt', NULL, '{$isPub}')";
         if ($stmt->prepare($query)) {
             $stmt->execute();
         } else {
             echo mysqli_error();
         }
-    } else { ?>
+    } else { 
+        ?>
         <div class="error feedback fadeOut">
             Something went wrong, the post is not created.
-        </div> <?php
+        </div> <!-- /error feedback fadeOut -->
+        <?php
     }
 }
 ?>

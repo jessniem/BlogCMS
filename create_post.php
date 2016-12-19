@@ -4,6 +4,7 @@ include_once "./includes/head.php";
 include_once "./includes/top.php";
 require_once "functions.php";
 ?>
+
 <main class="admin-main">
     <section>
         <!-- FORM: CREATE NEW BLOG POST -->

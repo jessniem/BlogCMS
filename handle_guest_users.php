@@ -34,6 +34,7 @@ if (!empty($_POST)) {
         header("Location: profile.php?user=invalid_email");
     }
 }
+
 // DELETE GUEST USER
 if (isset($_GET["delete"])) {
     $id = sanitizeMySql($conn, $_GET["delete"]);

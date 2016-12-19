@@ -11,6 +11,7 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
     <?php
 }
 ?>
+
 <main>
     <?php
     // GET SELECTED POST
@@ -56,9 +57,9 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
     <section class="comment-form">
         <form action="comments_check.php?postId=<?php echo $thisPostId; ?>" method="post">
             <h2>Your comment:</h2>
-            <textarea name="comment" value="" placeholder="Comment..."></textarea>
+            <textarea name="comment" placeholder="Comment..."></textarea>
             <h3>Who are you?</h3>
-            <input type="input" name="name" value="" placeholder="Your name">
+            <input type="text" name="name" value="" placeholder="Your name">
             <input type="text" name="email" value="" placeholder="Your email">
             <button type="submit" name="submit">Post comment</button>
         </form>
@@ -72,11 +73,12 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
         ?>
     </section> <!-- /comment-form -->
 
+    <div id="comments"></div>
     <?php
     // LIST COMMENTS
     foreach ($comments as $var) {
         $time = strtotime($var["date"]);?>
-        <div class="comment" id="comments">
+        <div class="comment">
             <div class="comment-fa">
                 <i class="fa fa-user-circle" aria-hidden="true"></i>
             </div> <!-- /comment-fa -->
