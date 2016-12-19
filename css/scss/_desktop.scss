@@ -1,8 +1,19 @@
 /* ***************************
-           ASSETS
+        ASSETS
 *************************** */
 
 @import "assets/_colors.scss";
+
+/* ***************************
+        USER FEEDBACK
+*************************** */
+
+.feedback {
+    padding: 60px 100px;
+}
+.comment-feedback {
+    top: 850px;
+}
 
 /* ***************************
         BANNER
@@ -10,11 +21,11 @@
 
 .banner {
     .mobile-logo {
-	   display: none;
+        display: none;
     }
     .desktop-logo {
         display: block;
-		width: 90%;
+        width: 90%;
     }
 }
 
@@ -26,9 +37,9 @@
     background-color: $echoturq;
     height: 60px;
     width: 100%;
-    @include flexbox(); 
-    @include align-items(center); 
-    @include flex-direction(row); 
+    @include flexbox();
+    @include align-items(center);
+    @include flex-direction(row);
     a {
         padding: 14px 15px 22px 15px;
         color: $echogrey;
@@ -37,19 +48,9 @@
 
 //HIDES HAMBURGER MENU AND FILLER (MOBILE)
 .hamburgermenu, .bluefiller {
-	display:none;
+    display:none;
 }
 
-/* ***************************
-        USER FEEDBACK
-*************************** */
-
-.feedback {
-	padding: 60px 100px;
-}
-.comment-feedback {
-    top: 850px;
-}
 /* ***************************
         TOP MENU
 *************************** */
@@ -58,7 +59,7 @@
     @include justify-content(space-between);
     a:hover {
         color: $echodarkblue;
-		@include transition(all 200ms ease-in-out);
+        @include transition(all 200ms ease-in-out);
     }
 }
 
@@ -67,14 +68,14 @@
 *************************** */
 
 .filter-menu {
-	@include flexbox();
-	a {
-	   @include transition(all 200ms ease-in-out);
-	}
-	a:hover, a:active {
-		background-color: $echogrey;
-		color: $echodarkblue;
-	}
+    @include flexbox();
+    a {
+       @include transition(all 200ms ease-in-out);
+    }
+    a:hover, a:active {
+        background-color: $echogrey;
+        color: $echodarkblue;
+    }
 }
 
 //DROPDOWN MENU
@@ -99,15 +100,15 @@
     display: block;
     padding: 12px 16px;
     text-decoration: none;
-	&:hover {
-		background-color: #f1f1f1
-	}
+    &:hover {
+        background-color: #f1f1f1
+    }
 }
 .dropdown:hover .dropdown-content {
     display: block;
 }
 .month {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 /* ***************************
@@ -115,13 +116,13 @@
 *************************** */
 
 main {
-	margin: 120px 40px 80px 40px;
+    margin: 120px 40px 80px 40px;
 }
 .admin-main {
-	margin-top: 80px;
-	section {
-		padding: 40px;
-	}
+    margin-top: 80px;
+    section {
+        padding: 40px;
+    }
 }
 .margin {
     margin-bottom: 250px;
@@ -132,31 +133,32 @@ main {
 *************************** */
 
 form {
-	button {
+    button {
     width: 49%;
-	}
+    }
 }
 div.post-content {
     box-sizing:border-box;
 }
+
 /* ***************************
         COMMENTS
 *************************** */
 
 .comment-form {
     padding: 40px 40px 10px 40px;
- }
- .comment {
+}
+    .comment {
     padding: 40px;
     @include flex-direction(row);
     .comment-fa {
-  	    margin: 0 40px 0 0;
-  	    i.fa-user-circle {
-    	   font-size: 3.5em;
-  	    }
+        margin: 0 40px 0 0;
+        i.fa-user-circle {
+            font-size: 3.5em;
+        }
     }
     .comment-content {
-  	    margin-right: 20%;
+        margin-right: 20%;
     }
 }
 
@@ -192,11 +194,11 @@ div.post-content {
 *************************** */
 
 .flex-container {
-    @include flex-direction(row); 
-    @include flex-wrap(wrap); 
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
 }
 .upload-image, .img-preview {
-    @include flex-grow(1); 
+    @include flex-grow(1);
     input {
         width: 90%;
     }
@@ -212,9 +214,9 @@ div.post-content {
 
 .statistics {
     padding: 80px 0;
-    @include flexbox(); 
-    @include justify-content(space-around); 
-    @include flex-direction(row); 
+    @include flexbox();
+    @include justify-content(space-around);
+    @include flex-direction(row);
     .box {
         margin: 30px;
     }
@@ -234,46 +236,46 @@ div.post-content {
 *************************** */
 
 footer {
-    @include justify-content(space-between); 
-    @include flex-direction(row); 
-	.hide {
-	   display: initial;
-	   @include transition(all 200ms ease-in-out);
-	}
-	div {
+    @include justify-content(space-between);
+    @include flex-direction(row);
+    .hide {
+        display: initial;
+        @include transition(all 200ms ease-in-out);
+    }
+    div {
         display: flex;
         height: 50px;
         margin: 0;
-		@include flex-grow(1); 
-		@include align-items(flex-end); 
+        @include flex-grow(1);
+        @include align-items(flex-end);
         &:nth-child(2) {
-			@include justify-content(center);
-		}
-		&:last-child {
+            @include justify-content(center);
+        }
+        &:last-child {
             font-size: 1em;
-			@include justify-content(flex-end);
-		}
-		.fa {
-			font-size: 3em;
-			padding: 0 15px;
-		}
-	}
-	ul {
-		padding: 0;
-		list-style: disc inside none;
-		li {
-			display: list-item;
-			&:first-child {
-			    padding-bottom: 10px;
-			}
-		}
-		a {
-			padding: 0;
-		}
-	}
+            @include justify-content(flex-end);
+        }
+        .fa {
+            font-size: 3em;
+            padding: 0 15px;
+        }
+    }
+    ul {
+        list-style: disc inside none;
+        padding: 0;
+        li {
+            display: list-item;
+            &:first-child {
+                padding-bottom: 10px;
+            }
+        }
+        a {
+            padding: 0;
+        }
+    }
 }
 
-  .social {
+.social {
     margin: 10px;
     a {
       color: $echogrey;
@@ -289,14 +291,12 @@ footer {
           color: $echopink;
         }
       }
-
-
-  }
-  div:nth-child(3) {
-    font-size: 0.8em;
-  }
-  .fa {
+    }
+    div:nth-child(3) {
+        font-size: 0.8em;
+    }
+    .fa {
     font-size: 3.8em;
     padding: 0 10px;
-  }
+    }
 }
