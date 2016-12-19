@@ -21,32 +21,32 @@ div, article, aside, section {
 *************************** */
 
 body {
-  background-color: $echogrey;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1em;
+    background-color: $echogrey;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1em;
 }
 a {
-  text-decoration: none;
-  color: $echodarkturq;
-  &:hover {
-    color: $echoturq;
+    color: $echodarkturq;
+    text-decoration: none;
+    &:hover {
+        color: $echoturq;
   }
 }
 ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 40px 0 40px;
-  li {
+    list-style: none;
+    margin: 0;
+    padding: 0 40px 0 40px;
+    li {
     display: inline-block;
-  }
+    }
 }
 h1, h2, h3, h4 {
-  margin: 0 0 10px 0;
+    margin: 0 0 10px 0;
 }
 p {
-  color: $echodarkturq;
-  font-weight: 400;
-  margin: 0;
+    color: $echodarkturq;
+    font-weight: 400;
+    margin: 0;
 }
 
 /* ***************************
@@ -54,44 +54,44 @@ p {
 *************************** */
 
 .realtive {
-  position: relative;
+    position: relative;
 }
 .feedback {
-  color: $echogrey;
-  font-size: 1.3em;
-  padding: 40px 30px;
-  width: 300px;
-  background-color: $echodarkblue;
-  text-align: center;
-  position: absolute;
-  top: 100px;
-  left:  50%;
-  animation-duration: 2s;
-  animation-delay: 1.5s;
-  animation-fill-mode: both;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 1.5s;
-  -webkit-animation-fill-mode: both;
-  @include centerer;
+    animation-delay: 1.5s;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    -webkit-animation-delay: 1.5s;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    background-color: $echodarkblue;
+    color: $echogrey;
+    font-size: 1.3em;
+    left:  50%;
+    padding: 40px 30px;
+    position: absolute;
+    text-align: center;
+    top: 100px;
+    width: 300px;
+    @include centerer;
 }
 .comment-feedback {
-  top: 800px;
+    top: 800px;
 }
 .error {
-  color: $echogrey;
-  background-color: $echored;
+    background-color: $echored;
+    color: $echogrey;
 }
 @-webkit-keyframes fadeOut {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
+    0% {opacity: 1;}
+    100% {opacity: 0;}
 }
 @keyframes fadeOut {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
+    0% {opacity: 1;}
+    100% {opacity: 0;}
 }
 .fadeOut {
-  animation-name: fadeOut;
-  -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+    -webkit-animation-name: fadeOut;
 }
 
 /* ***************************
@@ -100,120 +100,119 @@ p {
 *************************** */
 
 .banner {
-  height: 400px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-	.mobile-logo {
-    width: 90%;
-  }
-  .desktop-logo {
-    display: none;
-  }
+    background-color: white;
+    height: 400px;
+    @include align-items(center);
+    @include flexbox();
+    @include justify-content(center);
+    .mobile-logo {
+        width: 90%;
+    }
+    .desktop-logo {
+        display: none;
+    }
 }
 
 /* ***************************
-       HAMBURGER 
+       HAMBURGER
     index.php/comments.php
 *************************** */
 
 .hamburgerheader {
-  width:100%;
-  background:$echoturq;
-  height:60px;
-  line-height:60px;
+    background:$echoturq;
+    height:60px;
+    line-height:60px;
+    width:100%;
 }
 .hamburgericon {
-  background:none;
-  position:absolute;
-  top:0;
-  right:0;
-  line-height:45px;
-  padding:5px 15px 0px 15px;
-  color:#fff;
-  border:0;
-  font-size:1.4em;
-  font-weight:bold;
-  cursor:pointer;
-  outline:none;
-  z-index:10000000000000;
+    background:none;
+    border:0;
+    color:#fff;
+    cursor:pointer;
+    font-size:1.4em;
+    font-weight:bold;
+    line-height:45px;
+    outline:none;
+    padding:5px 15px 0px 15px;
+    position:absolute;
+    right:0;
+    top:0;
+    z-index:100000000000;
 }
 .cross {
-  background:none;
-  position:absolute;
-  top:0px;
-  right:0;
-  padding:13px 15px 0px 15px;
-  color:#fff;
-  border:0;
-  font-size:3em;
-  line-height:65px;
-  font-weight:bold;
-  cursor:pointer;
-  outline:none;
-  z-index:10000000000000;
+    background:none;
+    border:0;
+    color:#fff;
+    cursor:pointer;
+    font-size:3em;
+    font-weight:bold;
+    line-height:65px;
+    outline:none;
+    padding:13px 15px 0px 15px;
+    position:absolute;
+    right:0;
+    top:0px;
+    z-index:100000000000;
 }
 .basemenu {
-  z-index:1000000;
-  font-weight:bold;
-  font-size:0.8em;
-  width:100%;
-  background:$echoturq;
-  position:absolute;
-  text-align:center;
+    background:$echoturq;
+    font-size:0.8em;
+    font-weight:bold;
+    position:absolute;
+    text-align:center;
+    width:100%;
+    z-index:1000000;
 }
 .basemenu ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  list-style-image: none;
+    list-style-image: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 .basemenu li {
-  display: block;
-  padding:15px 0 15px 0;
-  font-size:1.4em;
-  //border: 1px solid white;
+    display: block;
+    font-size:1.4em;
+    padding:15px 0 15px 0;
 }
 .basemenu li:hover {
-  display: block;
-  padding:15px 0 15px 0;
+    display: block;
+    padding:15px 0 15px 0;
 }
 .basemenu ul:hover {
-  display:block;
+    display:block;
 }
 .basemenu ul li a {
-  text-decoration:none;
-  margin: 0px;
-  color:#fff;
+    color:#fff;
+    margin: 0px;
+    text-decoration:none;
 }
 .basemenu a {
-  text-decoration:none;
-  color:white;
+    color:white;
+    text-decoration:none;
 }
 .basemenu a:hover {
-  text-decoration:none;
-  color:white;
+    color:white;
+    text-decoration:none;
 }
 .glyphicon-home{
-  color:white;
-  font-size:1.5em;
-  margin-top:5px;
-  margin:0 auto;
+    color:white;
+    font-size:1.5em;
+    margin-top:5px;
+    margin:0 auto;
 }
 select {
-  background-color:$echoturq;
-  border: 0px solid;
-  color:white;
-  background:none;
-  width: auto;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 15px;
-  text-overflow: '';
+    background-color:$echoturq;
+    background:none;
+    border: 0px solid;
+    color:white;
+    text-indent: 15px;
+    text-overflow: '';
+    width: auto;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 #filter {
-  margin: 0;
+    margin: 0;
 }
 
 /* ***************************
@@ -224,42 +223,42 @@ select {
 // OBS - Detta är egentligen "top-menyn" i amin-läget, eller? Egen klass?
 
 .filter-menu {
- display: flex;
- justify-content: flex-start;
- flex-direction: row;
- align-items: center;
+    @include align-items(center);
+    @include flex-direction(row);
+    @include flexbox();
+    @include justify-content(flex-start);
 
  .first {
-   display: flex;
-   flex: 2;
- }
+    @include flex-grow(2);
+    @include flexbox();
+     }
  .logout {
-   display: flex;
-   flex: 1;
-   justify-content: flex-end;
-   align-items: center;
- }
+    @include align-items(center);
+    @include flex-grow(1);
+    @include flexbox();
+    @include justify-content(flex-end);
+    }
  // Måndasmenyn när det inte finns inlägg
  .empty {
-   color: #b5b5b5;
-   background-color: $echogrey;
-   padding: 12px 16px;
-   text-decoration: none;
-   display: block;
- }
+    background-color: $echogrey;
+    color: #b5b5b5;
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    }
 }
 
 //HIDES DESKTOP MENU
- .top-menu, .filter-menu{
-  display:none;
+.top-menu, .filter-menu{
+    display:none;
 }
 
 //FILLER (INSTEAD OF DESKTOP MENU)
 .bluefiller {
-  width:100%;
-  height: 60px;
-  background-color: $echoturq;
-  display:inline-block;
+    background-color: $echoturq;
+    display:inline-block;
+    height: 60px;
+    width:100%;
 }
 
 /* ***************************
@@ -268,14 +267,14 @@ select {
 *************************** */
 
 main {
-  margin: 20px 0px 40px 0px;
-  min-height: 500px;
+    margin: 20px 0px 40px 0px;
+    min-height: 500px;
 }
 .admin-main {
-  section {
-    box-sizing: border-box;
-    background-color: #fff;
-    padding: 40px 20px;
+    section {
+        background-color: #fff;
+        box-sizing: border-box;
+        padding: 40px 20px;
   }
 }
 
@@ -285,23 +284,23 @@ main {
 *************************** */
 
 .post {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  margin-bottom: 40px;
-  .post-img {
-    flex: 1;
-    img {
-    width: 100%;
-    }
-  }
-  .post-text {
-    flex: 0;
+    background-color: #fff;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    @include flex-direction(column);
+    @include flexbox();
+    .post-img {
+        @include flex-grow(1);
+        img {
+            width: 100%;
+        }
+}
+.post-text {
     padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    @include flexbox();
+    @include flex-grow(0);
+    @include flex-direction(column);
+    @include justify-content(space-between);
     a, h1, .comments {
       color: $echoturq;
       &:hover {
@@ -309,45 +308,45 @@ main {
       }
     }
     .tags, .post-info, .comments {
-      font-weight: 700;
-      font-size: 0.8em;
+        font-weight: 700;
+        font-size: 0.8em;
     }
     .tags {
-      color: $echoturq;
+        color: $echoturq;
     }
     .fa-hashtag {
-      font-size: 0.8em;
+        font-size: 0.8em;
     }
     .fa-comment {
-      margin-right: 5px;
+        margin-right: 5px;
     }
     div:first-child, .tags {
-      margin-bottom: 25px;
+        margin-bottom: 25px;
     }
     .blog-content {
-      line-height: 1.5em;
+        line-height: 1.5em;
     }
     h1 {
-      font-size: 2.5em;
-      font-weight: 300;
+        font-size: 2.5em;
+        font-weight: 300;
     }
     div:last-child {
-      align-self: baseline;
+        align-self: baseline;
     }
     .post-info {
-      margin-bottom: 6px;
+         margin-bottom: 6px;
     }
   }
 }
 .sortby {
-   padding-bottom: 30px;
-   text-align: right;
-   a {
-    margin: 10px;
-   }
-   .fa {
-    margin-left: 7px;
-   }
+    padding-bottom: 30px;
+    text-align: right;
+    a {
+        margin: 10px;
+    }
+    .fa {
+        margin-left: 7px;
+    }
 }
 
 /* ***************************
@@ -356,23 +355,23 @@ main {
 *************************** */
 
 .pagination {
-  text-align: center;
-  color: $echodarkturq;
-  a, span {
-    padding: 5px;
-    font-size: 1.6em;
-  }
-  a {
-    color: $echoturq;
-    &:hover {
-      color: $echodarkturq;
-    }
-  }
-  span {
-    font-weight: bold;
+    text-align: center;
     color: $echodarkturq;
-    text-decoration: underline;
-  }
+    a, span {
+        padding: 5px;
+        font-size: 1.6em;
+    }
+    a {
+        color: $echoturq;
+    &:hover {
+        color: $echodarkturq;
+    }
+    }
+    span {
+        color: $echodarkturq;
+        font-weight: bold;
+        text-decoration: underline;
+    }
 }
 
 /* ***************************
@@ -381,36 +380,36 @@ main {
 *************************** */
 
 form {
-  margin-top: 40px;
-  input[type="file"] {
     border: none;
-    padding: 0;
     margin-top: 20px;
+    padding: 0;
+    input[type="file"] {
+        margin-top: 40px;
+    }
+    input, button, textarea {
+        border-radius: 5px;
+        display: block;
+        margin: 10px 0;
+    }
+    input, textarea {
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    input, button {
+        height: 40px;
+    }
+    button {
+        background-color:$echogrey;
+        border:1px solid $echoturq;
+        padding: 0 15px;
+        width:100%;
+        @include transition(all 200ms ease-in-out);
   }
-  input, button, textarea {
-    border-radius: 5px;
-    display: block;
-    margin: 10px 0;
-  }
-  input, textarea {
-    box-sizing: border-box;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  input, button {
-    height: 40px;
-  }
-  button {
-    border:1px solid $echoturq;
-    padding: 0 15px;
-    width:100%;
-    background-color:$echogrey;
-    @include transition(all 200ms ease-in-out);
-  }
-  button:hover {
-    background-color: $echoturq;
-    color:#fff;
-  }
+    button:hover {
+        background-color: $echoturq;
+        color:#fff;
+    }
 }
 
 /* ***************************
@@ -419,65 +418,66 @@ form {
 *************************** */
 
 #comment {
-  border: 1px solid $echogrey;
-  box-sizing: border-box;
-  padding: 5px;
-  margin: 10px 10px 0 10px;
-  border-radius: 2px;
-  background-color: $echoyellow;
-  color: $echogrey;
-  font-size: 0.8em;
-  p {
-    padding: 5px;
+    background-color: $echoyellow;
+    border-radius: 2px;
+    border: 1px solid $echogrey;
+    box-sizing: border-box;
     color: $echogrey;
-    font-size: 1.2em;
-  }
+    font-size: 0.8em;
+    margin: 10px 10px 0 10px;
+    padding: 5px;
+    p {
+        color: $echogrey;
+        font-size: 1.2em;
+        padding: 5px;
+    }
 }
 .post-container {
-  .post {
-    margin: 0;
-  }
+    .post {
+        margin: 0;
+    }
 }
 .comment-form, .comment {
-  background-color: #fff;
+    background-color: #fff;
 }
 .comment-form {
-  padding: 40px 20px 10px 20px;
-  form {
-    margin: 0 0 40px 0;
-    input, textarea, button {
-      margin: 0 0 20px 0;
-      width: 100%;
+    padding: 40px 20px 10px 20px;
+    form {
+        margin: 0 0 40px 0;
+        input, textarea, button {
+            margin: 0 0 20px 0;
+            width: 100%;
+        }
+        textarea {
+            height: 100px;
+        }
     }
-    textarea {
-      height: 100px;
-    }
-  }
 }
+
 .comment {
-  display: flex;
-  flex-direction: column;
-  border-top: 2px dotted #ccc;
-  padding: 40px 20px;
-  .comment-fa {
-    flex: 0;
-    margin-bottom: 20px;
-    text-align: center;
-    i.fa-user-circle {
-      font-size: 2em;
+    border-top: 2px dotted #ccc;
+    padding: 40px 20px;
+    @include flexbox();
+    @include flex-direction(column);
+    .comment-fa {
+        margin-bottom: 20px;
+        text-align: center;
+        @include flex-grow(0);
+        i.fa-user-circle {
+            font-size: 2em;
+        }
     }
-  }
-  .comment-content {
-    flex: 3;
-    p {
-      margin-bottom: 15px;
-      line-height: 1.5em;
+    .comment-content {
+        @include flex-grow(3);
+        p {
+            margin-bottom: 15px;
+            line-height: 1.5em;
+        }
+        span {
+            font-size: 0.8em;
+            font-style: italic;
+        }
     }
-    span {
-      font-size: 0.8em;
-      font-style: italic;
-    }
-  }
 }
 
 /* ***************************
@@ -486,35 +486,35 @@ form {
 *************************** */
 
 .about-main {
-  section {
-    background-color:white;
-    padding:20px 0 40px 0;
-    h1 {
-      padding-left: 20px;
-      color:$echoturq;
+    section {
+        background-color:white;
+        padding:20px 0 40px 0;
+        h1 {
+            color:$echoturq;
+            padding-left: 20px;
+        }
+        img {
+            margin: 20px 0 20px 0;
+            width:100%;
+        }
+        p {
+            padding:0 20px;
+        }
+        .email {
+            margin-top: 20px;
+            padding: 0 20px;
+            h2 {
+                color:$echoturq;
+            }
+            .fa {
+                font-size: 1.3em;
+                margin-right: 5px;
+            }
+            a {
+                font-size: 1.1em;
+            }
+        }
     }
-    img {
-      width:100%;
-      margin: 20px 0 20px 0;
-    }
-    p {
-      padding:0 20px;
-    }
-    .email {
-       margin-top: 20px;
-       padding: 0 20px;
-      h2 {
-         color:$echoturq;
-      }
-      .fa {
-         font-size: 1.3em;
-         margin-right: 5px;
-      }
-      a {
-        font-size: 1.1em;
-      }
-    }
-  }
 }
 
 /* ***************************
@@ -523,31 +523,31 @@ form {
 *************************** */
 
 .login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $echoturq;
-  width: 100%;
-  min-height: calc(100vh);
-  margin: 0;
-  .login-form {
-    width: 500px;
-    padding: 20px;
-    form {
-      width: 100%;
-      margin: 0;
-      input, button {
-        width: 100%;
-        background-color: #fff;
-      }
-      button:hover {
-        background-color: $echodarkblue;
-      }
-      label {
-        color: #fff;
-      }
+    background-color: $echoturq;
+    margin: 0;
+    min-height: calc(100vh);
+    width: 100%;
+    @include align-items(center);
+    @include flexbox();
+    @include justify-content(center);
+    .login-form {
+        padding: 20px;
+        width: 500px;
+        form {
+            margin: 0;
+            width: 100%;
+            input, button {
+                background-color: #fff;
+                width: 100%;
+            }
+            button:hover {
+                background-color: $echodarkblue;
+            }
+            label {
+                color: #fff;
+            }
+        }
     }
-  }
 }
 
 /* ***************************
@@ -555,70 +555,71 @@ form {
 *************************** */
 
 .flex-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
+    width: 100%;
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(flex-start);
+    @include justify-content(space-between);
 }
 .upload-image, .img-preview {
-  width: 100%;
-  input {
     width: 100%;
-  }
+    input {
+        width: 100%;
+    }
 }
 .img-preview {
-  img {
-    width: 100%;
-    margin-bottom: 20px;
-  }
+    img {
+        margin-bottom: 20px;
+        width: 100%;
+    }
 }
 .post-content {
-  width: 100%;
-  input, textarea {
     width: 100%;
-  }
-  textarea {
-    height: 100px;
-  }
+    input, textarea {
+        width: 100%;
+    }
+    textarea {
+        height: 100px;
+    }
 }
 .select-tag {
-  margin: 25px 0 15px 0;
-  input[type="radio"] {
-    display: none;
-    &:checked {
-      + label {
-        background: $echoturq;
-        border-color: $echoturq;
-        color: #fff;
-      }
+    margin: 25px 0 15px 0;
+    input[type="radio"] {
+        display: none;
+        &:checked {
+            + label {
+                background: $echoturq;
+                border-color: $echoturq;
+                color: #fff;
+            }
+        }
     }
-  }
-  label {
-    border-radius: 4px;
-    border: 1px solid rgba(0,0,0,0.2);
-    color: #444;
-    cursor: pointer;
-    display: block;
-    font-size: 11px;
-    margin-bottom: 10px;
-    padding: 15px;
-    text-transform: uppercase;
-    @include transition(all 200ms ease-in-out);
-    &:hover {
-      background: $echoturq;
-      color: #fff;
+    label {
+        border-radius: 4px;
+        border: 1px solid rgba(0,0,0,0.2);
+        color: #444;
+        cursor: pointer;
+        display: block;
+        font-size: 11px;
+        margin-bottom: 10px;
+        padding: 15px;
+        text-transform: uppercase;
+        @include transition(all 200ms ease-in-out);
+        &:hover {
+            background: $echoturq;
+            color: #fff;
+        }
     }
-  }
-  fieldset {
-    border: 0;
-    padding: 0;
-  }
+    fieldset {
+        border: 0;
+        padding: 0;
+    }
 }
+
 .trash {
-  &:hover {
-    color: $echored;
-  }
+    &:hover {
+        color: $echored;
+    }
 }
 
 /* ***************************
@@ -627,37 +628,38 @@ form {
 *************************** */
 
 .list {
-  h2:not(.comment-h2) {
-    margin-top: 40px;
-  }
-  .flex-list{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    padding: 0 10px;
-    .create-date {
-      padding-left: 64px;
+    h2:not(.comment-h2) {
+        margin-top: 40px;
     }
-  }
-  .fa {
-    margin-right: 15px;
-    font-size: 1.3em;
-  }
-  .title, .create-date, .comment-row {
-    display: flex;
-    align-items: center;
-    padding: 8px 0;
-  }
+    .flex-list {
+        padding: 0 10px;
+        @include flexbox();
+        @include flex-direction(column);
+        @include align-items(flex-start);
+        @include justify-content(space-between);
+        .create-date {
+            padding-left: 64px;
+        }
+    }
+    .fa {
+        margin-right: 15px;
+        font-size: 1.3em;
+    }
+    .title, .create-date, .comment-row {
+        padding: 8px 0;
+        @include flexbox();
+        @include align-items(center);
+    }
 
-  .row {
-     &:nth-child(even) {
-      background-color: $echogrey;
+    .row {
+        &:nth-child(even) {
+            background-color: $echogrey;
+        }
     }
-  }
 }
+
 .border-top {
-  border-top: 2px dotted #ccc;
+    border-top: 2px dotted #ccc;
 }
 
 /* ***************************
@@ -666,32 +668,32 @@ form {
 *************************** */
 
 .statistics {
-  div {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-  }
-  h3 {
-    font-size: 1.2em;
-    text-align: center;
-  }
-  .box {
-    font-family: Helvetica;
-    box-sizing: border-box;
-    height: 150px;
-    width: 230px;
-    background: #0b2024;
-    border-radius: 4px;
-    margin: 40px 25px 20px;
-    text-align: center;
-    font-size: 3em;
-    color: #f4f4f4;
-    align-items: center;
-    -webkit-box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
-    -moz-box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
-    box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
-  }
+    div {
+        @include flexbox();
+        @include justify-content(center);
+        @include flex-direction(column);
+        @include align-items(center);
+    }
+    h3 {
+        font-size: 1.2em;
+        text-align: center;
+    }
+    .box {
+        align-items: center;
+        background: #0b2024;
+        border-radius: 4px;
+        box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
+        -moz-box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
+        -webkit-box-shadow: 1px 1px 10px 2px rgba(212,212,212,1);
+        box-sizing: border-box;
+        color: #f4f4f4;
+        font-family: Helvetica;
+        font-size: 3em;
+        height: 150px;
+        margin: 40px 25px 20px;
+        text-align: center;
+        width: 230px;
+    }
 }
 
 /* ***************************
@@ -700,48 +702,48 @@ form {
 *************************** */
 
 .profile {
-  section {
-    padding: 0;
-    .flex-list.row {
-      margin-bottom: 7px;
-      .fa {
-        margin-right: 5px;
-      }
+    section {
+        padding: 0;
+        .flex-list.row {
+                margin-bottom: 7px;
+            .fa {
+                margin-right: 5px;
+            }
+        }
+        .img-preview {
+            img {
+                margin: 0;
+            }
+        }
+        .upload-image {
+          margin-bottom: 20px;
+        }
+        h2, label {
+          margin-bottom: 15px;
+        }
     }
-    .img-preview {
-      img {
-        margin: 0;
-      }
+    section:not(.profile-pic) {
+        border-bottom: 1px dotted #ccc;
+        margin-top: 40px;
+        padding-bottom: 40px;
+        width: 100%;
+        &:last-child {
+            border: 0;
+        }
+        form {
+            margin: 0;
+        }
+        input, textarea {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        textarea {
+            height: 200px;
+        }
+        button {
+            width: 100%;
+        }
     }
-    .upload-image {
-      margin-bottom: 20px;
-    }
-    h2, label {
-      margin-bottom: 15px;
-    }
-  }
-  section:not(.profile-pic) {
-    margin-top: 40px;
-    width: 100%;
-    border-bottom: 1px dotted #ccc;
-    padding-bottom: 40px;
-    &:last-child {
-      border: 0;
-    }
-    form {
-      margin: 0;
-    }
-    input, textarea {
-      width: 100%;
-      margin-bottom: 20px;
-    }
-    textarea {
-      height: 200px;
-    }
-    button {
-      width: 100%;
-    }
-  }
 }
 
 /* ***************************
@@ -750,47 +752,46 @@ form {
 *************************** */
 
 footer {
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: $echogrey;
-  background-color: $echodarkturq;
-  height: 200px;
-  padding: 25px 40px;
-  display: flex;
-  .hide {
-    display: none;
-    ul li a {
-      color: $echogrey;
-      &:hover {
-        color: $echoturq;
-      }
+    background-color: $echodarkturq;
+    color: $echogrey;
+    height: 200px;
+    padding: 25px 40px;
+    @include align-items(center);
+    @include flex-direction(column);
+    @include flexbox();
+    @include justify-content(center);
+    .hide {
+        display: none;
+        ul li a {
+            color: $echogrey;
+            &:hover {
+                color: $echoturq;
+          }
+        }
     }
-  }
-  .social {
+    .social {
     margin: 10px;
-    a {
-      color: $echogrey;
-      @include transition(all 200ms ease-in-out);
-      &:hover {
-        &:nth-child(1){
-          color: $echored;
+        a {
+            color: $echogrey;
+            @include transition(all 200ms ease-in-out);
+            &:hover {
+                &:nth-child(1){
+                    color: $echored;
+                }
+                &:nth-child(2){
+                    color: $echoyellow;
+                }
+                &:nth-child(3){
+                    color: $echopink;
+                }
+            }
         }
-        &:nth-child(2){
-          color: $echoyellow;
-        }
-        &:nth-child(3){
-          color: $echopink;
-        }
-      }
-
     }
-  }
-  div:nth-child(3) {
-    font-size: 0.8em;
-  }
-  .fa {
-    font-size: 3.1em;
-    padding: 0 10px;
-  }
+    div:nth-child(3) {
+        font-size: 0.8em;
+    }
+    .fa {
+        font-size: 3.1em;
+        padding: 0 10px;
+    }
 }

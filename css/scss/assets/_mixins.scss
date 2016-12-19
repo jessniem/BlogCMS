@@ -9,6 +9,42 @@
     -o-transition: $str;
 }
 
+@mixin flexbox() {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+}
+
+@mixin align-items($value) {
+    -webkit-box-align: $value;
+    -mox-box-align: $value;
+    -ms-flex-align: $value;
+    -webkit-align-items: $value;
+    align-items: $value;
+}
+
+@mixin justify-content($value) {
+    -webkit-box-pack: $value;
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
+    justify-content: $value;
+}
+
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+      -ms-flex-direction: $direction;
+          flex-direction: $direction;
+}
+
+@mixin flex-grow($grow) {
+  -webkit-flex-grow: $grow;
+      -ms-flex-grow: $grow;
+          flex-grow: $grow;
+}
+
+
 /* PLACES THE USER FEEDBACK IN CENTER */
 @mixin centerer {
     position: absolute;
