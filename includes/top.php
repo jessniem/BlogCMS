@@ -30,12 +30,14 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 	        <ul>
 	            <li>
 	                <select name="tag" onchange="reload();">
-                        <option value="categories" disabled selected>Categories &#43;</i></option>
+                        <option value="categories" disabled selected>Categories &#43;</option>
                         <?php
                         // LOOP OUT TAGS MENU
                         for ($i = 1; $i < count($tags); $i++) { ?>
-	                       <option value="<?php echo $tags[$i]["num"]; ?>"><li><a href="<?php echo $tags["$i"]["href"]; ?>">  <?php echo $tags["$i"]["name"]; ?></a></li></option> <?php
-                        } ?>
+	                       <option value="<?php echo $tags[$i]["num"]; ?>"><?php echo $tags["$i"]["name"]; ?></option> 
+                           <?php
+                        } 
+                        ?>
 	                </select>
 	            </li>
 	            <li>
@@ -49,8 +51,10 @@ $months = array("January", "February", "March", "April", "May", "June", "July", 
 	                                $query = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE isPub = 1 AND MONTHNAME(createDate) = '$month'");
 	                                $data = mysqli_fetch_assoc($query);
 	                                $monthsum = $data['total'];
-	                                if($monthsum > 0) { ?>
-	                                    <option value="<?php echo ($i+1); ?>"><a class="month" href="index.php?month=<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></a></option><?php
+	                                if($monthsum > 0) { 
+                                        ?>
+	                                    <option value="<?php echo ($i+1); ?>"><?php echo $months[$i]; ?></option>
+                                    <?php
 	                                }
 	                        } 
                             ?>     
@@ -134,10 +138,11 @@ if (($currentfile == "/index.php") ||
     </div>
     <div class="bluefiller">
     </div>
+
+    <!-- FILTER MENU -->
     <div class="menu filter-menu">
         <ul> 
             <?php
-            // LOOP OUT TAGS MENU
             for ($i = 0; $i < count($tags); $i++) { 
                 ?>
                 <li><a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a></li> 
@@ -171,7 +176,7 @@ if (($currentfile == "/index.php") ||
                 </div>
             </div> <!-- /dropdown -->
         </ul>
-    </div> 
+    </div><!-- /menu filter-menu -->
     <?php
 }
 ?>
