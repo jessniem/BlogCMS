@@ -146,20 +146,17 @@ if (($currentfile == "/index.php") ||
 
     <!-- FILTER MENU -->
     <div class="menu filter-menu">
-        <ul>
             <!-- FILTER OPTION: CATEGORIES -->
             <?php
             for ($i = 0; $i < count($tags); $i++) { 
                 ?>
-                <li><a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a></li> 
+                <a href="<?php echo $tags["$i"]["href"]; ?>"><?php echo $tags["$i"]["name"]; ?></a>
             <?php
             } 
             ?>
             <!-- FILTER OPTION: MONTHS -->
             <div class="dropdown">
-                <li>
-                    <button class="dropdown-btn">Months <i class="fa fa-caret-down" aria-hidden="true"></i></button>
-                </li>
+                <button class="dropdown-btn">Months <i class="fa fa-caret-down" aria-hidden="true"></i></button>
                 <div class="dropdown-content"> 
                     <?php
                     $stmt = $conn->stmt_init();
@@ -183,7 +180,6 @@ if (($currentfile == "/index.php") ||
                     ?>
                 </div> <!-- /dropdown-content -->
             </div> <!-- /dropdown -->
-        </ul>
     </div> <!-- /menu filter-menu -->
     <?php
 }

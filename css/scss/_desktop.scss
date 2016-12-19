@@ -69,8 +69,10 @@
 
 .filter-menu {
     @include flexbox();
+    padding-left: 40px;
     a {
        @include transition(all 200ms ease-in-out);
+       margin-top: 6px;
     }
     a:hover, a:active {
         background-color: $echogrey;
@@ -78,7 +80,7 @@
     }
 }
 
-//DROPDOWN MENU
+//DROPDOWN FOR MONTHS
 .dropdown-btn {
     color: $echogrey;
     background-color: $echoturq;
@@ -274,7 +276,6 @@ footer {
         }
     }
 }
-
 .social {
     margin: 10px;
     a {
