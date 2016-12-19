@@ -9,6 +9,7 @@
     -o-transition: $str;
 }
 
+/* BROWSER PREFIX FOR FLEXBOX */
 @mixin flexbox() {
     display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
     display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -16,7 +17,6 @@
     display: -webkit-flex;     /* NEW - Chrome */
     display: flex;
 }
-
 @mixin align-items($value) {
     -webkit-box-align: $value;
     -mox-box-align: $value;
@@ -24,24 +24,21 @@
     -webkit-align-items: $value;
     align-items: $value;
 }
-
+@mixin flex-direction($direction) {
+    -webkit-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+}
+@mixin flex-grow($grow) {
+    -webkit-flex-grow: $grow;
+    -ms-flex-grow: $grow;
+    flex-grow: $grow;
+}
 @mixin justify-content($value) {
     -webkit-box-pack: $value;
     -moz-box-pack: $value;
     -ms-flex-pack: $value;
     justify-content: $value;
-}
-
-@mixin flex-direction($direction) {
-  -webkit-flex-direction: $direction;
-      -ms-flex-direction: $direction;
-          flex-direction: $direction;
-}
-
-@mixin flex-grow($grow) {
-  -webkit-flex-grow: $grow;
-      -ms-flex-grow: $grow;
-          flex-grow: $grow;
 }
 
 
