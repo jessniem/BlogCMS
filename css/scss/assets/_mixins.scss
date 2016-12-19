@@ -29,10 +29,10 @@
     -ms-flex-direction: $direction;
     flex-direction: $direction;
 }
-@mixin flex-grow($grow) {
-    -webkit-flex-grow: $grow;
-    -ms-flex-grow: $grow;
-    flex-grow: $grow;
+@mixin flex($grow) {
+    -webkit-flex: $grow;
+    -ms-flex: $grow;
+    flex: $grow;
 }
 @mixin justify-content($value) {
     -webkit-box-pack: $value;

@@ -41,11 +41,10 @@ main {
         }
     }
     .post-text {
-        @include flex-grow(1);
+        @include flex(1);
         padding: 40px;
     }
 }
-
 
 /* ***************************
         COMMENTS
@@ -57,9 +56,11 @@ main {
         font-size: 2.8em;
   }
 }
+
 /* ***************************
         VIEW/EDIT POSTS
 *************************** */
+
 .list > .flex-list {
     @include flex-direction(row);
 }
@@ -67,10 +68,10 @@ main {
     padding: 0;
 }
 
-
 /* ***************************
         ABOUT ME
 *************************** */
+
 .about-main {
     section {
         padding: 20px 20px 40px 20px;
