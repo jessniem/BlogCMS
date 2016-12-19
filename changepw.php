@@ -29,6 +29,6 @@ if (password_verify($pw, $dbPW)) {
         }
     }
 } else {
-  header("Location: profile.php?pw=error");
+    header("Location: profile.php?pw=error");
 }
 ?>

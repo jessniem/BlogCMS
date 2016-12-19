@@ -1,12 +1,12 @@
 <?php
 /**
-* The funtion precent escape characters to be injected in the string presented to MySQL.
+* The funtion prevent escape characters to be injected in the string presented to MySQL.
 *
 * @param string $var - The string from the user input.
 * @param string $conn - DB connection.
 * @return string $VAR - Return a safe sanitized string.
 **/
-//TODO: KOLLA VARFÖR INTE MYSQLI_REAL_ESCAPE_STRING FUNKAR
+
 function sanitizeMySql($conn, $var) {
     $var = $conn->real_escape_string($var);
     $var = sanitizeString($var);
@@ -14,7 +14,7 @@ function sanitizeMySql($conn, $var) {
 }
 
 /**
-* The function removes unvanter slashes and HTML from user input.
+* The function removes unvanter slashes and HTML from user input ( called in sanitizeMySql() ).
 *
 * @param string $var The string from the user inout.
 * @return string $var Rerturn a string without html, slashes and tags.
@@ -52,7 +52,7 @@ function printPost($index, $num) {
                     <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p>
                     <?php
                     if ($index) { ?>
-                    <a href="comments.php?post=<?php echo $post['id'] ?>#start"><p class="comments"><i class="fa fa-comment" aria-hidden="true"></i> Comments (<?php echo $num; ?>)</p></a><?php
+                        <a href="comments.php?post=<?php echo $post['id'] ?>#start"><p class="comments"><i class="fa fa-comment" aria-hidden="true"></i> Comments (<?php echo $num; ?>)</p></a><?php
                     }
                     ?>
                 </div>
@@ -99,7 +99,7 @@ function listPostAdmin($isPub, $access) {
                     <?php
                     // PRINT OUT THE AUTOR OF THE POST WHEN LOGGED IN AS ADMIN
                     if ($access == 1) {
-                      echo "$fn $ln | ";
+                        echo "$fn $ln | ";
                     }
                     echo $date;
                     ?>
@@ -175,14 +175,14 @@ function saveOrPub($isPub){
     }
     if (move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
             ?>
-			<div class="feedback fadeOut"> <?php
+            <div class="feedback fadeOut"> <?php
         if ($isPub == 1) {
             echo "The post has been published!";
         } else {
             echo "The post has been saved as a draft!";
         }
         ?>
-		</div>
+        </div>
         <?php
         $query = "INSERT INTO posts VALUES
         (NULL, '$title', '$categoryId','$userId', '$content', '$targetname', '$alt', NULL, '{$isPub}')";

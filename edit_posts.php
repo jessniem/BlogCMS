@@ -14,7 +14,7 @@ if (isset($_GET["delete"])) {
         $stmt->execute();
         ?>
         <div class="feedback fadeOut">
-        	The post is deleted!
+            The post is deleted!
         </div> <!-- /feedback fadeOut -->
         <?php
     }

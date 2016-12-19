@@ -18,18 +18,20 @@
     display: flex;
 }
 @mixin align-items($value) {
-    -webkit-box-align: $value;
-    -mox-box-align: $value;
+    -moz-box-align: $value;
     -ms-flex-align: $value;
     -webkit-align-items: $value;
+    -webkit-box-align: $value;
     align-items: $value;
 }
 @mixin flex-direction($direction) {
-    -webkit-flex-direction: $direction;
     -ms-flex-direction: $direction;
+    -webkit-box-direction: $direction;
+    -webkit-flex-direction: $direction;
     flex-direction: $direction;
 }
 @mixin flex($grow) {
+    -webkit-box-flex-grow: $grow;
     -webkit-flex: $grow;
     -ms-flex: $grow;
     flex: $grow;
@@ -44,6 +46,7 @@
 // - applies to: flex containers
 // nowrap | wrap | wrap-reverse
 @mixin flex-wrap($value) {
+    -webkit-box-flex-wrap: $value;
     -webkit-flex-wrap: $value;
     -ms-flex-wrap: $value;
     flex-wrap: $value;
