@@ -198,7 +198,7 @@ div.post-content {
     @include flex-wrap(wrap);
 }
 .upload-image, .img-preview {
-    @include flex-grow(1);
+    @include flex(1);
     input {
         width: 90%;
     }
@@ -246,7 +246,7 @@ footer {
         display: flex;
         height: 50px;
         margin: 0;
-        @include flex-grow(1);
+        @include flex(1);
         @include align-items(flex-end);
         &:nth-child(2) {
             @include justify-content(center);

@@ -222,12 +222,12 @@ select {
     @include flexbox();
     @include justify-content(flex-start);
     .first {
-        @include flex-grow(2);
+        @include flex(2);
         @include flexbox();
      }
     .logout {
         @include align-items(center);
-        @include flex-grow(1);
+        @include flex(1);
         @include flexbox();
         @include justify-content(flex-end);
     }
@@ -279,7 +279,7 @@ main {
     @include flex-direction(column);
     @include flexbox();
     .post-img {
-        @include flex-grow(1);
+        @include flex(1);
         img {
             width: 100%;
         }
@@ -287,7 +287,7 @@ main {
 .post-text {
     padding: 40px 20px;
     @include flexbox();
-    @include flex-grow(0);
+    @include flex(0);
     @include flex-direction(column);
     @include justify-content(space-between);
     a, h1, .comments {
@@ -448,13 +448,13 @@ form {
     .comment-fa {
         margin-bottom: 20px;
         text-align: center;
-        @include flex-grow(0);
+        @include flex(0);
         i.fa-user-circle {
             font-size: 2em;
         }
     }
     .comment-content {
-        @include flex-grow(3);
+        @include flex(3);
         p {
             margin-bottom: 15px;
             line-height: 1.5em;
