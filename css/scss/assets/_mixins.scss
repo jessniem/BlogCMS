@@ -40,7 +40,14 @@
     -ms-flex-pack: $value;
     justify-content: $value;
 }
-
+// Flex Line Wrapping
+// - applies to: flex containers
+// nowrap | wrap | wrap-reverse
+@mixin flex-wrap($value) {
+    -webkit-flex-wrap: $value;
+    -ms-flex-wrap: $value;
+    flex-wrap: $value;
+}
 
 /* PLACES THE USER FEEDBACK IN CENTER */
 @mixin centerer {
