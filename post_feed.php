@@ -129,7 +129,7 @@ if ($stmt->prepare($query)) {
 
     // IF NOT ON PAGE 1, DON'T SHOW BACK LINKS
     if ($currPage > 1) {
-        // SHOW << LINK TO GO BACK TO PAGE 1      TODO HUR KAN MAN TA BORT & OCH SÄTTA DET I $GET ISTÄLLET? NU HAMNAR DET FRAMFÖR PAGE OM $GET ÄR TOM
+        // SHOW << LINK TO GO BACK TO PAGE 1
         echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=1'><i class='fa fa-caret-left' aria-hidden='true'></i><i class='fa fa-caret-left' aria-hidden='true'></i></a> ";
         // GET PREVIOUS PAGE NUM
         $prevPage = $currPage - 1;
@@ -158,9 +158,9 @@ if ($stmt->prepare($query)) {
         // GET NEXT PAGE
         $nextPage = $currPage + 1;
           // LINK TO NEXT PAGE
-         echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$nextPage'<i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
+         echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$nextPage'><i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
          // LINK TO THE LAST PAGE
-         echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$totPages'<i class='fa fa-caret-right' aria-hidden='true'></i><i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
+         echo " <a href='{$_SERVER['PHP_SELF']}?$get&page=$totPages'><i class='fa fa-caret-right' aria-hidden='true'></i><i class='fa fa-caret-right' aria-hidden='true'></i></a> ";
       } // END OF PAGINATION LINKS ?>
 
 </div> <!-- PAGINATION -->

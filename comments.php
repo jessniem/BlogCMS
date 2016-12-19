@@ -11,6 +11,7 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
     <?php
 }
 ?>
+
 <main>
     <?php
     // GET SELECTED POST

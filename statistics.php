@@ -4,11 +4,8 @@ include_once "./includes/top.php";
 require_once "./db_connection.php";
 
 $access = $_SESSION["access"];
-
 $stmt = $conn->stmt_init();
-
 $user = ($access == 1) ? "admin" : "notadmin";
-
 $userid = $_SESSION["userId"];
 
 //COUNTS POSTS IN TOTAL
@@ -25,6 +22,7 @@ if ($stmt->prepare ($totalP)) {
     $stmt->bind_result($totalPosts);
     $stmt->fetch();
 }
+
 //COUNTS COMMENTS IN TOTAL
 switch ($user) {
     case 'admin':
@@ -44,6 +42,7 @@ if ($stmt->prepare ($totalC)) {
 $totalS = ($totalComments == 0) ? 0 : $totalComments / $totalPosts;
 ?>
 
+<!-- SHOW STATISTICS -->
 <main class="admin-main margin">
     <section>
         <div class="statistics">
@@ -51,19 +50,17 @@ $totalS = ($totalComments == 0) ? 0 : $totalComments / $totalPosts;
                 <div class="box"><?php echo $totalPosts;?></div>
                 <h3>Number of Posts</h3>
             </div>
-
             <div>
                 <div class="box"><?php echo $totalComments;?></div>
                 <h3>Number of comments</h3>
             </div>
-
             <div>
                 <div class="box"><?php echo round($totalS, 2);?></div>
                 <h3>Average comment/post</h3>
             </div>
-        </div>
+        </div> <!-- /statistics -->
     </section>
-</main>
+</main> <!-- /admin-main margin -->
 
 <?php
 include_once "./includes/footer.php";

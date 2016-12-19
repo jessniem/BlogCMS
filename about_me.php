@@ -4,6 +4,7 @@ include_once "./includes/head.php";
 require_once "functions.php";
 include_once "./includes/top.php";
 ?>
+
 <main class="about-main">
     <section>
     	<h1>About me</h1>
@@ -29,6 +30,7 @@ include_once "./includes/top.php";
         </div> <!-- /email -->
 	</section>
 </main> <!-- /about-main -->
+
 <?php 
 include_once "./includes/footer.php"; 
 ?>

@@ -38,16 +38,16 @@ $totalDrafts = $data['total'];
         }
         if ($totalPub > 0) { ?>
             <h2>Published posts (<?php echo $totalPub; ?>)</h2> <?php
-            // LIST OF CREATED DRAFTS
+            // LIST OF PUBLISHED POSTS
             listPostAdmin(1);
         } ?>
-    </section>
+    </section> <!-- /post-list -->
 
     <!-- UPDATE POST -->
     <?php
     editPost();
     ?>
-</main>
+</main> <!-- /admin-main -->
 
 <?php
 include "./includes/footer.php";
