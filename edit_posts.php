@@ -27,7 +27,7 @@ if (isset($_GET["deleteComment"])) {
     if ($stmt->prepare($query)) {
         $stmt->execute();
         ?>
-        <div class="feedback fadeOut">
+        <div class="feedback fadeOut delete-comment">
             The comment is deleted!
         </div> <!-- /feedback fadeOut -->
         <?php
@@ -179,7 +179,7 @@ $totalDrafts = $data['total'];
                     ?>
                     <div class="flex-list row">
                         <div class="comment-row">
-                            <a href="edit_posts.php?deleteComment=<?php echo $commentid; ?>" onclick="return confirm('Are you sure you want to delete this post?');" class="trash"><i class="fa fa-trash-o"></i></a>
+                            <a href="edit_posts.php?edit=<?php $id ?>&deleteComment=<?php echo $commentid; ?>" onclick="return confirm('Are you sure you want to delete this post?');" class="trash"><i class="fa fa-trash-o"></i></a>
                             <?php echo $commentText;?>
                         </div> <!-- /comment-row -->
                         <div class="create-date">
