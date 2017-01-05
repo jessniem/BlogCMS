@@ -46,7 +46,7 @@ function printPost($index, $num) {
                 <div>
                     <p class="tags"><i class="fa fa-hashtag" aria-hidden="true"></i> <?php echo $post["tag"]; ?></p>
                     <h1><a href="comments.php?post=<?php echo $post['id'] ?>#start"><?php echo $post["title"]; ?></a></h1>
-                    <div class="blog-content"><?php echo $post["content"]; ?></div>
+                    <div class="blog-content"><?php echo nl2br($post["content"]); ?></div>
                 </div>
                  <div>
                     <p class="post-info"><?php echo $post["fname"]. " " .$post["lname"]. ", " .$post["createDate"]; ?></p>
@@ -167,7 +167,7 @@ function saveOrPub($isPub){
     $title = sanitizeMySql($conn, $_POST["title"]);
     $categoryId = $_POST["tag"];
     $userId = $_SESSION["userId"];
-    $content = sanitizeMySql($conn, $_POST["content"]);
+    $content = $_POST["content"]; // uses nl2br() instead of sanitizeMySql(), allows breaks in text
     $type = pathinfo($targetname, PATHINFO_EXTENSION);
 
     if ($type != "jpeg" && $type != "jpg" && $type != "png") { ?>

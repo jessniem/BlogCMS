@@ -6,7 +6,7 @@ if (isset($_GET["postId"])) {
     $postid = sanitizeMySql($conn, $_GET["postId"]);
 }
 $stmt = $conn->stmt_init();
-$comment = $_POST["comment"];
+$comment = $_POST["comment"]; // no sanitizeMySql, nl2br() on output instead 
 $email = sanitizeMySql($conn, $_POST["email"]);
 $name = sanitizeMySql($conn, $_POST["name"]);
 

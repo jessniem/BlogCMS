@@ -144,7 +144,7 @@ $totalDrafts = $data['total'];
                     $title = sanitizeMySql($conn, $_POST["title"]);
                     $categoryid = $_POST["tag"];
                     $userId = sanitizeMySql($conn, $_SESSION["userId"]);
-                    $content = sanitizeMySql($conn, $_POST["content"]);
+                    $content = $_POST["content"]; // uses nl2br() instead of sanitizeMySql(), allows breaks in text
                     $query = "UPDATE posts SET title = '{$title}', categoryid = '{$categoryid}', content = '{$content}', alt = '{$alt}', createDate = '{$date}', isPub = '{$isPub}'";
                     if(move_uploaded_file($_FILES["postImage"]["tmp_name"], $targetname)) {
                         $query .= ", image = '{$targetname}'";
