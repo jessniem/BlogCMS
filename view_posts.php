@@ -26,8 +26,8 @@ $totalPub = $data['total'];
 $drafts = mysqli_query($conn, "SELECT count(*) as total FROM posts WHERE  isPub = 0");
 $data = mysqli_fetch_assoc($drafts);
 $totalDrafts = $data['total'];
-
 ?>
+
 <main class="admin-main">
     <section class="post-list">
         <h1>Edit posts</h1> <?php
