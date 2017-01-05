@@ -89,7 +89,8 @@ require_once "functions.php";
                     ?>
                     <div class="feedback fadeOut">Your password has been updated!</div> 
                     <?php
-                } elseif ($_GET["pw"] == "error") { ?>
+                } elseif ($_GET["pw"] == "error") { 
+                    ?>
                     <div class="error feedback fadeOut">Somthing went wrong, your password has NOT been updated!</div> 
                     <?php
                 }
@@ -118,7 +119,8 @@ require_once "functions.php";
                         ?>
                         <div class="error feedback fadeOut">The email is already registered</div> <!-- /error feedback fadeOut -->
                         <?php
-                    } elseif ($_GET["user"] == "invalid_email") { ?>
+                    } elseif ($_GET["user"] == "invalid_email") { 
+                        ?>
                         <div class="error feedback fadeOut">Invalid email address</div> <!-- /error feedback fadeOut -->
                         <?php
                     } elseif ($_GET["user"] == "success") {
