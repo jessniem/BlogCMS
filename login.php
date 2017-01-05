@@ -14,6 +14,7 @@ include "db_connection.php";
         <?php
     }
     ?>
+
     <main class="login">
         <section class="login-form">
             <!-- FORM: LOGIN -->
@@ -24,7 +25,7 @@ include "db_connection.php";
                 <input name="password" type="password">
                 <button name="send" type="submit">Login</button>
             </form>
-        </section>
-    </main>
+        </section> <!-- /login-form -->
+    </main> <!-- /login -->
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+// LOGOUT USER
 session_start();
 $_SESSION["logged_in"] = false;
 unset($_SESSION["username"]);
