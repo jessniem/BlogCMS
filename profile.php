@@ -6,79 +6,87 @@ require_once "functions.php";
 ?>
 
 <main class="admin-main">
+
     <section class="profile">
         <h1>Your information</h1>
 
-        <!-- PROFILE PICTURE -->
-        <section class="profile-pic">
-            <?php
-            $id = $_SESSION["userId"];
-            // UPDATE PROFILE PICTURE
-            if(isset ($_POST["profilepic"]) ) {
-                $targetfolder = './userimg/';
-                $targetname =  $targetfolder . basename("user". -$id . ".jpg");
-                if(move_uploaded_file($_FILES["profilepic"]["tmp_name"], $targetname)) {
-                    ?>
-                    <!-- USER FEEDBACK: CHANGED PROFILE PICTURE -->
-                    <div class="feedback fadeOut">Your profile picture has been updated!</div>
-                    <?php
+        <?php
+        //IF NOT GUEST USER
+        if ($_SESSION["access"] <= 2 ) {
+        ?>
+            <!-- PROFILE PICTURE -->
+            <section class="profile-pic">
+                <?php
+                $id = $_SESSION["userId"];
+                // UPDATE PROFILE PICTURE
+                if(isset ($_POST["profilepic"]) ) {
+                    $targetfolder = './userimg/';
+                    $targetname =  $targetfolder . basename("user". -$id . ".jpg");
+                    if(move_uploaded_file($_FILES["profilepic"]["tmp_name"], $targetname)) {
+                        ?>
+                        <!-- USER FEEDBACK: CHANGED PROFILE PICTURE -->
+                        <div class="feedback fadeOut">Your profile picture has been updated!</div>
+                        <?php
+                    }
+                    $query = "UPDATE users SET profilePic = '{$targetname}' WHERE id = '{$id}'";
+                    $stmt = $conn->stmt_init();
+                    if ($stmt->prepare($query)) {
+                        $stmt->execute();
+                    } else {
+                      echo mysqli_error();
+                    }
                 }
-                $query = "UPDATE users SET profilePic = '{$targetname}' WHERE id = '{$id}'";
-                $stmt = $conn->stmt_init();
-                if ($stmt->prepare($query)) {
-                    $stmt->execute();
-                } else {
-                  echo mysqli_error();
-                }
-            }
 
-            // DESCRIPTION AND EMAIL
-            if(isset ($_POST["submit"]) ) {
-                $email = sanitizeMySql($conn, $_POST["email"]);
-                $description = $_POST["description"]; // no sanitizeMySql, nl2br() on output instead 
-                $stmt = $conn->stmt_init();
-                $query = "UPDATE users SET email = '{$email}', description = '{$description}' WHERE id = $id";
-                if ($stmt->prepare($query)) {
-                    $stmt->execute();
-                    ?>
-                    <!-- USER FEEDBACK: CHANGED DESCRIPTION OR EMAIL -->
-                    <div class="feedback fadeOut">Your information has been updated!</div>
-                    <?php
-                } else {
-                    echo mysqli_error();
+                // DESCRIPTION AND EMAIL
+                if(isset ($_POST["submit"]) ) {
+                    $email = sanitizeMySql($conn, $_POST["email"]);
+                    $description = $_POST["description"]; // no sanitizeMySql, nl2br() on output instead 
+                    $stmt = $conn->stmt_init();
+                    $query = "UPDATE users SET email = '{$email}', description = '{$description}' WHERE id = $id";
+                    if ($stmt->prepare($query)) {
+                        $stmt->execute();
+                        ?>
+                        <!-- USER FEEDBACK: CHANGED DESCRIPTION OR EMAIL -->
+                        <div class="feedback fadeOut">Your information has been updated!</div>
+                        <?php
+                    } else {
+                        echo mysqli_error();
+                    }
                 }
-            }
-            $stmt = $conn->stmt_init();
-            $query = "SELECT * FROM users WHERE id = $id";
-            if($stmt->prepare($query)) {
-                $stmt->execute();
-                $stmt->bind_result($id, $accesslevel, $email, $password, $firstname, $lastname, $profilepic, $description);
-                $stmt->fetch();
-            }
-            ?>
-            <!-- FORM: DESCRIPTION AND EMAIL -->
-            <form method="post" enctype="multipart/form-data">
-                <div class="flex-container">
-                    <div class="upload-image">
-                        <label>Your profile picture:</label>
-                        <input name="profilepic" type="file" accept="image/*" onchange="loadFile(event)">
-                        <button type="submit" name="profilepic">Update profile picture</button>
-                    </div> <!-- /upload-image -->
-                    <div class="img-preview">
-                        <img src="<?php echo $profilepic ?>" id="output" alt="Preview of uploaded image"/>
-                    </div> <!-- /img-preview -->
-                </div> <!-- /flex-container -->
-            </form>
-        </section> <!-- /profile-pic -->
-        <section>
-            <form method="post">
-                <label>About you:</label>
-                <textarea name="description"><?php echo $description; ?></textarea>
-                <label>Your email:</label>
-                <input type="email" name="email" value="<?php echo $email; ?>">
-                <button type="submit" name="submit" class="description">Save</button>
-            </form>
-        </section>
+                $stmt = $conn->stmt_init();
+                $query = "SELECT * FROM users WHERE id = $id";
+                if($stmt->prepare($query)) {
+                    $stmt->execute();
+                    $stmt->bind_result($id, $accesslevel, $email, $password, $firstname, $lastname, $profilepic, $description);
+                    $stmt->fetch();
+                }
+                ?>
+                <!-- FORM: DESCRIPTION AND EMAIL -->
+                <form method="post" enctype="multipart/form-data">
+                    <div class="flex-container">
+                        <div class="upload-image">
+                            <label>Your profile picture:</label>
+                            <input name="profilepic" type="file" accept="image/*" onchange="loadFile(event)">
+                            <button type="submit" name="profilepic">Update profile picture</button>
+                        </div> <!-- /upload-image -->
+                        <div class="img-preview">
+                            <img src="<?php echo $profilepic ?>" id="output" alt="Preview of uploaded image"/>
+                        </div> <!-- /img-preview -->
+                    </div> <!-- /flex-container -->
+                </form>
+            </section> <!-- /profile-pic -->
+            <section>
+                <form method="post">
+                    <label>About you:</label>
+                    <textarea name="description"><?php echo $description; ?></textarea>
+                    <label>Your email:</label>
+                    <input type="email" name="email" value="<?php echo $email; ?>">
+                    <button type="submit" name="submit" class="description">Save</button>
+                </form>
+            </section>
+        <?php
+        }
+        ?>
 
         <!-- CHANGE PASSWORD -->
         <section>
@@ -108,6 +116,7 @@ require_once "functions.php";
 
         <!-- ADD GUEST USER -->
         <?php
+        //IF NOT GUEST USER
         if ($_SESSION["access"] <= 2 ) { 
             ?>
             <section>
