@@ -85,10 +85,13 @@ require_once "functions.php";
             <?php
             // USER FEEDBACK: CHANGED PASSWORD
             if (isset($_GET["pw"])) {
-                if ($_GET["pw"] == "ok") { ?>
-                    <div class="feedback fadeOut">Your password has been updated!</div> <?php
+                if ($_GET["pw"] == "ok") { 
+                    ?>
+                    <div class="feedback fadeOut">Your password has been updated!</div> 
+                    <?php
                 } elseif ($_GET["pw"] == "error") { ?>
-                    <div class="error feedback fadeOut">Somthing went wrong, your password has NOT been updated!</div> <?php
+                    <div class="error feedback fadeOut">Somthing went wrong, your password has NOT been updated!</div> 
+                    <?php
                 }
             }
             ?>
@@ -104,7 +107,8 @@ require_once "functions.php";
 
         <!-- ADD GUEST USER -->
         <?php
-        if ($_SESSION["access"] <= 2 ) { ?>
+        if ($_SESSION["access"] <= 2 ) { 
+            ?>
             <section>
                 <h2>Add new guest user</h2>
                 <?php
