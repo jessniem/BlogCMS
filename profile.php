@@ -35,7 +35,7 @@ require_once "functions.php";
             // DESCRIPTION AND EMAIL
             if(isset ($_POST["submit"]) ) {
                 $email = sanitizeMySql($conn, $_POST["email"]);
-                $description = sanitizeMySql($conn, $_POST["description"]);
+                $description = $_POST["description"]; // no sanitizeMySql, nl2br() on output instead 
                 $stmt = $conn->stmt_init();
                 $query = "UPDATE users SET email = '{$email}', description = '{$description}' WHERE id = $id";
                 if ($stmt->prepare($query)) {

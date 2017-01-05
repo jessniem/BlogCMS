@@ -19,7 +19,7 @@ include_once "./includes/top.php";
         ?>
         <img src="<?php echo $profilepic; ?>" alt="<?php echo $profilepic; ?>">
         <?php
-        echo "<p>" . $description . "</p>";
+        echo "<p>" . nl2br($description) . "</p>";
         ?>
         <div class="email">
             <h2>Contact and inquiries</h2>
@@ -31,6 +31,6 @@ include_once "./includes/top.php";
 	</section>
 </main> <!-- /about-main -->
 
-<?php 
-include_once "./includes/footer.php"; 
+<?php
+include_once "./includes/footer.php";
 ?>

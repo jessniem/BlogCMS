@@ -83,7 +83,7 @@ if (isset($_GET["email"]) && $_GET["email"] == "invalid") {
                 <i class="fa fa-user-circle" aria-hidden="true"></i>
             </div> <!-- /comment-fa -->
             <div class="comment-content">
-                <p><?php echo $var["commentText"]; ?></p>
+                <p><?php echo nl2br($var["commentText"]); ?></p>
                 <span>By: <?php echo $var["name"] . " - " . $var["email"] . " | " . timeElapsedString($time); ?></span>
             </div> <!-- /comment-content -->
         </div> <!-- /comment -->

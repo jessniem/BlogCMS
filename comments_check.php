@@ -6,7 +6,7 @@ if (isset($_GET["postId"])) {
     $postid = sanitizeMySql($conn, $_GET["postId"]);
 }
 $stmt = $conn->stmt_init();
-$comment = sanitizeMySql($conn, $_POST["comment"]);
+$comment = $_POST["comment"];
 $email = sanitizeMySql($conn, $_POST["email"]);
 $name = sanitizeMySql($conn, $_POST["name"]);
 
