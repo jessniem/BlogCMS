@@ -1,6 +1,7 @@
 # BlogCMS
 
 Skoluppgift:
+Vi valde att bygga en blogg åt illustratören Angelina Fredriksson för att få joba med riktig kundfeedback och ha en målbild att utgå ifrån.
 
 Mål:
 Målet med uppgiften att den studerande ska:
